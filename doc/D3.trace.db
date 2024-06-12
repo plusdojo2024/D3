@@ -1,0 +1,183 @@
+2024-06-12 14:05:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "create table users (
+number int  primary key auto_increment not null,
+id int  not null,
+password varchar (32) not null,
+user_name varchar (100) not null default ユーザー[*]',
+height double  not null default 170,
+weight double  not null default 70,
+bmi double ,
+user_level int  not null default 1,
+user_exp int  not null default 0
+)"
+Syntax error in SQL statement "create table users (
+number int  primary key auto_increment not null,
+id int  not null,
+password varchar (32) not null,
+user_name varchar (100) not null default ユーザー[*]',
+height double  not null default 170,
+weight double  not null default 70,
+bmi double ,
+user_level int  not null default 1,
+user_exp int  not null default 0
+)"; SQL statement:
+create table users (
+number int  primary key auto_increment not null,
+id int  not null,
+password varchar (32) not null,
+user_name varchar (100) not null default ユーザー',
+height double  not null default 170,
+weight double  not null default 70,
+bmi double ,
+user_level int  not null default 1,
+user_exp int  not null default 0
+) [42000-200]
+2024-06-12 14:07:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "create table user (
+number int  primary key auto_increment not null,
+id int  not null,
+password varchar (32) not null,
+user_name varchar (100) not null default ユーザー[*]',
+height double  not null default 170,
+weight double  not null default 70,
+bmi double ,
+user_level int  not null default 1,
+user_exp int  not null default 0"
+Syntax error in SQL statement "create table user (
+number int  primary key auto_increment not null,
+id int  not null,
+password varchar (32) not null,
+user_name varchar (100) not null default ユーザー[*]',
+height double  not null default 170,
+weight double  not null default 70,
+bmi double ,
+user_level int  not null default 1,
+user_exp int  not null default 0"; SQL statement:
+create table user (
+number int  primary key auto_increment not null,
+id int  not null,
+password varchar (32) not null,
+user_name varchar (100) not null default ユーザー',
+height double  not null default 170,
+weight double  not null default 70,
+bmi double ,
+user_level int  not null default 1,
+user_exp int  not null default 0 [42000-200]
+2024-06-12 14:07:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "CREATE TABLE USER (
+NUMBER INT  PRIMARY KEY AUTO_INCREMENT NOT NULL,
+ID INT  NOT NULL,
+PASSWORD VARCHAR (32) NOT NULL,
+USER_NAME VARCHAR (100) NOT NULL DEFAULT 'ユーザー',
+HEIGHT DOUBLE  NOT NULL DEFAULT 170,
+WEIGHT DOUBLE  NOT NULL DEFAULT 70,
+BMI DOUBLE ,
+USER_LEVEL INT  NOT NULL DEFAULT 1,
+USER_EXP INT  NOT NULL DEFAULT 0[*]"; 期待されるステートメント "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE USER (
+NUMBER INT  PRIMARY KEY AUTO_INCREMENT NOT NULL,
+ID INT  NOT NULL,
+PASSWORD VARCHAR (32) NOT NULL,
+USER_NAME VARCHAR (100) NOT NULL DEFAULT 'ユーザー',
+HEIGHT DOUBLE  NOT NULL DEFAULT 170,
+WEIGHT DOUBLE  NOT NULL DEFAULT 70,
+BMI DOUBLE ,
+USER_LEVEL INT  NOT NULL DEFAULT 1,
+USER_EXP INT  NOT NULL DEFAULT 0[*]"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"; SQL statement:
+create table user (
+number int  primary key auto_increment not null,
+id int  not null,
+password varchar (32) not null,
+user_name varchar (100) not null default 'ユーザー',
+height double  not null default 170,
+weight double  not null default 70,
+bmi double ,
+user_level int  not null default 1,
+user_exp int  not null default 0 [42001-200]
+2024-06-12 14:07:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "CREATE TABLE LEVEL (
+LEVEL INT  PRIMARY KEY NOT NULL DEFAULT[*] 1,
+GOAL_KCAL DOUBLE  NOT NULL,
+NEXT_LEVEL_EXP INT  NOT NULL
+)"; 期待されるステートメント "COMMENT, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE LEVEL (
+LEVEL INT  PRIMARY KEY NOT NULL DEFAULT[*] 1,
+GOAL_KCAL DOUBLE  NOT NULL,
+NEXT_LEVEL_EXP INT  NOT NULL
+)"; expected "COMMENT, CHECK, REFERENCES, ,, )"; SQL statement:
+create table level (
+level int  primary key not null default 1,
+goal_kcal double  not null,
+next_level_exp int  not null
+) [42001-200]
+2024-06-12 14:11:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 複数のプライマリキーを定義しようとしました
+Attempt to define a second primary key; SQL statement:
+create table group_member (
+group_number int  primary key not null,
+number int  primary key not null,
+order_number int  not null,
+delete_user int 
+) [90017-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.ddl.CommandWithColumns.setPrimaryKey(CommandWithColumns.java:148)
+	at org.h2.command.ddl.CommandWithColumns.addConstraintCommand(CommandWithColumns.java:49)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:8474)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8379)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2024-06-12 14:21:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "'DOJO' (USER: ""ID"" INT NOT NULL)"
+Data conversion error converting "'DOJO' (USER: ""ID"" INT NOT NULL)"; SQL statement:
+INSERT INTO user values(
+null,
+'DOJO',
+'password',
+'大和豊',
+171,
+83,
+null,
+1,
+0
+) [22018-200]
+2024-06-12 14:24:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "'' (USER: ""NUMBER"" INT DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_AB8ADB93_119C_4ED3_841F_9335DB25F124"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_AB8ADB93_119C_4ED3_841F_9335DB25F124"")"
+Data conversion error converting "'' (USER: ""NUMBER"" INT DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_AB8ADB93_119C_4ED3_841F_9335DB25F124"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_AB8ADB93_119C_4ED3_841F_9335DB25F124"")"; SQL statement:
+INSERT INTO "PUBLIC"."USER"("NUMBER","ID","PASSWORD","USER_NAME","HEIGHT","WEIGHT","BMI","USER_LEVEL","USER_EXP")VALUES(?,?,?,?,?,?,?,?,?) [22018-200]
+2024-06-12 14:24:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "'' (USER: ""NUMBER"" INT DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_AB8ADB93_119C_4ED3_841F_9335DB25F124"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_AB8ADB93_119C_4ED3_841F_9335DB25F124"")"
+Data conversion error converting "'' (USER: ""NUMBER"" INT DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_AB8ADB93_119C_4ED3_841F_9335DB25F124"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_AB8ADB93_119C_4ED3_841F_9335DB25F124"")"; SQL statement:
+INSERT INTO "PUBLIC"."USER"("NUMBER","ID","PASSWORD","USER_NAME","HEIGHT","WEIGHT","BMI","USER_LEVEL","USER_EXP")VALUES(?,?,?,?,?,?,?,?,?) [22018-200]
+2024-06-12 14:26:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "USERS" が見つかりません
+Table "USERS" not found; SQL statement:
+INSERT INTO Users VALUES ( 
+NULL, 
+2345,
+'password',
+'滝澤唯',
+154,
+47,
+null,
+1,
+0
+ ) [42102-200]
