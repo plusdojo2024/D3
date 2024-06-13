@@ -1,11 +1,16 @@
 package servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.Result;
 
 /**
  * Servlet implementation class ResultServlet
@@ -22,20 +27,49 @@ public class ResultServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		session.setAttribute("id","dummy");//todo:ダミー
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("./LoginServlet");
+			return;
+		}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+		// リクエストパラメータを取得する
+			//？？？？
+		request.setCharacterEncoding("UTF-8");
+		//String target = request.getParameter("target");
+		String goalKcal = request.getParameter("goalKcal");
+		//String resultKcal = request.getParameter("resultKcal");
+		//String record = request.getParameter("record");
+		//String route = request.getParameter("route");
+		int userLevel = session.getAttribute("/**/")
+		
+		//DB・DAOで該当日の結果データを検索する
+		
+		Result resultData = new Result();//todo:ダミー　DBの処理結果に変える
+		
+		//検索結果をリクエストスコープに格納する
+
+		request.setAttribute("result", resultData);
+		
+		// 運動結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/simpleBC/LoginServlet");
+			return;
+		}
+		
+	
+		
 	}
 
 }
