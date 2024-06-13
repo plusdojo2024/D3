@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CalendarServlet
+ * Servlet implementation class Calendar2Servlet
  */
-@WebServlet("/CalendarServlet")
-public class CalendarServlet extends HttpServlet {
+@WebServlet("/Calendar2Servlet")
+public class Calendar2Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CalendarServlet() {
+    public Calendar2Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,9 @@ public class CalendarServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calender.jsp");
+		String year=request.getParameter("year");
+		String month=request.getParameter("month");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar2.jsp");
 		dispatcher.forward(request, response);
 	}
 
