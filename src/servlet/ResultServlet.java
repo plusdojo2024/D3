@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.BcDAO;
+import model.Bc;
 import model.Result;
 
 /**
@@ -38,13 +40,17 @@ public class ResultServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 			//？？？？
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		//String target = request.getParameter("target");
-		String goalKcal = request.getParameter("goalKcal");
+		//String goalKcal = request.getParameter("goalKcal");
 		//String resultKcal = request.getParameter("resultKcal");
 		//String record = request.getParameter("record");
 		//String route = request.getParameter("route");
-		int userLevel = session.getAttribute("/**/")
+		//int userLevel = session.getAttribute("/**/")
+		
+		double goalKcal = 200;
+		int target;
+		
 		
 		//DB・DAOで該当日の結果データを検索する
 		
@@ -59,15 +65,40 @@ public class ResultServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
-	
+	//削除
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
+		session.setAttribute("id","dummy");//todo:ダミー
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/simpleBC/LoginServlet");
+			response.sendRedirect("./LoginServlet");
 			return;
 		}
 		
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String name = request.getParameter("name");
+		
+		
+		
+
+		// 更新または削除を行う
+		BcDAO bDao = new BcDAO();
+		if (request.getParameter("submit").equals("削除")) {
+			if (bDao.delete(number)) {	// 削除成功
+				request.setAttribute("result",
+				new Result("削除成功！", "レコードを削除しました。", "/simpleBC/MenuServlet"));
+			}
+			else {						// 削除失敗
+				request.setAttribute("result",
+				new Result("削除失敗！", "レコードを削除できませんでした。", "/simpleBC/MenuServlet"));
+			}
+		}
+
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		dispatcher.forward(request, response);
+	}
 	
 		
 	}
