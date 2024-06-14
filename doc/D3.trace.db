@@ -213,3 +213,276 @@ NULL,
 	at org.h2.server.web.WebThread.process(WebThread.java:178)
 	at org.h2.server.web.WebThread.run(WebThread.java:94)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2024-06-13 10:20:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SCHEDULE VALUES ( 
+NULL,
+'ウォーキング',
+30
+'分'[*],
+'6/13' 
+1,
+ )"; 期待されるステートメント "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO SCHEDULE VALUES ( 
+NULL,
+'ウォーキング',
+30
+'分'[*],
+'6/13' 
+1,
+ )"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO schedule VALUES ( 
+NULL,
+'ウォーキング',
+30
+'分',
+'6/13' 
+1,
+ ) [42001-200]
+2024-06-13 10:20:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SCHEDULE VALUES ( 
+NULL,
+'ウォーキング',
+30,
+'分',
+'6/13' 
+1[*],
+ )"; 期待されるステートメント "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO SCHEDULE VALUES ( 
+NULL,
+'ウォーキング',
+30,
+'分',
+'6/13' 
+1[*],
+ )"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO schedule VALUES ( 
+NULL,
+'ウォーキング',
+30,
+'分',
+'6/13' 
+1,
+ ) [42001-200]
+2024-06-13 10:21:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SCHEDULE VALUES ( 
+NULL,
+'ウォーキング',
+30.0,
+'分',
+'6/13' 
+1[*],
+ )"; 期待されるステートメント "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"
+Syntax error in SQL statement "INSERT INTO SCHEDULE VALUES ( 
+NULL,
+'ウォーキング',
+30.0,
+'分',
+'6/13' 
+1[*],
+ )"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO schedule VALUES ( 
+NULL,
+'ウォーキング',
+30.0,
+'分',
+'6/13' 
+1,
+ ) [42001-200]
+2024-06-13 10:21:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO SCHEDULE VALUES ( 
+NULL,
+'ウォーキング',
+30,
+'分',
+'6/13' ,
+1,
+ )[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO SCHEDULE VALUES ( 
+NULL,
+'ウォーキング',
+30,
+'分',
+'6/13' ,
+1,
+ )[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO schedule VALUES ( 
+NULL,
+'ウォーキング',
+30,
+'分',
+'6/13' ,
+1,
+ ) [42001-200]
+2024-06-13 10:21:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました "STRINGDECODE('\u30a6\u30a9\u30fc\u30ad\u30f3\u30b0') (SCHEDULE: ""KIND"" INT NOT NULL)"
+Data conversion error converting "STRINGDECODE('\u30a6\u30a9\u30fc\u30ad\u30f3\u30b0') (SCHEDULE: ""KIND"" INT NOT NULL)"; SQL statement:
+INSERT INTO schedule VALUES ( 
+NULL,
+'ウォーキング',
+30,
+'分',
+'6/13' ,
+1
+ ) [22018-200]
+2024-06-13 10:22:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: "DATE" 定数 "6/13" を解析できません
+Cannot parse "DATE" constant "6/13"; SQL statement:
+INSERT INTO schedule VALUES ( 
+NULL,
+1,
+30,
+'分',
+'6/13' ,
+1
+ ) [22007-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:457)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueDate.parse(ValueDate.java:74)
+	at org.h2.value.Value.convertToDate(Value.java:1093)
+	at org.h2.value.Value.convertTo(Value.java:816)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:187)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.IllegalArgumentException: 6/13
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:166)
+	at org.h2.value.ValueDate.parse(ValueDate.java:72)
+	... 19 more
+2024-06-13 10:22:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: "DATE" 定数 "2024/6/13" を解析できません
+Cannot parse "DATE" constant "2024/6/13"; SQL statement:
+INSERT INTO schedule VALUES ( 
+NULL,
+1,
+30,
+'分',
+'2024/6/13' ,
+1
+ ) [22007-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:457)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueDate.parse(ValueDate.java:74)
+	at org.h2.value.Value.convertToDate(Value.java:1093)
+	at org.h2.value.Value.convertTo(Value.java:816)
+	at org.h2.value.Value.convertTo(Value.java:772)
+	at org.h2.value.TypeInfo.cast(TypeInfo.java:515)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:378)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:845)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:187)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NumberFormatException: For input string: "2024/"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:169)
+	at org.h2.value.ValueDate.parse(ValueDate.java:72)
+	... 19 more
+2024-06-13 10:24:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "CREATE TABLE SCHEDULE (
+SCHEDULE_NUMBER INT  PRIMARY KEY AUTO_INCREMENT NOT NULL,
+KIND INT  NOT NULL,
+VALUE DOUBLE  NOT NULL,
+UNIT VARCHAR (20) NOT NULL,
+DATE DATE  NOT NULL,
+NUMBER INT  NOT NULL[*]"; 期待されるステートメント "AS, DEFAULT, GENERATED, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE SCHEDULE (
+SCHEDULE_NUMBER INT  PRIMARY KEY AUTO_INCREMENT NOT NULL,
+KIND INT  NOT NULL,
+VALUE DOUBLE  NOT NULL,
+UNIT VARCHAR (20) NOT NULL,
+DATE DATE  NOT NULL,
+NUMBER INT  NOT NULL[*]"; expected "AS, DEFAULT, GENERATED, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"; SQL statement:
+create table schedule (
+schedule_number int  primary key auto_increment not null,
+kind int  not null,
+value double  not null,
+unit varchar (20) not null,
+date Date  not null,
+number int  not null [42001-200]
+2024-06-13 10:50:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO    VALUES[*] ( 
+NULL,
+0243,
+'チームタケノコ',
+ )"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "INSERT INTO    VALUES[*] ( 
+NULL,
+0243,
+'チームタケノコ',
+ )"; expected "identifier"; SQL statement:
+INSERT INTO    VALUES ( 
+NULL,
+0243,
+'チームタケノコ',
+ ) [42001-200]
+2024-06-13 10:53:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO  GROUP_LIST  VALUES ( 
+NULL,
+0243,
+'チームYUTAKA',
+ )[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO  GROUP_LIST  VALUES ( 
+NULL,
+0243,
+'チームYUTAKA',
+ )[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO  group_list  VALUES ( 
+NULL,
+0243,
+'チームYUTAKA',
+ ) [42001-200]
+2024-06-13 10:53:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "CREATE TABLE GROUP_LIST (
+GROUP_NUMBER INT  PRIMARY KEY AUTO_INCREMENT NOT NULL,
+GROUP_ID INT  NOT NULL,
+GROUP_NAME VARCHAR (100) NOT NULL[*]"; 期待されるステートメント "AS, DEFAULT, GENERATED, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE GROUP_LIST (
+GROUP_NUMBER INT  PRIMARY KEY AUTO_INCREMENT NOT NULL,
+GROUP_ID INT  NOT NULL,
+GROUP_NAME VARCHAR (100) NOT NULL[*]"; expected "AS, DEFAULT, GENERATED, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"; SQL statement:
+create table group_list (
+group_number int  primary key auto_increment not null,
+group_id int  not null,
+group_name varchar (100) not null [42001-200]
+2024-06-14 11:12:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "CREATE TABLE ACTIVE (
+ACTIVE_NUMBER INT  PRIMARY KEY AUTO_INCREMENT NOT NULL,
+KIND INT  NOT NULL,
+METS_VALUE DOUBLE  NOT NULL,
+NAME VARCHAR (100) NOT NULL[*]"; 期待されるステートメント "AS, DEFAULT, GENERATED, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE ACTIVE (
+ACTIVE_NUMBER INT  PRIMARY KEY AUTO_INCREMENT NOT NULL,
+KIND INT  NOT NULL,
+METS_VALUE DOUBLE  NOT NULL,
+NAME VARCHAR (100) NOT NULL[*]"; expected "AS, DEFAULT, GENERATED, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, COMMENT, CHECK, REFERENCES, ,, )"; SQL statement:
+create table active (
+active_number int  primary key auto_increment not null,
+kind int  not null,
+mets_value double  not null,
+name varchar (100) not null [42001-200]
