@@ -10,15 +10,15 @@
   <title><%=mc.getMonth() %>月カレンダー</title>
   <link rel="stylesheet"  href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
   <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-  <link rel="stylesheet"  href="css/main.css">
+  <link rel="stylesheet"  href="css/mainCalendar.css">
 </head>
 <body>
   <div id="container">
-    <h1><%=mc.getMonth() %>月</h1>
-    <p>
-		　<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()-1%>">前月</a>
-    	<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()+1%>">翌月</a>
-    </p>
+	<div id="move-button">
+		<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()-1%>"><img src="img/hidari.png" class="migi-hidari" width= 30 height= 20></a>
+    	<h1 id="month"><%=mc.getMonth() %>月</h1>
+    	<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()+1%>"><img src="img/migi.png"  class="migi-hidari" width= 30 height= 20></a>
+   	</div>
     <table>
       <tr>
         <th>日</th>

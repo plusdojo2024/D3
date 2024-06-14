@@ -30,6 +30,7 @@ public class Calendar2Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String year=request.getParameter("year");
 		String month=request.getParameter("month");
+		String date=request.getParameter("date");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar2.jsp");
 		dispatcher.forward(request, response);
 	}

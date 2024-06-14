@@ -14,20 +14,6 @@ public class MyCalendarLogic {
 			//次の引数で月を設定
 			cal.set(Calendar.MONTH, args[1]-1);
 		}
-		//マイカレンダーに年を設定
-//		mc.setYear(cal.get(Calendar.YEAR));
-		//マイカレンダーの元号の設定
-/*		if(mc.getYear() > 2018) {
-			mc.setGengou("令和"+(mc.getYear()-2018));
-		}else if(mc.getYear() >1988 ) {
-			mc.setGengou("平成"+(mc.getYear()-1988));
-		}else if(mc.getYear() > 1925) {
-			mc.setGengou("昭和"+(mc.getYear()-1925));
-		}else if(mc.getYear() > 1911) {
-			mc.setGengou("大正"+(mc.getYear()-1911));
-		}else {
-			mc.setGengou(""+mc.getYear());
-		}*/
 		//マイカレンダーに月の設定
 		mc.setMonth(cal.get(Calendar.MONTH)+1);
 		//その月の1日が何曜日かを調べる為に日付を1日にする

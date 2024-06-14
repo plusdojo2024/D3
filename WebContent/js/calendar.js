@@ -24,6 +24,8 @@ function next() {
 function showProcess(date) {
 	var year = date.getFullYear();
 	var month = date.getMonth() +1;
+	var date = date.getDate();
+
 	document.querySelector('#cal').innerHTML = (month) + "月";
 
 	//var calendar = createProcess(year, month);
@@ -41,6 +43,18 @@ function createProcess(year, month) {
 	.then(text => {
 		document.querySelector('#calendar').innerHTML = text;
 	});
+
+function createDate(date) {
+	//./Calendar2Servlet?year=2024&month=6
+	//fetchでURLを参照、thenはサーブレットからのレスポンスが返ってきた時の処理
+	fetch("./Calendar2Servlet?date=" + date, {
+
+	}).then(response => response.text())
+	.then(text => {
+		document.querySelector('#calendar').innerHTML = text;
+	});
+}
+
 
 
 	/*return "1";

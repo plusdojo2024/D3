@@ -1,8 +1,6 @@
 package model;
 import java.io.Serializable;
 public class MyCalendar implements Serializable{
-	//元号表記
-	private String gengou;
 	//カレンダーの年
 	private int year;
 	//カレンダーの月
@@ -11,12 +9,6 @@ public class MyCalendar implements Serializable{
 	private String[][] data;
 
 	/*setter & getter*/
-	public String getGengou() {
-		return gengou;
-	}
-	public void setGengou(String gengou) {
-		this.gengou = gengou;
-	}
 	public int getYear() {
 		return year;
 	}
