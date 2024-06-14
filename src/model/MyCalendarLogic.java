@@ -11,7 +11,7 @@ public class MyCalendarLogic {
 		if(args.length==2) {
 			//最初の引数で年を設定
 			cal.set(Calendar.YEAR, args[0]);
-			//次の引数で月を設定 args[1]のなかは＋1された月が入っている？
+			//次の引数で月を設定 args[1]のなかは＋1された月が入っている
 			cal.set(Calendar.MONTH, args[1]-1);
 		}
 		//マイカレンダーに月の設定
