@@ -15,6 +15,7 @@ public class Result extends DayResult {
 	private int value; 
 	private int unit; 
 	private Date registDate;
+	private Date today;
 	
 	
 	public Result(double startIdo, double startKeido, double endIdo, double endKeido, int moveKind, double distance,
@@ -47,6 +48,7 @@ public class Result extends DayResult {
 		this.value = 0;
 		this.unit = 1;
 		this.registDate = null;
+		this.today = null;
 	}
 
 
@@ -158,6 +160,16 @@ public class Result extends DayResult {
 
 	public void setRegistDate(Date registDate) {
 		this.registDate = registDate;
+	}
+
+	
+	public Date getToday() {
+		return today;
+	}
+
+
+	public void setToday(Date today) {
+		this.today = today;
 	}
 
 	
