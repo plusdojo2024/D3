@@ -29,6 +29,7 @@
         <th>金</th>
         <th>土</th>
       </tr>
+      <!-- マイカレンダーの日付をrow配列に格納 -->
       <%for(String[] row: mc.getData()){ %>
       <tr>
       	<%for(String col:row) {%>
