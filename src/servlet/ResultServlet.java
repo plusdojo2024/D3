@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,6 +51,7 @@ public class ResultServlet extends HttpServlet {
 		
 		double goalKcal = 200;
 		int target;
+		Date date = new Date();
 		
 		
 		//DB・DAOで該当日の結果データを検索する

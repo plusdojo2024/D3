@@ -36,7 +36,7 @@
       		<%if (col.startsWith("*")){ %>
       			<td class="today"><%=col.substring(1)%></td>
       		<%}else{ %>
-      			<td><%=col %></td>
+      			<td><a href = "./ResultServlet?number=${result.date}"><%=col %></a></td>
       		<%} %>
       	<%} %>
       </tr>
