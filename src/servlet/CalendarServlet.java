@@ -9,35 +9,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class CalendarServlet
- */
+import model.MyCalendar;
+import model.MyCalendarLogic;
+
 @WebServlet("/CalendarServlet")
 public class CalendarServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CalendarServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calender.jsp");
-		dispatcher.forward(request, response);
-	}
+		String s_year=request.getParameter("year");
+		String s_month=request.getParameter("month");
+		MyCalendarLogic logic=new MyCalendarLogic();
+		MyCalendar mc=null;
+		if(s_year != null && s_month != null) {
+			int year =Integer.parseInt(s_year);
+			int month=Integer.parseInt(s_month);
+			if(month==0) {
+				month=12;
+				year--;
+			}
+			if(month==13) {
+				month=1;
+				year++;
+			}
+			//年と月のクエリパラメーターが来ている場合にはその年月でカレンダーを生成する
+			mc=logic.createMyCalendar(year,month);
+		}else {
+			//クエリパラメータが来ていないときは実行日時のカレンダーを生成する。
+			mc=logic.createMyCalendar();
+		}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		//リクエストスコープに格納
+		String judge=request.getParameter("judge");
+		request.setAttribute("mc", mc);
+		request.setAttribute("judge", judge);
+		//jsにフォワード
+		RequestDispatcher rd=request.getRequestDispatcher("./WEB-INF/jsp/calender.jsp");
+		rd.forward(request, response);
 	}
-
 }
