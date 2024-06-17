@@ -23,7 +23,7 @@
             <input type="text" id="bmi" name="bmi" size="10">
             <br>
             <div class="newer">
-                <input type="button" value="更新" onclick="calc()">
+                <input type="button" id="updateButton" value="更新" onclick="calc()">
             </div>
             <style>
                 .newer {
