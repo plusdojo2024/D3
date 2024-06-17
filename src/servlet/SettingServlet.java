@@ -14,7 +14,7 @@ import org.h2.engine.Setting;
 
 import model.User;
 
-@WebServlet("SettingServlet")
+@WebServlet("/SettingServlet")
 public class SettingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
