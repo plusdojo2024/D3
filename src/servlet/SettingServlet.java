@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.h2.engine.Setting;
 
+import model.LoginUser;
 import model.User;
 
 @WebServlet("/SettingServlet")
@@ -29,10 +30,11 @@ public class SettingServlet extends HttpServlet {
         else if(action.equals("done")) {
             // セッションスコープからユーザー情報を取得する
             HttpSession session = request.getSession();
-            User setting = (Setting) session.getAttribute("name");
-            User setting = (Setting) session.getAttribute("height");
-            User setting = (Setting) session.getAttribute("weight");
-            User setting = (Setting) session.getAttribute("bmi");
+            LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
+            String setting1 = loginUser.getName();
+            Double setting2 = loginUser.getHeight();
+            Double setting3 = loginUser.getWeight();
+            Double setting4 = loginUser.getBmi();
 
             // 登録処理の呼び出し
             SettingLogic logic = newSettingLogic();
