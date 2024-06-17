@@ -3,6 +3,7 @@
 <%
 	MyCalendar mc=(MyCalendar)request.getAttribute("mc");
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -36,11 +37,11 @@
       		<%if (col.startsWith("*")){ %>
       			<td class="today"><%=col.substring(1)%></td>
       		<%}else{ %>
-      			<td><a href = "./ResultServlet?number=${result.date}"><%=col %></a></td>
+      				<td><a href = "./ResultServlet?number=${result.date}"><%=col %></a></td>
       		<%} %>
       	<%} %>
-      </tr>
-      <%} %>
+     	 </tr>
+       <%} %>
     </table>
   </div><!-- end container-->
 </body>

@@ -36,6 +36,7 @@ public class Main extends HttpServlet {
 			//クエリパラメータが来ていないときは実行日時のカレンダーを生成する。
 			mc=logic.createMyCalendar();
 		}
+
 		//リクエストスコープに格納
 		request.setAttribute("mc", mc);
 		//jsにフォワード
