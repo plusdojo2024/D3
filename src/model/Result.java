@@ -41,10 +41,10 @@ public class Result extends DayResult {
 		this.endIdo = 0.0;
 		this.endKeido = 0.0;
 		this.moveKind = 1;
-		this.distance = 0.0;
-		this.kcal = 0.0;
+		this.distance = 1;
+		this.kcal = 30;
 		this.kind = 1;
-		this.value = 0;
+		this.value = 2;
 		this.unit = 1;
 		this.registDate = null;
 	}

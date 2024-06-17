@@ -11,18 +11,28 @@
 </head>
 <body>
     <img src="./img/calendar.png">
-    <p>目標達成まで 歩 </p><br>
+    <p>目標達成まで ${requestScope.targetHosu} 歩 </p><br>
     <div id="date"></div>
     <label>消費カロリー</label><progress id="file" max="${ result.goalKcal }" value="${ result.resultKcal }"></progress>
-    <p>${ result.resultKcal }/${ result.goalKcal}</p>
+    <p>${ result.resultKcal }/${ result.goalKcal}kcal</p>
     
     <p>comment</p>
     <img src="./img/chara1.png" width="100px">
-    <p>level</p>
+    <p>level${sessionScope.level}</p>
     <p>map</p>
     <p>今日の記録</p>
-    <p> ランニング　${ result.value }㎞　${ result.kcal }kcal</p>
-    <img src="./img/gomi.png" >
+    <p>ランニング　${ result.value }㎞　${ result.kcal }kcal</p>
+    
+    <form action="./ResultServlet" method="post">
+    	<input type="text" name="record_number" value="${ record.recordNumber }"><!-- textをhiddenにすると画面表示されない -->
+    	<input type="text" name="redist_date" value="${ record.registDate }"><!-- textをhiddenにすると画面表示されない -->
+    	<input type="text" name="kind" value="${ record.kcal }">
+    	<input type="text" name="value" value="${ record.value }">
+    	<input type="text" name="unit" value="${ record.unit }">
+    	<input type="text" name="kcal" value="${ record.kcal }">
+    	<label>label</label>
+    	<input type="image" name="submit" src="./img/gomi.png" value="削除" onclick="deleteMessage()">
+    </form>
     
     <script type="text/javascript" src="./js/result.js"></script>
 </body>
