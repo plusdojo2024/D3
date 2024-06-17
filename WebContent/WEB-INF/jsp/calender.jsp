@@ -35,17 +35,17 @@
       <tr>
       	<%for(String col:row) {%>
       		<%if (col.startsWith("*")){ %>
-      			<td class="today"><a href = "./ResultServlet?y=${mc.getYear}&m=${mc.getMonth}&d=${date}"><%=col.substring(1)%></a></td>
+      			<%if(col.endsWith("@")){ %>
+      				<td class="today hanamaru"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=${date}"><%=col.substring(1,col.length()-1)%></a></td>
+      			<%}else{ %>
+      			<td class="today"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=${date}"><%=col.substring(1)%></a></td>
+      			<%} %>
       		<%}else if (col.startsWith("#")){ %>
       			<td class="dayafter"><%=col.substring(1)%></td>
       		<%}else if (col.startsWith("$")){ %>
       			<td class="after"><%=col.substring(1)%></td>
       		<%}else { %>
-      			<td class="before"><a href = "./ResultServlet?y=${mc.getYear}&m=${mc.getMonth}&d=${date}"><%=col %></a></td>
-      		<%} %>
-
-			<%if(col.endswith("@")){%>
-
+      			<td class="before"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=${date}"><%=col %></a></td>
       		<%} %>
       	<%} %>
      	 </tr>

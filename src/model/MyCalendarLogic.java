@@ -38,12 +38,14 @@ public class MyCalendarLogic {
 		int rows = total / 7;
 		//その行数で2次元配列を生成　６行×７日の配列
 		String[][] data = new String[rows][7];
+		int[][] judge = new int[rows][7];
 		//今見ているカレンダーが今月かどうかを調べるために、この瞬間の日付情報をもつもう一つのインスタンス作成しておく
 		Calendar now = Calendar.getInstance();
 		int m = now.get(Calendar.MONTH);
 		int y = now.get(Calendar.YEAR);
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < 7; j++) {
+				String mark = "";
 				if (i == 0 && j < before || i == rows - 1 && j >= (7 - after)) {
 					//カレンダーの前後に入る空白の部分は空文字
 					data[i][j] = "";
@@ -55,10 +57,14 @@ public class MyCalendarLogic {
 					data[i][j] = String.valueOf(date);
 					//今作業しているマイカレンダーが今月のカレンダーだったら
 					if (m == mc.getMonth() - 1 && y == mc.getYear()) {
-
+						//達成の日に＠付与
+						judge[i][j] = 1;
+						if(judge[i][j] == 1) {
+							mark = "@";
+						}
 						//今日の日付の先頭に*を付与する
 						if (now.get(Calendar.DATE) == date && m == mc.getMonth() - 1 && y == mc.getYear()) {
-							data[i][j] = "*" + data[i][j];
+							data[i][j] = "*" + data[i][j] + mark;
 						//今日の日付以降の先頭に#を付与する
 						} else if ((date > now.get(Calendar.DATE))) {
 							data[i][j] = "#" + data[i][j];
@@ -68,17 +74,14 @@ public class MyCalendarLogic {
 						} else if ((m < mc.getMonth() - 1 && y == mc.getYear()) || y < mc.getYear()) {
 						//今月以降の先頭に＄を付与する
 							data[i][j] = "$" + data[i][j];
-						}
 
-						//達成の日に＠付与
-						if(judge.getJudge == 0) {
-							data[i][j] = data[i][j] + "@";
 						}
 			}
 		}
 		//作成した2次元配列をマイカレンダーにセットする。
 		mc.setData(data);
+		mc.setJudge(judge);
+		}
 		return mc;
-	}
 	}
 }

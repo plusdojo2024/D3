@@ -8,6 +8,9 @@ public class MyCalendar implements Serializable{
 	//カレンダーの日付を保持する配列
 	private String[][] data;
 
+	//カレンダーの日付毎の達成状態を保持する配列
+	private int[][] judge;
+
 	/*setter & getter*/
 	public int getYear() {
 		return year;
@@ -26,5 +29,11 @@ public class MyCalendar implements Serializable{
 	}
 	public void setData(String[][] data) {
 		this.data = data;
+	}
+	public int[][] getJudge() {
+		return judge;
+	}
+	public void setJudge(int[][] judge) {
+		this.judge = judge;
 	}
 }
