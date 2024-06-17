@@ -10,65 +10,60 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.BcDAO;
-import model.Bc;
-import model.Result;
+import org.h2.engine.Setting;
 
-/**
- * Servlet implementation class ResultServlet
- */
-@WebServlet("/SettingServlet")
+import model.User;
+
+@WebServlet("SettingServlet")
 public class SettingServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-        /**
-     * @see HttpServlet#HttpServlet()
-     */
+    private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D3/LoginServlet");
-			return;
-		}
 
-		// ユーザー設定ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
-		dispatcher.forward(request, response);
-	}
+        // サーブレットクラスの動作を決定する「action」の値をリクエストパラメータから取得
+        String action = request.getParameter("action");
 
-    	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D3/LoginServlet");
-			return;
-		}
+        if(action == null) {
+            forwardPath = "/WEB-INF/jsp/setting.jsp";
+        }
 
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String name = request.getParameter("name");
+        else if(action.equals("done")) {
+            // セッションスコープからユーザー情報を取得する
+            HttpSession session = request.getSession();
+            User setting = (Setting) session.getAttribute("name");
+            User setting = (Setting) session.getAttribute("height");
+            User setting = (Setting) session.getAttribute("weight");
+            User setting = (Setting) session.getAttribute("bmi");
+
+            // 登録処理の呼び出し
+            SettingLogic logic = newSettingLogic();
+            logic.execute(Setting);
+
+            // 登録後のフォワード先設定
+            forwardPath = "WEB-INF/jsp/setting.jsp";
+        }
+
+        // 設定されたフォワード先に遷移
+        RequestDispatcher dispatcher = request.getRequestDiscpatcher(forwardPath);
+        dispatcher.forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // リクエストパラメータの取得
+        request.setCharacterEncoding("UTF-8");
+        String name = request.getParameter("name");
         double height = request.getParameter("height");
         double weight = request.getParameter("weight");
-		double bmi = request.getParameter("bmi");
 
-		// 更新処理を行う
-		UserDAO bDao = new UserDAO();
-		if (bDao.insert(new User(name, height, weight, bmi,))) {	// 更新成功
-			request.setAttribute("result",
-			new ActionResult( "更新が実行されました。"));
-		}
-		else {												// 更新失敗
-			request.setAttribute("result",
-			new ActionResult("更新されませんでした。"));
-		}
+        // 登録するユーザー情報を設定
+        User setting = new Setting(name, height, weight);
 
-		// ユーザー設定ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
-		dispatcher.forward(request, response);
-	}
+        // セッションスコープにユーザー情報を保存
+        HttpSession session = request.getSession();
+        session.setAttribute("setting", setting);
+
+        // 登録後のフォワード先
+        forwardPath = "WEB-INF/jsp/setting.jsp";
+        RequestDispatcher dispatcher = request.getRequestDiscpatcher("/WEB-INF/jsp/setting.jsp");
+        dispatcher.forward(request, response);
+    }
 }
-
