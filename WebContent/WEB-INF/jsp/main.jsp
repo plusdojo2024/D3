@@ -3,6 +3,8 @@
 <%
 	MyCalendar mc=(MyCalendar)request.getAttribute("mc");
 %>
+<%@ page import="java.io.*,java.util.*, javax.servlet.*" %>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -30,17 +32,17 @@
         <th>土</th>
       </tr>
       <!-- マイカレンダーの日付をrow配列に格納 -->
-      <%for(String[] row: mc.getData()){ %>
+	<%for(String[] row: mc.getData()){ %>
       <tr>
       	<%for(String col:row) {%>
       		<%if (col.startsWith("*")){ %>
       			<td class="today"><%=col.substring(1)%></td>
       		<%}else{ %>
-      			<td><a href = "./ResultServlet?number=${result.date}"><%=col %></a></td>
+      				<td><a href = "./ResultServlet?number=${result.date}"><%=col %></a></td>
       		<%} %>
       	<%} %>
-      </tr>
-      <%} %>
+     	 </tr>
+       <%} %>
     </table>
   </div><!-- end container-->
 </body>

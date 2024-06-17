@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.BcDAO;
-import model.Bc;
+import model.Record;
 import model.Result;
 
 /**
@@ -40,7 +38,6 @@ public class ResultServlet extends HttpServlet {
 		}
 
 		// リクエストパラメータを取得する
-			//？？？？
 		//request.setCharacterEncoding("UTF-8");
 		//String target = request.getParameter("target");
 		//String goalKcal = request.getParameter("goalKcal");
@@ -49,24 +46,39 @@ public class ResultServlet extends HttpServlet {
 		//String route = request.getParameter("route");
 		//int userLevel = session.getAttribute("/**/")
 		
-		double goalKcal = 200;
-		int target;
-		Date date = new Date();
+		//テスト用サンプルデータ ?消す
+		double goalKcal = 180;
+		double resultKcal = 100;
+		
+		//int target = (int)(getGoalKcal() - getResultKcal) * 1000 / 30); DBからの情報所得して計算のやつ
+		
+		//targetを計算してスコープに格納(→jspに表示)
+		int target = (int)((goalKcal - resultKcal) * 1000 / 30);
+		request.setAttribute("targetHosu", target);
 		
 		
 		//DB・DAOで該当日の結果データを検索する
-		
-		Result resultData = new Result();//todo:ダミー　DBの処理結果に変える
-		
+		Result resultData = new Result();//todo:ダミー DBの処理結果に変える
 		//検索結果をリクエストスコープに格納する
-
 		request.setAttribute("result", resultData);
+		
+		
+		//DB・DAOで該当日のその他の運動データを検索する
+		Record recordData = new Record();//todo:ダミー DBの処理結果に変える
+		//検索結果をリクエストスコープに格納する
+		request.setAttribute("record", recordData);
+		
+		
+		
+		//コメント用ランダム 10はコメントの数に変える
+		int comRandom = new java.util.Random().nextInt(10) + 1;
+		
 		
 		// 運動結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 		dispatcher.forward(request, response);
 	}
-	
+
 	//削除
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
@@ -83,26 +95,26 @@ public class ResultServlet extends HttpServlet {
 		
 		
 		
-
-		// 更新または削除を行う
-		BcDAO bDao = new BcDAO();
+		
+/*		//削除を行う
+		RecordDao bDao = new RecordDao();
+		RouteRecordDao  rDao = new RouteRecordDao();
 		if (request.getParameter("submit").equals("削除")) {
-			if (bDao.delete(number)) {	// 削除成功
+			if (bDao.delete(record_number) || rDao.delete(Route_number)) { // 削除成功
 				request.setAttribute("result",
-				new Result("削除成功！", "レコードを削除しました。", "/simpleBC/MenuServlet"));
+				new Result("削除成功！", "レコードを削除しました。", "/D3/ResultServlet"));
 			}
-			else {						// 削除失敗
+			else { // 削除失敗
 				request.setAttribute("result",
-				new Result("削除失敗！", "レコードを削除できませんでした。", "/simpleBC/MenuServlet"));
+				new Result("削除失敗！", "レコードを削除できませんでした。", "/D3/ResultServlet"));
 			}
 		}
-
-		// 結果ページにフォワードする
+*/
+		// 運動結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 		dispatcher.forward(request, response);
 	}
-	
 		
-	}
-
 }
+
+
