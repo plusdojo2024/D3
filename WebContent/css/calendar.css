@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*画面全体CSS*/
+/*html全体CSS*/
 html {
 	width: 100%;
 	margin: 0 auto 0 auto;
@@ -10,25 +10,14 @@ html {
 body {
 	width: 100%;
 }
-
-/*カレンダーのCSS*/
-#calendar {
-	width: 50%;
-	margin: 0 auto 0 auto;
-}
-
-/*h1　記録カレンダー見出しのCSS*/
-#record {
+/*月表示CSS*/
+#month {
 	text-align: center;
+	font-size: 30px;
 }
 
-/*h2　月のCSS*/
-#cal {
-	text-align: center;
-}
-
-/*カレンダー表全体CSS*/
-table {
+/*カレンダーCSS*/
+.caltable {
 	max-width: 100%;
 	margin: 0 auto 0 auto;
 	border-collapse: collapse;
@@ -36,45 +25,28 @@ table {
 }
 
 /*カレンダー見出し（曜日）、日にちCSS*/
-table th, table td {
+.caltable th, .caltable td {
 	border: 1px solid #91C788;
 	padding: 20px;
 }
 
-/*前月移動ボタンCSS*/
-#prev {
-	width: 40px;
-	height: 20px;
-	margin-top: 30px;
-	margin-right: 20px;
-	background-color: #FEFFDE;
-	border-style: solid;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #52734D transparent transparent;
-    display: inline-block;
-    width: 0;
-    height: 0;
-}
-
-/*翌月移動ボタンCSS*/
-#next {
-	width: 40px;
-	height: 20px;
-	margin-top: 30px;
-	margin-left: 20px;
-	background-color: #FEFFDE;
-	border-style: solid;
-    border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent #52734D;
-    display: inline-block;
-    width: 0;
-    height: 0;
-}
-
-/*月移動ボタンと月表示CSS*/
-#next-prev-button {
+/*前月、翌月移動ボタンCSS*/
+#move-button {
 	text-align: center;
 	display: flex;
 	margin: 0 auto 0 auto;
+	margin-top: 40px;
+	margin-bottom: 30px;
 	justify-content: center;
 }
+
+.migi-hidari{
+	margin-top: 10px;
+	margin-left: 60px;
+	margin-right: 60px;
+}
+
+/*.hanamaru{
+	background-image:url("https://illust8.com/contents/11203");
+}
+*/
