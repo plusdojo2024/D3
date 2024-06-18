@@ -15,6 +15,8 @@ import model.MyCalendarLogic;
 @WebServlet("/CalendarServlet")
 public class CalendarServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//HttpSession session = request.getSession();
+		//= ()session.getAttribute("");
 		String s_year=request.getParameter("year");
 		String s_month=request.getParameter("month");
 		MyCalendarLogic logic=new MyCalendarLogic();
@@ -41,7 +43,9 @@ public class CalendarServlet extends HttpServlet {
 		String judge=request.getParameter("judge");
 		request.setAttribute("mc", mc);
 		request.setAttribute("judge", judge);
-		//jsにフォワード
+
+
+		//jspにフォワード
 		RequestDispatcher rd=request.getRequestDispatcher("./WEB-INF/jsp/calender.jsp");
 		rd.forward(request, response);
 	}

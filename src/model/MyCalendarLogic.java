@@ -3,6 +3,10 @@ package model;
 import java.util.Calendar;
 
 public class MyCalendarLogic {
+	//private List<DayResult> dayresultlist;
+	//public MyCalendarLogic (List<DayResult> dayresultlist){
+	//	this.dayresultlist = dayresultlist;
+	//}
 	//カレンダーインスタンスを生成するメソッド(int...は可変長引数)
 	public MyCalendar createMyCalendar(int... args) {
 		//マイカレンダーインスタンス生成
@@ -45,7 +49,7 @@ public class MyCalendarLogic {
 		int y = now.get(Calendar.YEAR);
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < 7; j++) {
-				String mark = "";
+				//String mark = "";
 				if (i == 0 && j < before || i == rows - 1 && j >= (7 - after)) {
 					//カレンダーの前後に入る空白の部分は空文字
 					data[i][j] = "";
@@ -55,33 +59,38 @@ public class MyCalendarLogic {
 					int date = i * 7 + j + 1 - before;
 					//配列に日付を入れる
 					data[i][j] = String.valueOf(date);
+
+					//todo test用　全部の日を達成にする
+					//int s = .getjudge();
+					judge[i][j] = 1; //消す
+					//judge[i][j] = ;
+
 					//今作業しているマイカレンダーが今月のカレンダーだったら
 					if (m == mc.getMonth() - 1 && y == mc.getYear()) {
-						//達成の日に＠付与
-						judge[i][j] = 1;
-						if(judge[i][j] == 1) {
-							mark = "@";
-						}
+
 						//今日の日付の先頭に*を付与する
 						if (now.get(Calendar.DATE) == date && m == mc.getMonth() - 1 && y == mc.getYear()) {
-							data[i][j] = "*" + data[i][j] + mark;
+							data[i][j] = "*" + data[i][j];
 						//今日の日付以降の先頭に#を付与する
 						} else if ((date > now.get(Calendar.DATE))) {
 							data[i][j] = "#" + data[i][j];
 						}
-						//これを応用したら達成日にはなまる付けられそう！
 						//今作業しているマイカレンダーが今月以降のカレンダーだったら
 						} else if ((m < mc.getMonth() - 1 && y == mc.getYear()) || y < mc.getYear()) {
 						//今月以降の先頭に＄を付与する
 							data[i][j] = "$" + data[i][j];
+						}
+						if(judge[i][j] == 1) {
+							data[i][j] = data[i][j] + "@";
+						}
 
 						}
 			}
 		}
 		//作成した2次元配列をマイカレンダーにセットする。
 		mc.setData(data);
+		//mc.setJudge(judge);
 		mc.setJudge(judge);
-		}
 		return mc;
 	}
 }

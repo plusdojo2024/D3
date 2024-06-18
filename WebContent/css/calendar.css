@@ -47,6 +47,8 @@ body {
 }
 
 .hanamaru{
-	background-image:url("https://illust8.com/contents/11203");
+	background-image:url(../img/usuHanamaru.png);
+	background-size: 60px;
+    background-repeat: no-repeat;
 }
 
