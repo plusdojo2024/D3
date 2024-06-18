@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,6 +45,13 @@ public class CalendarServlet extends HttpServlet {
 		request.setAttribute("mc", mc);
 		request.setAttribute("judge", judge);
 
+		Calendar nowDate = Calendar.getInstance();
+		String year = String.valueOf(nowDate.get(Calendar.YEAR));
+		String month = String.valueOf(nowDate.get(Calendar.MONTH)+1);
+		String day = String.valueOf(nowDate.get(Calendar.DAY_OF_MONTH));
+		request.setAttribute("year", year);
+		request.setAttribute("month", month);
+		request.setAttribute("day", day);
 
 		//jspにフォワード
 		RequestDispatcher rd=request.getRequestDispatcher("./WEB-INF/jsp/calender.jsp");
