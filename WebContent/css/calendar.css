@@ -28,7 +28,7 @@ body {
 .caltable th, .caltable td {
 	border: 1px solid #91C788;
 	padding: 20px;
-	padding: 30px;
+	padding: 40px;
 	font-size: 20px;
 }
 
@@ -50,7 +50,7 @@ body {
 
 .hanamaru{
 	background-image:url(../img/usuHanamaru.png);
-	background-size: 80px;
+	background-size: 90px;
     background-repeat: no-repeat;
     text-align: center;
 }
