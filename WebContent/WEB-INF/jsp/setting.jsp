@@ -1,9 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>SettingTest</title>
-    <link rel="stylesheet" href="/Users/User/Downloads/setting.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/setting.css">
+    <style>
+      .newer {
+        text-align: right;
+        width: 25em;
+        padding: 10px;
+       }
+    </style>
+
+
 </head>
 <body>
 	<div class="wrapper">
@@ -41,54 +53,38 @@
         </div>
         <div class="main_content">
               <!--ヘッダー-->
-
-
-        </div>
-	</div>
-
     <h2>【プロフィール設定】</h2>
 
     <main>
         <p>${ActionResult.message}</p>
         <form name="setting">
             名前 &nbsp;
-            <input type ="text" id="name" name="name" value="佐藤太郎" size="20"><br>
+            <input type ="text" id="name" name="name" value="${name}" size="20"><br>
             身長 &nbsp;
-            <input type ="text" id="height" name="height" value="170" size="10">&nbsp; cm
+            <input type ="text" id="height" name="height" value="${height}" size="10">&nbsp; cm
             <br>
             体重 &nbsp;
-            <input type ="text" id="weight" name="weight" value="63" size="10">&nbsp; kg
+            <input type ="text" id="weight" name="weight" value="${weight}" size="10">&nbsp; kg
             <br>
             BMI &nbsp;
-            <input type="text" id="bmi" name="bmi" size="10">
+            <input type="text" id="bmi" name="bmi" value="${bmi}" size="10" readonly>
+            <!-- hiddenに変更する -->
             <br>
             <div class="newer">
-                <input type="button" id="updateButton" value="更新" onclick="calc()">
+            	<input type="text" name="number" value="${number}">
+                <input type="button" id="updateButton" value="更新">
             </div>
-            <style>
-                .newer {
-                    text-align: right;
-                    width: 25em;
-                    padding: 10px;
-                }
-            </style>
         </form>
 
     </main>
 
+        </div>
+	</div>
+
+
+
     <script>
         "use strict";
-
-        function calc(){
-
-            let height = parseFloat(document.setting.elements[1].value);
-            let weight = parseFloat(document.setting.elements[2].value);
-
-            height = height/100;
-            let bmi = weight/height/height;
-
-            alert(toPrecision());
-        }
 
         document.getElementById("weight").addEventListener('change' , function (){
             let height = parseFloat(document.setting.elements[1].value);
