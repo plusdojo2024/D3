@@ -18,6 +18,15 @@ public class CalendarServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//HttpSession session = request.getSession();
 		//= ()session.getAttribute("");
+
+		//もしもログインしてなかったらログインサーブレットにリダイレクト
+		/*HttpSession session = request.getSession();
+		LoginUser loginUser= (LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+			response.sendRedirect("/D3/LoginServlet");
+			return;
+		}*/
+
 		String s_year=request.getParameter("year");
 		String s_month=request.getParameter("month");
 		MyCalendarLogic logic=new MyCalendarLogic();
