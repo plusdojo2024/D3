@@ -17,7 +17,7 @@ public class Record implements Serializable {
 		this.recordNumber = 0;
 		this.kind = 0;
 		this.value = 0.0;
-		this.unit = "";
+		this.unit = "分";
 		this.registDate = null;
 		this.number = 0;
 		this.kcal = 0.0;

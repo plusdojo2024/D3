@@ -3,7 +3,10 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Record;
 
@@ -108,5 +111,69 @@ public class RecordDao {
 		// 結果を返す
 		return result;
 	}
+
+
+	public List<Record> collect(int y, int m, int d) {
+		Connection conn = null;
+		List<Record> RecordList = new ArrayList<>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM Record WHERE regist_date = ? ";
+			
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			// SQL文を完成させる
+			pStmt.setString(1, "%");
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+	        //java.util.Date date2 = new java.util.Date(date1.getTime());
+			
+			while (rs.next()) {
+				Record record = new Record(
+					rs.getInt("record_number"),
+					rs.getInt("kind"),
+					rs.getDouble("value"),
+					rs.getString("unit"),
+					new java.util.Date(rs.getDate("regist_date").getTime()),
+					rs.getInt("number"),
+					rs.getDouble("kcal"));
+				RecordList.add(record);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			RecordList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			RecordList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					RecordList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return RecordList;
+		
+
+	}	
 
 }
