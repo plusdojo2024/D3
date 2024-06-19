@@ -50,9 +50,9 @@
               <!--ヘッダー-->
 	  <div id="container">
 		<div id="move-button">
-			<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()-1%>"><img src="img/hidari.png" class="migi-hidari" width= 30 height= 20></a>
+			<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()-1%>"><img src="img/hidari.png" class="migi-hidari" width= 50 height= 40></a>
 	    	<h1 id="month"><%=mc.getYear() %>年<%=mc.getMonth() %>月</h1>
-	    	<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()+1%>"><img src="img/migi.png"  class="migi-hidari" width= 30 height= 20></a>
+	    	<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()+1%>"><img src="img/migi.png"  class="migi-hidari" width= 50 height= 40></a>
 	   	</div>
 	    <table class="caltable">
 	      <tr>
