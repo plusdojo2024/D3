@@ -52,6 +52,7 @@ body {
 	background-image:url(../img/usuHanamaru.png);
 	background-size: 90px;
     background-repeat: no-repeat;
+    background-position: center;
     text-align: center;
 }
 
