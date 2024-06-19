@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>結果</title>
-<link rel="stylesheet" href="./css/result.css">
+<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
@@ -47,7 +47,7 @@
         <div class="main_content">
 
 			<div class="calendar">
-		    	<a href="/D3/carendarServlet" id="calendar"><img src="./img/calendar.png" id="calendar"></a>
+		    	<a href="/D3/CalendarServlet" id="calendar"><img src="./img/calendar.png" id="calendar"></a>
 		    </div>
 		    <p>目標達成まで</p><div id = "steps"></div><p>歩</p><br>
 		    <div id="date"></div>
@@ -56,7 +56,7 @@
 		    
 		    <p>comment${ requestScope.random }</p>
 		    <img src="./img/chara1.png" width="100px">
-		    <p>level${sessionScope.level}</p>
+		    <p>level${loginUser.userLevel}</p>
 		    <p>map</p>
 		    <p>今日の記録</p>
 		    <p>ランニング　${ result.value }㎞　${ result.kcal }kcal</p>

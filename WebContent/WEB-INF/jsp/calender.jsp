@@ -9,9 +9,8 @@
 <head>
   <meta charset="utf-8">
   <title><%=mc.getMonth() %>月カレンダー</title>
-  <link rel="stylesheet"  href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
-  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
   <link rel="stylesheet"  href="css/calendar.css">
+  <link rel="stylesheet"  href="css/style.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -20,7 +19,7 @@
         	<ul>
            	 	<li><a href="/D3/ResultServlet?y=${year}&m=${month}&d=${day}" class="js-header-nav-link">ホーム<i></i></a></li>
             	<li><a href="/D3/RouteRegistServlet"class="js-header-nav-link">入力<i></i></a></li>
-       			 <ul class="drop1" ontouchstart="1">
+       			<ul class="drop1" ontouchstart="1">
 	                <li class="category" >グループ</li>
 	                <li class="category1"><a href="/D3/MyScheduleServlet">個人</a></li>
 	                <li class="category2"><a href="/D3/GroupManagerServlet">グループ管理</a></li>

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.RecordDao;
 import dao.RouteRecordDao;
+import model.Level;
 import model.LoginUser;
 import model.Record;
 import model.Result;
@@ -37,42 +38,60 @@ public class ResultServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしてなかったらログインサーブレットにリダイレクト
-		HttpSession session = request.getSession();
+/*		HttpSession session = request.getSession();
 		LoginUser loginUser= (LoginUser)session.getAttribute("loginUser");
 		if (loginUser == null) {
 			response.sendRedirect("/D3/LoginServlet");
 			return;
-		}
+		}*/
 
 
-
-
-
-		
-		
-		Calendar nowDate = Calendar.getInstance();
-		String year = String.valueOf(nowDate.get(Calendar.YEAR));
-		String month = String.valueOf(nowDate.get(Calendar.MONTH)+1);
-		String day = String.valueOf(nowDate.get(Calendar.DAY_OF_MONTH));
-		request.setAttribute("year", year);
-		request.setAttribute("month", month);
-		request.setAttribute("day", day);
 		
 		
 		// リクエストパラメータを取得する
+		Calendar cal2 = Calendar.getInstance();
+		
 		String y = request.getParameter("y");
 		String m = request.getParameter("m");
 		String d = request.getParameter("d");
+		
+		if(y==null || m==null || d == null
+				|| "".equals(y)|| "".equals(m)|| "".equals(d)) {
+			y = String.valueOf(cal2.get(Calendar.YEAR));
+			m = String.valueOf(cal2.get(Calendar.MONTH)+1);
+			d = String.valueOf(cal2.get(Calendar.DAY_OF_MONTH));
+
+			
+		}else {
+			
+			cal2.set(Calendar.YEAR, Integer.parseInt(y));
+			cal2.set(Calendar.MONTH, Integer.parseInt(m)-1);
+			cal2.set(Calendar.DATE, Integer.parseInt(d));
+		}
+		
 		request.setAttribute("y", y);
 		request.setAttribute("m", m);
 		request.setAttribute("d", d);
+
 		
 		
+		HttpSession session = request.getSession();
+//		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
+//		if (loginUser == null) {
+//			response.sendRedirect("/D3/LoginServlet");
+//			return;
+//		}		
+		//セッションスコープのデータを受け取る
+		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
+		List<Level> lvList = loginUser.getLvList();
+		//session.setAttribute("id", new LoginUser(id));
+
+		//運動名、メッツ値、運動番号、運動種類を受け取る部分
+		//一時的にコメントアウトしてあります。
+//		Active a1 = loginUser.getPickupAcList(1);
+//		request.setAttribute("a1", a1);
 		
-		//String goalKcal = request.getParameter("goalKcal");
-		//String resultKcal = request.getParameter("resultKcal");
-		//String record = request.getParameter("record");
-		//String route = request.getParameter("route");
+				
 		
 		//テスト用サンプルデータ ?消す
 		double goalKcal = 180;
@@ -93,13 +112,13 @@ public class ResultServlet extends HttpServlet {
 		
 		//DB・DAOで該当日のその他の運動データを検索する
 		RecordDao bDao = new RecordDao();
-		List<Record> recordData = bDao.collect(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));//？その日の情報に変える
+		List<Record> recordData = bDao.collect(Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
 		//検索結果をリクエストスコープに格納する
 		request.setAttribute("record", recordData);
 		
 		//DB・DAOで該当日のその他の運動データを検索する
 		RouteRecordDao rDao = new RouteRecordDao();
-		List<RouteRecord> routeRecordData = rDao.collect(2024, 6, 19);//？
+		List<RouteRecord> routeRecordData = rDao.collect(Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
 		//検索結果をリクエストスコープに格納する
 		request.setAttribute("routerecord", routeRecordData);
 		
@@ -120,15 +139,15 @@ public class ResultServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	//削除
+	//削除機能
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしてなかったらログインサーブレットにリダイレクト
-		HttpSession session = request.getSession();
+/*		HttpSession session = request.getSession();
 		LoginUser loginUser= (LoginUser)session.getAttribute("loginUser");
 		if (loginUser == null) {
 			response.sendRedirect("/D3/LoginServlet");
 			return;
-		}
+		}*/
 		
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
