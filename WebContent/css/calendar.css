@@ -10,6 +10,23 @@ html {
 body {
 	width: 100%;
 }
+
+/*a:link {
+	color: #434da2;
+	text-decoration: none;
+}
+a:visited {
+	color: #52734D;
+	text-decoration: none;
+}
+a:hover {
+	color:#F07D34;
+	text-decoration: underline;
+}
+a:active {
+	color: #a5c9c1;
+	text-decoration: underline;
+}*/
 /*月表示CSS*/
 #month {
 	text-align: center;
@@ -55,4 +72,5 @@ body {
     background-position: center;
     text-align: center;
 }
+
 

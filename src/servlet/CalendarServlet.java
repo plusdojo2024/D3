@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.LoginUser;
 import model.MyCalendar;
 import model.MyCalendarLogic;
 
@@ -20,16 +22,16 @@ public class CalendarServlet extends HttpServlet {
 		//= ()session.getAttribute("");
 
 		//もしもログインしてなかったらログインサーブレットにリダイレクト
-		/*HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		LoginUser loginUser= (LoginUser)session.getAttribute("loginUser");
-		if (loginUser == null) {
+		/*if (loginUser == null) {
 			response.sendRedirect("/D3/LoginServlet");
 			return;
 		}*/
 
 		String s_year=request.getParameter("year");
 		String s_month=request.getParameter("month");
-		MyCalendarLogic logic=new MyCalendarLogic();
+		MyCalendarLogic logic=new MyCalendarLogic(loginUser);
 		MyCalendar mc=null;
 		if(s_year != null && s_month != null) {
 			int year =Integer.parseInt(s_year);
