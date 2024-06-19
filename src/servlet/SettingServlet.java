@@ -12,16 +12,20 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
 import model.LoginUser;
+import model.ResultMessage;
 
 @WebServlet("/SettingServlet")
 public class SettingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+			response.sendRedirect("/D3/LoginServlet");
+			return;
+		}
     	// セッションスコープの準備
-    	HttpSession session = request.getSession();
-    	LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
-    	loginUser = new LoginUser();
-
         String setting1 = loginUser.getName();
         Double setting2 = loginUser.getHeight();
         Double setting3 = loginUser.getWeight();
@@ -49,15 +53,20 @@ public class SettingServlet extends HttpServlet {
         // 登録するユーザー情報を設定
     	HttpSession session = request.getSession();
     	LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
-    	loginUser = new LoginUser();
     	loginUser.setName(name);
     	loginUser.setHeight(Double.parseDouble(height));
     	loginUser.setWeight(Double.parseDouble(weight));
     	loginUser.setBmi(Double.parseDouble(bmi));
 
     	UserDao userDao = new UserDao();
-    	// boolean result = userDao.update(loginUser, loginUser);
-    	// ここにActiveResultを作る
+    	try {
+    		userDao.updateUser(loginUser, loginUser);
+    		request.setAttribute("result", new ResultMessage("ユーザー情報を変更しました。"));
+    	}
+    	catch (Exception ex) {
+			request.setAttribute("result", new ResultMessage("を削除できませんでした。"));
+    	}
+
     	doGet(request, response);
     }
 }
