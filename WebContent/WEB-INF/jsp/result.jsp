@@ -47,7 +47,7 @@
         <div class="main_content">
 
 			<div class="calendar">
-		    	<a href="/D3/CalendarServlet" id="calendar"><img src="./img/calendar.png" id="calendar"></a>
+		    	<a href="/D3/CalendarServlet"><img src="./img/calendar.png" id="calendar"></a>
 		    </div>
 		    <p>目標達成まで</p><div id = "steps"></div><p>歩</p><br>
 		    <div id="date"></div>
@@ -56,17 +56,17 @@
 		    
 		    <p>comment${ requestScope.random }</p>
 		    <img src="./img/chara1.png" width="100px">
-		    <p>level${loginUser.userLevel}</p>
+		    <p>level.${loginUser.userLevel}</p>
 		    <p>map</p>
 		    <p>今日の記録</p>
 		    <p>ランニング　${ result.value }㎞　${ result.kcal }kcal</p>
 		    
 		    
-			<c:forEach var="e" items="${record}" >
+			<c:forEach var="e" items="${recordList}" >
 			    <form action="./ResultServlet" method="post">
-			    	<input type="hidden" name="y" value="${ y }">
-			    	<input type="hidden" name="m" value="${ m }">
-			    	<input type="hidden" name="d" value="${ d }">
+			    	<input type="hidden" name="y" value="${ e.y }">
+			    	<input type="hidden" name="m" value="${ e.m }">
+			    	<input type="hidden" name="d" value="${ e.d }">
 			    	<input type="text" name="record_number" value="${ e.recordNumber }"><!-- textをhiddenにすると画面表示されない -->
 			    	<input type="text" name="redist_date" value="${ e.registDate }"><!-- textをhiddenにすると画面表示されない -->
 			    	<input type="text" name="kind" value="${ e.kind }">
@@ -78,11 +78,11 @@
 			    </form>
 		    </c:forEach>
 		    
- 			<c:forEach var="r" items="${routeRecord}" >
+ 			<c:forEach var="r" items="${routeRecordList}" >
 			    <form action="./ResultServlet" method="post">
-			    	<input type="hidden" name="y" value="${ y }">
-			    	<input type="hidden" name="m" value="${ m }">
-			    	<input type="hidden" name="d" value="${ d }">
+			    	<input type="hidden" name="y" value="${ r.y }">
+			    	<input type="hidden" name="m" value="${ r.m }">
+			    	<input type="hidden" name="d" value="${ r.d }">
 			    	<input type="text" name="route_number" value="${ r.routeNumber }">
 			    	<input type="text" name="redist_date" value="${ r.registDate }">
 			    	<input type="text" name="move_kind" value="${ r.moveKind }">
@@ -99,10 +99,10 @@
     
     <script type="text/javascript" src="./js/result.js"></script>
     <script>
-    makeDay(${y}, ${m}, ${d});
+    makeDay(${requestScope.y}, ${requestScope.m}, ${requestScope.d});
     
-    let gapkcal = ${goal_kcal} - ${result_kcal};
-    let steps = gapkcal * 1000000 / (${height}* ${weight} * 0.45 * 1.05);
+    let gapkcal = ${dayResult.goalKcal} - ${dayResult.resultKcal};
+    let steps = gapkcal * 1000000 / (${loginUser.height}* ${loginUser.weight} * 0.45 * 1.05);
     
     document.getElementById("steps").textContent = steps;
     </script>

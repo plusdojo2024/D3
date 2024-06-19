@@ -46,8 +46,6 @@ public class ResultServlet extends HttpServlet {
 		}*/
 
 
-		
-		
 		// リクエストパラメータを取得する
 		Calendar cal2 = Calendar.getInstance();
 		
@@ -57,6 +55,7 @@ public class ResultServlet extends HttpServlet {
 		
 		if(y==null || m==null || d == null
 				|| "".equals(y)|| "".equals(m)|| "".equals(d)) {
+			
 			y = String.valueOf(cal2.get(Calendar.YEAR));
 			m = String.valueOf(cal2.get(Calendar.MONTH)+1);
 			d = String.valueOf(cal2.get(Calendar.DAY_OF_MONTH));
@@ -88,8 +87,13 @@ public class ResultServlet extends HttpServlet {
 
 		//運動名、メッツ値、運動番号、運動種類を受け取る部分
 		//一時的にコメントアウトしてあります。
-//		Active a1 = loginUser.getPickupAcList(1);
-//		request.setAttribute("a1", a1);
+		Level lv = loginUser.getPickupLvList(1);
+		request.setAttribute("lv", lv);
+		Level gkcal = loginUser.getPickupLvList(2);
+		request.setAttribute("gkcal", gkcal);
+		Level nexp = loginUser.getPickupLvList(3);
+		request.setAttribute("nexp", nexp);
+		
 		
 				
 		
@@ -123,17 +127,15 @@ public class ResultServlet extends HttpServlet {
 		request.setAttribute("routerecord", routeRecordData);
 		
 		
-		//コメント用ランダム 10はコメントの数に変える
-		int random = new java.util.Random().nextInt(10) + 1;
-/*		if(getComment() == random) {
-			String comment = getComment();
-		}
-		request.setAttribute("comment", comment);*/
-		request.setAttribute("random", random);
+		//コメント用ランダム 5はコメントの数に変える
+		int random = new java.util.Random().nextInt(5) + 1;		
+		//コメントデータをセッションスコープから受け取る？
+/*		Comment comment = loginUser.getPickupComList(random);
+		String randomCom = comment.getCommentValue();
+		//検索結果をリクエストスコープに格納する
+		request.setAttribute("randomcom", randomCom);*/
 		
-		
-		
-		
+
 		// 運動結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 		dispatcher.forward(request, response);
