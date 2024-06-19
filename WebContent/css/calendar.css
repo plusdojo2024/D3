@@ -28,6 +28,8 @@ body {
 .caltable th, .caltable td {
 	border: 1px solid #91C788;
 	padding: 20px;
+	padding: 30px;
+	font-size: 20px;
 }
 
 /*前月、翌月移動ボタンCSS*/
@@ -48,7 +50,8 @@ body {
 
 .hanamaru{
 	background-image:url(../img/usuHanamaru.png);
-	background-size: 60px;
+	background-size: 80px;
     background-repeat: no-repeat;
+    text-align: center;
 }
 
