@@ -175,8 +175,8 @@ public class ActiveRegistServlet extends HttpServlet {
 		String time3      = request.getParameter("time3");
 		String step3      = request.getParameter("step3");
 		String kcal3      = request.getParameter("kcal3");
-//		Active active  	= new Active(1,1,1.0, "サッカー" ); //セッションに入っているマスターデータを取得する
-//		int kind 		 	= active.getKind();
+		Active active  	= new Active(1,1,1.0, "サッカー" ); //セッションに入っているマスターデータを取得する
+		int kind 		 	= active.getKind();
 		double value 	 	= 0.0;
 		String unit = "";
 		if(time3.equals("")) {
