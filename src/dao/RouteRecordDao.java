@@ -10,7 +10,7 @@ import java.util.List;
 
 import model.RouteRecord;
 
-public class RouteRecordDAO {
+public class RouteRecordDao {
     public List<RouteRecord> select(RouteRecord card) {
         Connection conn =null;
         List<RouteRecord> cardList = new ArrayList<RouteRecord>();
