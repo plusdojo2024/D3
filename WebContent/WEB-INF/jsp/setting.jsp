@@ -53,9 +53,9 @@
         </div>
         <div class="main_content">
               <!--ヘッダー-->
+    <main>
     <h2>【プロフィール設定】</h2>
 
-    <main>
         <p>${ActionResult.message}</p>
         <form name="setting">
             名前 &nbsp;

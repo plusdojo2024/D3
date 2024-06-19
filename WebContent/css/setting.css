@@ -1,4 +1,7 @@
-body {
+main >h2 {
+    text-align: center;
+}
+main {
     text-align: left;
     font-size: 20px;
     line-height: 4;
@@ -7,12 +10,7 @@ body {
     margin-right: 60px;
     margin-left: 60px;
     margin-bottom: auto;
-}
 
-h2 {
-    text-align: center;
-}
-main {
     padding-right: 420px;
     padding-left: 420px;
 }
