@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.RecordDao;
 import dao.RouteRecordDao;
+import model.LoginUser;
 import model.Record;
 import model.Result;
 import model.ResultMessage;
@@ -35,13 +36,17 @@ public class ResultServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		//もしもログインしてなかったらログインサーブレットにリダイレクト
 		HttpSession session = request.getSession();
-		session.setAttribute("id","dummy");//todo:ダミー
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("./LoginServlet");
+		LoginUser loginUser= (LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+			response.sendRedirect("/D3/LoginServlet");
 			return;
 		}
+
+
+
+
 
 		
 		
@@ -117,11 +122,11 @@ public class ResultServlet extends HttpServlet {
 
 	//削除
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		//もしもログインしてなかったらログインサーブレットにリダイレクト
 		HttpSession session = request.getSession();
-		session.setAttribute("id","dummy");//todo:ダミー
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("./LoginServlet");
+		LoginUser loginUser= (LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+			response.sendRedirect("/D3/LoginServlet");
 			return;
 		}
 		
