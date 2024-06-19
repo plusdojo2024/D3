@@ -56,7 +56,7 @@
     <main>
     <h2>【プロフィール設定】</h2>
 
-        <p>${ActionResult.message}</p>
+        <p>${result.message}</p>
         <form name="setting">
             名前 &nbsp;
             <input type ="text" id="name" name="name" value="${name}" size="20"><br>
