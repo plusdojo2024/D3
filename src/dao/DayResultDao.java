@@ -3,7 +3,10 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.DayResult;
 
@@ -57,4 +60,71 @@ public class DayResultDao {
 			return result;
 		}
 
+		
+		
+		//DayResultを得る
+		public List<DayResult> getDayResultList(int num) {
+			Connection conn = null;
+			List<DayResult> DayResultList = new ArrayList<>();
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+
+				// SQL文を準備する
+				String sql = "SELECT * FROM DayResult WHERE number = ? ";
+				
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+				// SQL文を完成させる
+				pStmt.setInt(1, num);
+
+				// SQL文を実行し、結果表を取得する
+				ResultSet rs = pStmt.executeQuery();
+
+				// 結果表をコレクションにコピーする
+		        //java.util.Date date2 = new java.util.Date(date1.getTime());
+				
+				while (rs.next()) {
+					DayResult dayResult = new DayResult(
+						new java.util.Date(rs.getDate("date").getTime()),
+						rs.getDouble("goal_kcal"),
+						rs.getDouble("result_kcal"),
+						rs.getInt("judge"),
+						rs.getInt("number"));
+					DayResultList.add(dayResult);
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				DayResultList = null;
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				DayResultList = null;
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						DayResultList = null;
+					}
+				}
+			}
+
+			// 結果を返す
+			return DayResultList;
+			
+
+		}	
+		
+		
+		
+		
 }

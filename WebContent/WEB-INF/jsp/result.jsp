@@ -54,7 +54,7 @@
 		    <label>消費カロリー</label><progress id="file" max="${ result.goalKcal }" value="${ result.resultKcal }"></progress>
 		    <p>${ result.resultKcal }/${ result.goalKcal}kcal</p>
 		    
-		    <p>comment${ requestScope.random }</p>
+		    <p>comment${ requestScope.randomcom }</p>
 		    <img src="./img/chara1.png" width="100px">
 		    <p>level.${loginUser.userLevel}</p>
 		    <p>map</p>

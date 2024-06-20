@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.DayResultDao;
 import dao.RecordDao;
 import dao.RouteRecordDao;
+import model.DayResult;
 import model.Level;
 import model.LoginUser;
 import model.Record;
@@ -84,18 +86,25 @@ public class ResultServlet extends HttpServlet {
 		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
 		List<Level> lvList = loginUser.getLvList();
 		//session.setAttribute("id", new LoginUser(id));
-
-		//運動名、メッツ値、運動番号、運動種類を受け取る部分
-		//一時的にコメントアウトしてあります。
+		
+		//レベル、目標カロリー、次のレベルまでの達成日数を受け取る部分
+		//コメント外す
 		Level lv = loginUser.getPickupLvList(1);
 		request.setAttribute("lv", lv);
 		Level gkcal = loginUser.getPickupLvList(2);
 		request.setAttribute("gkcal", gkcal);
 		Level nexp = loginUser.getPickupLvList(3);
 		request.setAttribute("nexp", nexp);
+
+		
+		//DayResultのデータ受け取り
+		DayResultDao drDao = new DayResultDao();
+		List<DayResult> drList = drDao.getDayResultList(loginUser.getNumber());
+		//セッションスコープの更新
+		loginUser.setDrList(drList);
+		session.setAttribute("loginUser",loginUser);
 		
 		
-				
 		
 		//テスト用サンプルデータ ?消す
 		double goalKcal = 180;
