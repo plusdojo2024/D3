@@ -8,8 +8,9 @@ public class LoginUser extends User implements Serializable {
 	private List<Level> lvList;
 	private List<Comment> comList;
 	private List<Active> acList;
-	private List<GroupList> gmList; // ログインユーザーが入っているグループのリスト
 	private List<DayResult> drList; // ログインユーザーのDayResultのリスト
+	private List<GroupMember> gmList; // ログインユーザーが入っているグループのリスト
+
 
 	public LoginUser() {
 
@@ -79,13 +80,6 @@ public class LoginUser extends User implements Serializable {
 		this.acList = acList;
 	}
 
-	public List<GroupList> getGmList() {
-		return gmList;
-	}
-	public void setGmList(List<GroupList> gmList) {
-		this.gmList = gmList;
-	}
-
 	public List<DayResult> getDrList() {
 		return drList;
 	}
@@ -105,6 +99,13 @@ public class LoginUser extends User implements Serializable {
 	}
 	public void setDrList(List<DayResult> drList) {
 		this.drList = drList;
+	}
+
+	public List<GroupMember> getGmList() {
+		return gmList;
+	}
+	public void setGmList(List<GroupMember> gmList) {
+		this.gmList = gmList;
 	}
 
 }
