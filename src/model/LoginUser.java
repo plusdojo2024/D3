@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class LoginUser extends User implements Serializable {
@@ -8,11 +9,11 @@ public class LoginUser extends User implements Serializable {
 	private List<Comment> comList;
 	private List<Active> acList;
 	private List<GroupList> gmList; // ログインユーザーが入っているグループのリスト
+	private List<DayResult> drList; // ログインユーザーのDayResultのリスト
 
 	public LoginUser() {
 
 	}
-
 	public LoginUser(User user) {
 		super(
 				user.getNumber(),
@@ -32,13 +33,13 @@ public class LoginUser extends User implements Serializable {
 		return lvList;
 	}
 	public Level getPickupLvList(int level) {	// Listの一要素だけ取得するgetter
-		Level PickupLevel = null;
+		Level pickupLevel = null;
 		for(Level search : this.lvList) {
 			if(search.getLevel() == level) {
-				PickupLevel = search;
+				pickupLevel = search;
 			}
 		}
-		return PickupLevel;
+		return pickupLevel;
 		// nullのままだったら例外処理
 		// →必ず存在する値を検索するため、nullのままはありえないから書いてない
 	}
@@ -50,13 +51,13 @@ public class LoginUser extends User implements Serializable {
 		return comList;
 	}
 	public Comment getPickupComList(int commentNum) {	// Listの一要素だけ取得するgetter
-		Comment PickupComment = null;
+		Comment pickupComment = null;
 		for(Comment search : this.comList) {
 			if(search.getCommentNumber() == commentNum) {
-				PickupComment = search;
+				pickupComment = search;
 			}
 		}
-		return PickupComment;
+		return pickupComment;
 	}
 	public void setComList(List<Comment> comList) {
 		this.comList = comList;
@@ -66,13 +67,13 @@ public class LoginUser extends User implements Serializable {
 		return acList;
 	}
 	public Active getPickupAcList(int activeNum) {	// Listの一要素だけ取得するgetter
-		Active PickupActive = null;
+		Active pickupActive = null;
 		for(Active search : this.acList) {
 			if(search.getActiveNumber() == activeNum) {
-				PickupActive = search;
+				pickupActive = search;
 			}
 		}
-		return PickupActive;
+		return pickupActive;
 	}
 	public void setAcList(List<Active> acList) {
 		this.acList = acList;
@@ -83,6 +84,27 @@ public class LoginUser extends User implements Serializable {
 	}
 	public void setGmList(List<GroupList> gmList) {
 		this.gmList = gmList;
+	}
+
+	public List<DayResult> getDrList() {
+		return drList;
+	}
+	public int getDayJudge(int y, int m, int d) {	// drList内の指定した日のjudgeを取得するgetter
+		int dayJudge = 0;
+
+		for(DayResult search : this.drList) {
+			Date targetDate = search.getDate();
+			int year = targetDate.getYear();
+			int month = targetDate.getMonth()+1;
+			int day = targetDate.getDay();
+			if(y == year && m == month && d == day) {
+				dayJudge = search.getJudge();
+			}
+		}
+		return dayJudge;
+	}
+	public void setDrList(List<DayResult> drList) {
+		this.drList = drList;
 	}
 
 }

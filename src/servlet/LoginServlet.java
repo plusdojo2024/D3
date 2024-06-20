@@ -77,8 +77,8 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("loginUser", loginUser);
 
 			//HttpSession session = request.getSession();	// セッションスコープの準備
-			//User user = new User(更新するフィールド);		// 更新するユーザー情報の準備
 			//LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");	// 更新前のユーザー情報を準備
+			//loginUser.set○○();	// 更新後の情報をセットする
 			//UserDao uDao = new UserDao();	// UserDaoを準備
 			//boolean updateOk = false;	// 更新の成否を入れる変数を準備
 			//UpdateUser updateUser = uDao.updateUser(user, loginUser);	// 更新のメソッド実行
