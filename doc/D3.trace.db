@@ -486,3 +486,46 @@ active_number int  primary key auto_increment not null,
 kind int  not null,
 mets_value double  not null,
 name varchar (100) not null [42001-200]
+2024-06-20 10:29:02 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "ACTIVE_LIST" が見つかりません
+Table "ACTIVE_LIST" not found; SQL statement:
+/*Activeテーブル*/
+INSERT INTO  active_list  VALUES ( 
+NULL,
+0,
+4,
+'ウォーキング'
+ ) [42102-200]
+2024-06-20 10:30:46 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "ACTIVE_LIST" が見つかりません
+Table "ACTIVE_LIST" not found; SQL statement:
+INSERT INTO  active_list  VALUES ( 
+NULL,
+0,
+9,
+'ランニング'
+ ) [42102-200]
+2024-06-20 10:45:00 jdbc[5]: null
+org.h2.message.DbException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:309)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:289)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:785)
+	at org.h2.server.web.WebApp.login(WebApp.java:1008)
+	at org.h2.server.web.WebApp.process(WebApp.java:223)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebThread.process(WebThread.java:139)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 16 more
