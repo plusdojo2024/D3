@@ -58,13 +58,22 @@ public class SettingServlet extends HttpServlet {
     	loginUser.setWeight(Double.parseDouble(weight));
     	loginUser.setBmi(Double.parseDouble(bmi));
 
+    /*	if(height == null || weight == null) {
+    		String error_message = "身長と体重を入力してください";
+    		request.setAttribute("error_message", error_message);
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("setting.jsp?message=" + error_message);
+    		dispatcher.forward(request, response);
+    		return;
+    	} */
+
     	UserDao userDao = new UserDao();
     	try {
-    		userDao.updateUser(loginUser, loginUser);
+    		userDao.updateUser(loginUser);
     		request.setAttribute("result", new ResultMessage("ユーザー情報を変更しました。"));
+    		session.setAttribute("loginUser", loginUser);
     	}
     	catch (Exception ex) {
-			request.setAttribute("result", new ResultMessage("を削除できませんでした。"));
+			request.setAttribute("result", new ResultMessage("ユーザー情報を更新できませんでした。"));
     	}
 
     	doGet(request, response);

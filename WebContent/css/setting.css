@@ -7,13 +7,14 @@ main {
     line-height: 4;
 
     margin-top: 30px;
-    margin-right: 60px;
-    margin-left: 60px;
     margin-bottom: auto;
 
-    padding-right: 420px;
-    padding-left: 420px;
+    padding-right: 300px;
+    padding-left: 300px;
 }
-input {
+.text {
     height: 30px;
+}
+.button {
+	margin-left   : 500px;
 }
