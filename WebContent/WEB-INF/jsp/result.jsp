@@ -6,8 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>結果</title>
+<title>運動記録 | たけのこーちんぐ</title>
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/result.css">
+
 </head>
 <body>
 
@@ -49,7 +51,9 @@
 			<div class="calendar">
 		    	<a href="/D3/CalendarServlet"><img src="./img/calendar.png" id="calendar"></a>
 		    </div>
-		    <p>目標達成まで</p><div id = "steps"></div><p>歩</p><br>
+		    <div class="hosu">
+			    <p>目標達成まで</p><div id = "steps"></div><p>歩</p><br>
+		    </div>
 		    <div id="date"></div>
 		    <label>消費カロリー</label><progress id="file" max="${ result.goalKcal }" value="${ result.resultKcal }"></progress>
 		    <p>${ result.resultKcal }/${ result.goalKcal}kcal</p>
@@ -59,6 +63,9 @@
 		    <p>level.${loginUser.userLevel}</p>
 		    <p>map</p>
 		    <p>今日の記録</p>
+		    
+		    <p>${ResultMessage.message}</p>
+		    
 		    <p>ランニング　${ result.value }㎞　${ result.kcal }kcal</p>
 		    
 		    
