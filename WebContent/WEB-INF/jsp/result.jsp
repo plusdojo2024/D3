@@ -55,8 +55,8 @@
 			    <p>目標達成まで</p><div id = "steps"></div><p>歩</p><br>
 		    </div>
 		    <div id="date"></div>
-		    <label>消費カロリー</label><progress id="file" max="${ result.goalKcal }" value="${ result.resultKcal }"></progress>
-		    <p>${ result.resultKcal }/${ result.goalKcal}kcal</p>
+		    <label>消費カロリー</label><progress id="file" max="${ requestScope.goalKcal }" value="${ requestScope.resultKcal }"></progress>
+		    <p>${ requestScope.resultKcal }/${ requestScope.goalKcal}kcal</p>
 		    
 		    <p>${ requestScope.randomcom }</p>
 		    <img src="./img/chara1.png" width="100px">
@@ -108,8 +108,8 @@
     <script>
     makeDay(${requestScope.y}, ${requestScope.m}, ${requestScope.d});
     
-    let gapkcal = ${goalKcal} - ${resultKcal};
-    let steps = gapkcal * 1000000 / (${loginUser.height}* ${loginUser.weight} * 0.45 * 1.05);
+    let gapkcal = ${requestScope.goalKcal} - ${requestScope.resultKcal};
+    let steps = Math.round(gapkcal * 100000 / (${loginUser.height}* ${loginUser.weight} * 0.45 * 1.05));
     
     document.getElementById("steps").textContent = steps;
     </script>

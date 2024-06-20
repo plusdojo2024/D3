@@ -95,7 +95,7 @@ public class ResultServlet extends HttpServlet {
 		int userLevel = loginUser.getUserLevel();
 		Level levelinfo = loginUser.getPickupLvList(userLevel);
 		double goalKcal = levelinfo.getGoalKcal();
-		double resultKcal = 10.0;
+		double resultKcal = 0;
 		
 		request.setAttribute("userLevel", userLevel);
 		request.setAttribute("goalKcal", goalKcal);
@@ -128,9 +128,10 @@ public class ResultServlet extends HttpServlet {
 		List<Record> recordData = bDao.collect(number, Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
 		//検索結果をリクエストスコープに格納する
 		request.setAttribute("record", recordData);
-		for(Record record : recordData) {
+		
+/*		for(Record record : recordData) {
 			resultKcal += record.getKcal();
-		}
+		}*/
 		
 		//DB・DAOで該当日のその他の運動データを検索する
 		RouteRecordDao rDao = new RouteRecordDao();
