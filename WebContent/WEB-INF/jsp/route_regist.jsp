@@ -5,6 +5,8 @@
     <head>
         <meta charset="UTF-8">
         <title>ルート登録(仮)</title>
+   		<link rel="stylesheet" href="./css/style_regist.css">
+    	<link rel="stylesheet" href="./css/setting2.css">
     </head>
     <style>
         button {
@@ -52,11 +54,26 @@
 
         </div>
 	</div>
+	<main>
+		<div class="header">
+			【マップ入力】 | <a href="/D3/ActiveRegistServlet" class="move">【その他の入力】</a>
+		</div>
 
-        <h2>マップ入力(仮) 地図部分</h2>
+        String routeNumber = request.getParameter("routeNumber");
+        if (routeNumber == null) {
+        	routeNumber
+        }
 
-        <main>
-            <select name="">
+        // 地図から取得開始
+        String startIdo = request.getParameter("startIdo");
+        String startKeido = request.getParameter("startKeido");
+        String endIdo = request.getParameter("endIdo");
+        String endKeido = request.getParameter("endKeido");
+        spotは実装未定、未実装時は消去対応<br>
+
+
+
+            <select class="text" name="moveKind">
                 <option value="0">---</option>
                 <option value="1">---</option>
                 <option value="2">---</option>
@@ -64,19 +81,21 @@
                 <option value="4">---</option>
                 <option value="5">---</option>
             </select>
-            距離 km
-            消費カロリー kcal
+            <input type="text" class="text" name="distance" value=""> km    &nbsp;
+            <input type="text" class="text" name="kcal" value=""> kcal
             <br>
+	<div class="header">
+    	<input type="button" class="button" name="regist" value="登録">
+        <input type="button" class="button" name="reset" value="リセット"><br>
+    </div>
 
-            <input type="button" name="regist" value="登録">
-            <input type="button" name="reset" value="リセット"><br>
 
             <p>履歴</p>
             経路
             方法
             距離 km
             消費カロリー kcal
-        </main>
+    </main>
 
 
         <script>
