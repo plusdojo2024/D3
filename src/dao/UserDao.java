@@ -214,10 +214,85 @@ public class UserDao {
 						rs.getInt("user_level"),
 						rs.getInt("user_exp")
 					);
-					UpdateUser updateUserRecord = new UpdateUser(
-							uur,
-							result
+					UpdateUser updateUserRecord = new UpdateUser(uur, result);
+					updateUser = updateUserRecord;
+				}
+			}
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			updateUser = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			updateUser = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					updateUser = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return updateUser;
+	}
+
+	// ユーザーの情報を更新して、更新後のデータを取得する
+	public  UpdateUser updateUser(LoginUser loginUser){
+		Connection conn = null;
+		UpdateUser updateUser = new UpdateUser();
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
+
+			// SQL文を準備する
+			String sql = "UPDATE User SET user_name=?, height=?, weight=?, bmi=?, user_level=?, user_exp=? WHERE number=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			pStmt.setString(1, loginUser.getName());
+			pStmt.setDouble(2, loginUser.getHeight());
+			pStmt.setDouble(3, loginUser.getWeight());
+			pStmt.setDouble(4, loginUser.getBmi());
+			pStmt.setDouble(5, loginUser.getUserLevel());
+			pStmt.setDouble(6, loginUser.getUserExp());
+			pStmt.setInt(7, loginUser.getNumber());
+
+			// SQL文を実行する（→成功なら更新されたデータを取得する）
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+				// SQL文を準備する
+				String sql2 = "SELECT * FROM User WHERE user_number=?";
+				PreparedStatement pStmt2 =conn.prepareStatement(sql2);
+				pStmt.setInt(1, loginUser.getNumber());
+				// SQL文を実行し、結果表を取得する
+				ResultSet rs = pStmt2.executeQuery();
+				// 結果表をコレクションにコピーする
+				while(rs.next()) {
+					User uur = new User(
+						rs.getInt("number"),
+						rs.getString("id"),
+						rs.getString("password"),
+						rs.getString("user_name"),
+						rs.getDouble("height"),
+						rs.getDouble("weight"),
+						rs.getDouble("bmi"),
+						rs.getInt("user_level"),
+						rs.getInt("user_exp")
 					);
+					UpdateUser updateUserRecord = new UpdateUser(uur, result);
 					updateUser = updateUserRecord;
 				}
 			}
