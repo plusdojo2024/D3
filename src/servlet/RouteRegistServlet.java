@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,12 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Calendar;
 
 import dao.RouteRecordDao;
-import dao.RecordDao;
+import model.LoginUser;
+import model.RouteRecord;
 
-@WebServlet("/RouteRegistServlet");
+@WebServlet("/RouteRegistServlet")
 public class RouteRegistServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -34,17 +36,17 @@ public class RouteRegistServlet extends HttpServlet {
 			return;
 		}
 
-        // サーブレットクラスの動作を決定する「action」の値をリクエストパラメータから取得
-        String action = request.getParameter("action");
+		// ルート登録ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/route_regist.jsp");
+		dispatcher.forward(request, response);
 
-        if(action == null) {
-            forwardPath = "/WEB-INF/jsp/route_regist.jsp";
-        }
 
-        else if(action.equals("done")) {
+       /* if(action.equals("done")) {
             // セッションスコープからルート記録の履歴を取得する
+    		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
+    		List<Route> roList = loginUser.getroList();
             HttpSession session = request.getSession();
-            RouteRecord routeRegist = (RouteRecord) session.getAttribute("routeRecord");
+            LoginUser loginUser = (LoginUser) session.getAttribute("routeRecord");
             Int routeRegist1 = routeRecord.getrouteNumber();
             Double routeRegist2 = routeRecord.getstartIdo();
             Double routeRegist3 = routeRecord.getstartKeido();
@@ -64,42 +66,64 @@ public class RouteRegistServlet extends HttpServlet {
             // 読込後のフォワード先設定
             forwardPath = "WEB-INF/jsp/route_regist.jsp";
 
-        }
+        } */
     }
+
+    public RouteRegistServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // リクエストパラメータの取得
         request.setCharacterEncoding("UTF-8");
-        Int number = request.getParameter("routeNumber");
-        double startIdo = request.getParameter("startIdo");
-        double startKeido = request.getParameter("startKeido");
-        double endIdo = request.getParameter("endIdo");
-        double endKeido = request.getParameter("endKeido");
-        double distance = request.getParameter("distance");
-        Int moveKind = request.getParameter("moveKind");
-        double getKcal = request.getParameter("getKcal");
-        Date registDate = request.getParameter("registDate");
-        Int number = request.getParameter("number");
-        Varchar spot = request.getParameter("spot");
+        String routeNumber = request.getParameter("routeNumber");
+        if (routeNumber == null) {
+        	routeNumber = "0";
+        }
+
+        // 地図から取得開始
+        String startIdo = request.getParameter("startIdo");
+        String startKeido = request.getParameter("startKeido");
+        String endIdo = request.getParameter("endIdo");
+        String endKeido = request.getParameter("endKeido");
+        String distance = request.getParameter("distance");
+
+        // 地図から取得終了
+        String moveKind = request.getParameter("moveKind");
+        String kcal = request.getParameter("kcal");
+
+
+		HttpSession session = request.getSession();
+		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
 
         // 登録する記録を設定する
-        RouteRecord routeRegist = new RouteRegist(routeNumber, startIdo, startKeido, endIdo, endKeido, distance, moveKind, kcal, registDate, number, spot);
+        RouteRecord routeRegist = new RouteRecord(
+        		Integer.parseInt(routeNumber),
+        		Double.parseDouble(startIdo),
+        		Double.parseDouble(startKeido),
+        		Double.parseDouble(endIdo),
+        		Double.parseDouble(endKeido),
+        		Double.parseDouble(distance),
+        		Integer.parseInt(moveKind),
+        		Double.parseDouble(kcal),
+        		new Date(),
+        		loginUser.getNumber(),
+        		"spot");
 
         // 入力を判定する
 
 
+
         // エラーがあった場合登録しない
+        // エラーがなければDBへ登録する
+        RouteRecordDao rrDao = new RouteRecordDao();
+        rrDao.insert(routeRegist);
 
         // 入力情報のフォワード先
-        forwardPath = "WEB-INF/jsp/route_regist.jsp";
-        RequestDispatcher dispatcher = request.getRequestDiscpatcher("/WEB-INF/jsp/route_regist.jsp");
-        dispatcher.forward(request, response);
+        // 確認ダイアログを表示する？
+        doGet(request, response);
 
-
-        // 確認ダイアログを表示する
-
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 履歴データをインポート
     }
 }
