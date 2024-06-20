@@ -7,13 +7,7 @@
     <title>SettingTest</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/setting.css">
-    <style>
-      .newer {
-        text-align: right;
-        width: 25em;
-        padding: 10px;
-       }
-    </style>
+
 
 
 </head>
@@ -56,23 +50,22 @@
     <main>
     <h2>【プロフィール設定】</h2>
 
-        <p>${result.message}</p>
-        <form name="setting">
+        <form name="setting" method="post" action="./SettingServlet">
             名前 &nbsp;
-            <input type ="text" id="name" name="name" value="${name}" size="20"><br>
+            <input type ="text" class="text" id="name" name="name" value="${name}" size="20"><br>
             身長 &nbsp;
-            <input type ="text" id="height" name="height" value="${height}" size="10">&nbsp; cm
+            <input type ="text" class="text" id="height" name="height" value="${height}" size="10">&nbsp; cm
             <br>
             体重 &nbsp;
-            <input type ="text" id="weight" name="weight" value="${weight}" size="10">&nbsp; kg
+            <input type ="text" class="text" id="weight" name="weight" value="${weight}" size="10">&nbsp; kg
             <br>
             BMI &nbsp;
-            <input type="text" id="bmi" name="bmi" value="${bmi}" size="10" readonly>
-            <!-- hiddenに変更する -->
-            <br>
+            <input type="text" class="text" id="bmi" name="bmi" value="${bmi}" size="10" readonly>
+        <p>${result.message}</p>
             <div class="newer">
-            	<input type="text" name="number" value="${number}">
-                <input type="button" id="updateButton" value="更新">
+            	<input type="hidden" name="number" value="${number}">
+                <input type="submit" class="button" id="updateButton" value="更新">
+
             </div>
         </form>
 

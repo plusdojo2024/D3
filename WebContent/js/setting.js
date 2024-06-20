@@ -6,7 +6,7 @@ let formObj = document.getElementById("data_form");
     let weightErrorObj = document.getElementById("weight_error");
 
     formObj.onsubmit = function() {
-        if (!formObj.name.value) {
+        if (formObj.name.value == null) {
             nameErrorObj.textContent = '名前を入力してください';
             return false;
         }
