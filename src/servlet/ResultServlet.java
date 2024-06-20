@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import dao.DayResultDao;
 import dao.RecordDao;
 import dao.RouteRecordDao;
+import model.Comment;
 import model.DayResult;
 import model.Level;
 import model.LoginUser;
@@ -49,7 +50,6 @@ public class ResultServlet extends HttpServlet {
 
 
 		// リクエストパラメータを取得する
-		Calendar cal2 = Calendar.getInstance();
 		
 		String y = request.getParameter("y");
 		String m = request.getParameter("m");
@@ -58,16 +58,13 @@ public class ResultServlet extends HttpServlet {
 		if(y==null || m==null || d == null
 				|| "".equals(y)|| "".equals(m)|| "".equals(d)) {
 			
+			Calendar cal2 = Calendar.getInstance();
+			
 			y = String.valueOf(cal2.get(Calendar.YEAR));
 			m = String.valueOf(cal2.get(Calendar.MONTH)+1);
 			d = String.valueOf(cal2.get(Calendar.DAY_OF_MONTH));
 
 			
-		}else {
-			
-			cal2.set(Calendar.YEAR, Integer.parseInt(y));
-			cal2.set(Calendar.MONTH, Integer.parseInt(m)-1);
-			cal2.set(Calendar.DATE, Integer.parseInt(d));
 		}
 		
 		request.setAttribute("y", y);
@@ -88,14 +85,22 @@ public class ResultServlet extends HttpServlet {
 		//session.setAttribute("id", new LoginUser(id));
 		
 		//レベル、目標カロリー、次のレベルまでの達成日数を受け取る部分
-		//コメント外す
-		Level lv = loginUser.getPickupLvList(1);
+		/*Level lv = loginUser.getPickupLvList(1);
 		request.setAttribute("lv", lv);
 		Level gkcal = loginUser.getPickupLvList(2);
 		request.setAttribute("gkcal", gkcal);
 		Level nexp = loginUser.getPickupLvList(3);
-		request.setAttribute("nexp", nexp);
-
+		request.setAttribute("nexp", nexp);*/
+		int number = loginUser.getNumber();
+		int userLevel = loginUser.getUserLevel();
+		Level levelinfo = loginUser.getPickupLvList(userLevel);
+		double goalKcal = levelinfo.getGoalKcal();
+		double resultKcal = 10.0;
+		
+		request.setAttribute("userLevel", userLevel);
+		request.setAttribute("goalKcal", goalKcal);
+		
+		
 		
 		//DayResultのデータ受け取り
 		DayResultDao drDao = new DayResultDao();
@@ -104,12 +109,7 @@ public class ResultServlet extends HttpServlet {
 		loginUser.setDrList(drList);
 		session.setAttribute("loginUser",loginUser);
 		
-		
-		
-		//テスト用サンプルデータ ?消す
-		double goalKcal = 180;
-		double resultKcal = 100;
-		
+				
 		//int target = (int)(getGoalKcal() - getResultKcal) * 1000 / 30); DBからの情報所得して計算のやつ
 		
 		//targetを計算してスコープに格納(→jspに表示)
@@ -125,9 +125,12 @@ public class ResultServlet extends HttpServlet {
 		
 		//DB・DAOで該当日のその他の運動データを検索する
 		RecordDao bDao = new RecordDao();
-		List<Record> recordData = bDao.collect(Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
+		List<Record> recordData = bDao.collect(number, Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
 		//検索結果をリクエストスコープに格納する
 		request.setAttribute("record", recordData);
+		for(Record record : recordData) {
+			resultKcal += record.getKcal();
+		}
 		
 		//DB・DAOで該当日のその他の運動データを検索する
 		RouteRecordDao rDao = new RouteRecordDao();
@@ -136,13 +139,15 @@ public class ResultServlet extends HttpServlet {
 		request.setAttribute("routerecord", routeRecordData);
 		
 		
+		request.setAttribute("resultKcal", resultKcal);
+		
 		//コメント用ランダム 5はコメントの数に変える
 		int random = new java.util.Random().nextInt(5) + 1;		
 		//コメントデータをセッションスコープから受け取る？
-/*		Comment comment = loginUser.getPickupComList(random);
+		Comment comment = loginUser.getPickupComList(random);
 		String randomCom = comment.getCommentValue();
 		//検索結果をリクエストスコープに格納する
-		request.setAttribute("randomcom", randomCom);*/
+		request.setAttribute("randomcom", randomCom);
 		
 
 		// 運動結果ページにフォワードする
@@ -171,20 +176,16 @@ public class ResultServlet extends HttpServlet {
 		if (request.getParameter("submit").equals("削除1")) {
 			RecordDao bDao = new RecordDao();
 			if (bDao.delete(Integer.parseInt(recordNumber))){
-				request.setAttribute("result",
-				new ResultMessage("レコードを削除しました。"));
+				request.setAttribute("result", new ResultMessage("レコードを削除しました。"));
 			}else { // 削除失敗
-				request.setAttribute("result",
-				new ResultMessage("レコードを削除できませんでした。"));
+				request.setAttribute("result", new ResultMessage("レコードを削除できませんでした。"));
 			}
 		}else if(request.getParameter("submit").equals("削除2")) {
 			RouteRecordDao  rDao = new RouteRecordDao();
 			if (rDao.delete(Integer.parseInt(routeNumber))){  // 削除成功 
-				request.setAttribute("result",
-				new ResultMessage("レコードを削除しました。"));
+				request.setAttribute("result", new ResultMessage("レコードを削除しました。"));
 			}else{ // 削除失敗
-				request.setAttribute("result",
-				new ResultMessage("レコードを削除できませんでした。"));
+				request.setAttribute("result", new ResultMessage("レコードを削除できませんでした。"));
 			}
 		}
 

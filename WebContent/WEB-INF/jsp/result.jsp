@@ -58,9 +58,9 @@
 		    <label>消費カロリー</label><progress id="file" max="${ result.goalKcal }" value="${ result.resultKcal }"></progress>
 		    <p>${ result.resultKcal }/${ result.goalKcal}kcal</p>
 		    
-		    <p>comment${ requestScope.randomcom }</p>
+		    <p>${ requestScope.randomcom }</p>
 		    <img src="./img/chara1.png" width="100px">
-		    <p>level.${loginUser.userLevel}</p>
+		    <p>level. ${ requestScope.userLevel}</p>
 		    <p>map</p>
 		    <p>今日の記録</p>
 		    
@@ -108,7 +108,7 @@
     <script>
     makeDay(${requestScope.y}, ${requestScope.m}, ${requestScope.d});
     
-    let gapkcal = ${dayResult.goalKcal} - ${dayResult.resultKcal};
+    let gapkcal = ${goalKcal} - ${resultKcal};
     let steps = gapkcal * 1000000 / (${loginUser.height}* ${loginUser.weight} * 0.45 * 1.05);
     
     document.getElementById("steps").textContent = steps;

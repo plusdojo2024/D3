@@ -15,6 +15,8 @@ public class Result extends DayResult {
 	private int value; 
 	private int unit; 
 	private Date registDate;
+	private String message;		// メッセージ表示
+
 	
 	
 	public Result(double startIdo, double startKeido, double endIdo, double endKeido, int moveKind, double distance,
@@ -160,5 +162,5 @@ public class Result extends DayResult {
 		this.registDate = registDate;
 	}
 
-	
+
 }
