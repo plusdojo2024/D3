@@ -8,7 +8,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title><%=mc.getMonth() %>月カレンダー</title>
+  <title><%=mc.getMonth() %>月カレンダー | たけのこーちんぐ</title>
   <link rel="stylesheet"  href="css/calendar.css">
   <link rel="stylesheet"  href="css/style.css">
 </head>
