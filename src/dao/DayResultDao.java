@@ -63,7 +63,7 @@ public class DayResultDao {
 		
 		
 		//DayResultを得る
-		public List<DayResult> getDayResultList(int num) {
+		public List<DayResult> getDayResultList(int num) {//ymd
 			Connection conn = null;
 			List<DayResult> DayResultList = new ArrayList<>();
 
@@ -175,6 +175,4 @@ public class DayResultDao {
 			// 結果を返す
 			return result;
 		}
-		
-		
 }

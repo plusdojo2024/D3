@@ -108,12 +108,30 @@
 
     <script type="text/javascript" src="./js/result.js"></script>
     <script>
+    //日付表示
     makeDay(${requestScope.y}, ${requestScope.m}, ${requestScope.d});
 
-    let gapkcal = ${requestScope.goalKcal} - ${requestScope.resultKcal};
-    let steps = Math.round(gapkcal * 100000 / (${loginUser.height}* ${loginUser.weight} * 0.45 * 1.05));
 
+	//歩数計算
+    //let gapkcal = ${requestScope.goalKcal} - ${requestScope.resultKcal};
+	//let steps = Math.round(gapkcal * 100000 / (${loginUser.height}* ${loginUser.weight} * 0.45 * 1.05));
+
+	let gapKcal = ${requestScope.goalKcal} - ${requestScope.resultKcal};
+	gapKcal= Math.round(gapKcal * 100) / 100;
+
+	let height = ${loginUser.height};
+	let weight = ${loginUser.weight};
+
+	let time = gapKcal / (1.05 * 3.3 * weight);
+	let distance = 4.9 * time;
+	distance = distance * 1000 * 100;
+	let stepLength = height * 0.45;
+	let steps = distance / stepLength;
+	steps = Math.round(steps);
+    
     document.getElementById("steps").textContent = steps;
+    
+    
     </script>
 </body>
 </html>

@@ -36,7 +36,6 @@ public class ResultServlet extends HttpServlet {
      */
     public ResultServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,7 +49,6 @@ public class ResultServlet extends HttpServlet {
 
 
 		// リクエストパラメータを取得する
-		
 		String y = request.getParameter("y");
 		String m = request.getParameter("m");
 		String d = request.getParameter("d");
@@ -62,33 +60,24 @@ public class ResultServlet extends HttpServlet {
 			
 			y = String.valueOf(cal2.get(Calendar.YEAR));
 			m = String.valueOf(cal2.get(Calendar.MONTH)+1);
-			d = String.valueOf(cal2.get(Calendar.DAY_OF_MONTH));
-
-			
+			d = String.valueOf(cal2.get(Calendar.DAY_OF_MONTH));	
 		}
 		
 		request.setAttribute("y", y);
 		request.setAttribute("m", m);
 		request.setAttribute("d", d);
 
-		
-				//セッションスコープのデータを受け取る
+
 		List<Level> lvList = loginUser.getLvList();
 		//session.setAttribute("id", new LoginUser(id));
 		
 		//レベル、目標カロリー、次のレベルまでの達成日数を受け取る部分
-		/*Level lv = loginUser.getPickupLvList(1);
-		request.setAttribute("lv", lv);
-		Level gkcal = loginUser.getPickupLvList(2);
-		request.setAttribute("gkcal", gkcal);
-		Level nexp = loginUser.getPickupLvList(3);
-		request.setAttribute("nexp", nexp);*/
 		int number = loginUser.getNumber();
 		int userLevel = loginUser.getUserLevel();
 		Level levelInfo = loginUser.getPickupLvList(userLevel);
 		double goalKcal = levelInfo.getGoalKcal();
-		double resultKcal = 0;//ここ計算にする
-		int judge;
+		double resultKcal = 0;//ここ計算にする？
+		int judge = 0;
 		int userExp = 0;// = loginUser.getUserExp();
 		int nextLevelExp = levelInfo.getNextLevelExp();
 		
@@ -96,7 +85,7 @@ public class ResultServlet extends HttpServlet {
 		request.setAttribute("goalKcal", goalKcal);
 		
 		
-		java.sql.Date thisDate= java.sql.Date.valueOf(y + m + d);
+		java.sql.Date thisDate= java.sql.Date.valueOf(y +"-"+ m +"-"+ d);
 		
 		//DayResultのデータ受け取り
 		DayResultDao drDao = new DayResultDao();
@@ -121,46 +110,45 @@ public class ResultServlet extends HttpServlet {
 		}
 		
 		
-
-		
-		//int target = (int)(getGoalKcal() - getResultKcal) * 1000 / 30); DBからの情報所得して計算のやつ
-		
-		//targetを計算してスコープに格納(→jspに表示)
-/*		int target = (int)((goalKcal - resultKcal) * 1000 / 30);
-		request.setAttribute("targetHosu", target);*/
-			    
-		
 		//DB・DAOで該当日の結果データを検索する
 		Result resultData = new Result();//todo:ダミー DBの処理結果に変える
-		//検索結果をリクエストスコープに格納する
 		request.setAttribute("result", resultData);
 		
 		
 		//DB・DAOで該当日のその他の運動データを検索する
 		RecordDao bDao = new RecordDao();
 		List<Record> recordData = bDao.collect(number, Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
-		//検索結果をリクエストスコープに格納する
 		request.setAttribute("record", recordData);
 		
+		//今日の消費カロリー計算
 		for(Record record : recordData) {
 			resultKcal += record.getKcal();
 		}
 		
+		
 		//DB・DAOで該当日のマップ入力運動データを検索する
 		RouteRecordDao rDao = new RouteRecordDao();
 		List<RouteRecord> routeRecordData = rDao.collect(number, Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
-		//検索結果をリクエストスコープに格納する
 		request.setAttribute("routerecord", routeRecordData);
-		
-		
+
+		//今日の消費カロリー計算　ルートも
+		for(RouteRecord routeRecord : routeRecordData) {
+			resultKcal += routeRecord.getKcal();
+		}
+
+		//消費カロリーをリクエストスコープに
 		request.setAttribute("resultKcal", resultKcal);
+	
+		//セッションスコープの更新
+/*		loginUser.setDrList(drList);
+		session.setAttribute("loginUser",loginUser);*/
+		
 		
 		//コメント用ランダム 5はコメントの数に変える
 		int random = new java.util.Random().nextInt(5) + 1;		
-		//コメントデータをセッションスコープから受け取る？
+		//コメントデータをセッションスコープから受け取る
 		Comment comment = loginUser.getPickupComList(random);
 		String randomCom = comment.getCommentValue();
-		//検索結果をリクエストスコープに格納する
 		request.setAttribute("randomcom", randomCom);
 		
 
@@ -182,8 +170,7 @@ public class ResultServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String recordNumber = request.getParameter("record_number");
-		String routeNumber = request.getParameter("route_number");
-		
+		String routeNumber = request.getParameter("route_number");		
 		
 		
 		//削除を行う
@@ -204,7 +191,7 @@ public class ResultServlet extends HttpServlet {
 		}
 
 		// 運動結果ページにフォワードする
-/*		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		/*RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 		dispatcher.forward(request, response);*/
 		
 		//
