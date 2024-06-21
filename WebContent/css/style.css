@@ -184,38 +184,8 @@ ul.drop1:hover li.category8{
 
                                                  /* 全ての画面に適用*/
 
-  /*個人設定*/
-  /*プロフィール設定のフォーム*/
-/*.personsetting{
-    width: 25%;
-    margin-top: 10px;
-    margin-left: 400px;
-}*/
-.personsetting{
-    margin-top: 100px;
-	width: 50%;
-	margin-left: 500px;
-}
-.personsetting input[type='text'] {
-	font: 15px/20px sans-serif;
-	box-sizing: border-box;
-	width: 100%;
-	padding: 0.05em;
-	transition: 0.3s;
-	letter-spacing: 1px;
-	color: #400040;
-	border: 1px solid #1b2538;
-	border-radius: 4px;
-	margin-top: 10px;
-    font-size:  20px;
-
-
-}
-.personsetting input[type='text']:focus {
-	border: 1px solid #0814b7;;
-	outline: none;
-	box-shadow: 0 0 5px 1px #0000ff;
-
+.kcal{
+	margin-right: 400px
 }
 
 
@@ -281,12 +251,23 @@ ul.drop1:hover li.category8{
             }
                 /*選択ボックス*/
 
-    #sport{
-        width: 220px;
-        font-size: 25px;
+ /*   .metsSelect{	メッツ値のセレクトボックス
+    display: none; メッツ値のセレクトボックスを見えなくする
+    }*/
+
+    .active_number{/*運動名選択セレクトボックス*/
+
+        font-size: 23px;	/*文字の大きさを25*/
 
     }
-    .leave{
+
+        .time{/*時間選択セレクトボックス*/
+
+        font-size: 25px;	/*文字の大きさを25*/
+
+    }
+
+   	.leave{
         margin-left: 20px;
     }
 
