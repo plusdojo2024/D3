@@ -56,19 +56,21 @@
 		    </div>
 		    <div id="date"></div>
 		    <label>消費カロリー</label><progress id="file" max="${ requestScope.goalKcal }" value="${ requestScope.resultKcal }"></progress>
-		    <p>${ requestScope.resultKcal }/${ requestScope.goalKcal}kcal</p>
-		    
-		    <p>${ requestScope.randomcom }</p>
-		    <img src="./img/chara1.png" width="100px">
-		    <p>level. ${ requestScope.userLevel}</p>
-		    <p>map</p>
-		    <p>今日の記録</p>
-		    
+		    <p class="tasseido">${ requestScope.resultKcal }/${ requestScope.goalKcal}kcal</p>
+
+		    <p class="randomcomment">${ requestScope.randomcom }</p>
+		    <div class="chara">
+		    	<img src="./img/chara1.png" width="150px">
+		    </div>
+		    <p class="nowlv">level. ${ requestScope.userLevel}</p>
+		    <p class="map">map</p>
+		    <p class="todayrecord">今日の記録</p>
+
 		    <p>${ResultMessage.message}</p>
-		    
-		    <p>ランニング　${ result.value }㎞　${ result.kcal }kcal</p>
-		    
-		    
+
+		    <p class="actrec">ランニング　${ result.value }㎞　${ result.kcal }kcal</p>
+
+
 			<c:forEach var="e" items="${recordList}" >
 			    <form action="./ResultServlet" method="post">
 			    	<input type="hidden" name="y" value="${ e.y }">
@@ -84,7 +86,7 @@
 			    	<input type="image" name="submit" src="./img/gomi.png" value="削除1" onclick="deleteMessage()">
 			    </form>
 		    </c:forEach>
-		    
+
  			<c:forEach var="r" items="${routeRecordList}" >
 			    <form action="./ResultServlet" method="post">
 			    	<input type="hidden" name="y" value="${ r.y }">
@@ -98,19 +100,19 @@
 			    	<label>label</label>
 			    	<input type="image" name="submit" src="./img/gomi.png" value="削除2" onclick="deleteMessage()">
 			    </form>
-		    </c:forEach>  
-    
+		    </c:forEach>
+
     	</div>
     </div>
-    
-    
+
+
     <script type="text/javascript" src="./js/result.js"></script>
     <script>
     makeDay(${requestScope.y}, ${requestScope.m}, ${requestScope.d});
-    
+
     let gapkcal = ${requestScope.goalKcal} - ${requestScope.resultKcal};
     let steps = Math.round(gapkcal * 100000 / (${loginUser.height}* ${loginUser.weight} * 0.45 * 1.05));
-    
+
     document.getElementById("steps").textContent = steps;
     </script>
 </body>
