@@ -84,11 +84,12 @@ public class RouteRegistServlet extends HttpServlet {
         }
 
         // 地図から取得開始
-        String startIdo = request.getParameter("startIdo");
-        String startKeido = request.getParameter("startKeido");
-        String endIdo = request.getParameter("endIdo");
-        String endKeido = request.getParameter("endKeido");
-        String distance = request.getParameter("distance");
+        String startIdo = request.getParameter("my_lat1");
+        String startKeido = request.getParameter("my_lng1");
+        String endIdo = request.getParameter("my_lat2");
+        String endKeido = request.getParameter("my_lng2");
+        String distance = request.getParameter("my_distance");
+        String spot = request.getParameter("my_route");
 
         // 地図から取得終了
         String moveKind = request.getParameter("moveKind");
@@ -110,7 +111,7 @@ public class RouteRegistServlet extends HttpServlet {
         		Double.parseDouble(kcal),
         		new Date(),
         		loginUser.getNumber(),
-        		"spot");
+        		spot);
 
         // 入力を判定する
 
