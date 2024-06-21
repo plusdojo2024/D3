@@ -65,7 +65,7 @@
 					 <select name="active_number1" id="active_number1" onchange="myfunc(this.value)">
 					<option value="0"></option>
 					<option value="${ a1.activeName }">ウォーキング</option>
-					<option value="">ランニング</option>
+					<option value="2">ランニング</option>
 					<option value="3">野球</option>
 					<option value="4">バスケットボール</option>
 					<option value="5">ドッジボール</option>

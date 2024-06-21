@@ -63,51 +63,44 @@
 			【マップ入力】 | <a href="/D3/ActiveRegistServlet" class="move">【その他の入力】</a>
 		</div>
 	<div id="my_leaflet">ここに地図が表示される</div>
-        String routeNumber = request.getParameter("routeNumber");
-        if (routeNumber == null) {
-        	routeNumber
-        }
-
-        // 地図から取得開始
-        String startIdo = request.getParameter("startIdo");
-        String startKeido = request.getParameter("startKeido");
-        String endIdo = request.getParameter("endIdo");
-        String endKeido = request.getParameter("endKeido");
-        spotは実装未定、未実装時は消去対応<br>
-
-
 
             <select class="text" name="moveKind">
                 <option value="0">---</option>
-                <option value="1">---</option>
-                <option value="2">---</option>
-                <option value="3">---</option>
-                <option value="4">---</option>
-                <option value="5">---</option>
+                <option value="1">ウォーキング</option>
+                <option value="2">ランニング</option>
+                <option value="3">野球</option>
+                <option value="4">バスケットボール</option>
+                <option value="5">ドッジボール</option>
+                <option value="6">バレーボール</option>
+                <option value="7">サッカー</option>
+
             </select>
-            <input type="text" class="text" name="my_distance" id="my_distance" value=""> km    &nbsp;
+            <input type="text" class="text" name="my_distance" id="my_distance" value=""> m    &nbsp;
             <input type="text" class="text" name="kcal" value=""> kcal
             <br>
 	<div class="header">
 
-		<input type="text" name="my_lat1" id="my_lat1">
-		<input type="text" name="my_lng1" id="my_lng1">
+		<input type="hidden" name="my_lat1" id="my_lat1">
+		<input type="hidden" name="my_lng1" id="my_lng1">
 
-		<input type="text" name="my_lat2" id="my_lat2">
-		<input type="text" name="my_lng2" id="my_lng2">
+		<input type="hidden" name="my_lat2" id="my_lat2">
+		<input type="hidden" name="my_lng2" id="my_lng2">
 
-		<input type="text" name="my_route" id="my_route">
+		<input type="hidden" name="my_route" id="my_route">
 
     	<input type="button" class="button" name="regist" value="登録">
         <input type="button" class="button" name="reset" value="リセット"><br>
     </div>
 
 
-            <p>履歴</p>
-            経路
-            方法
-            距離 km
-            消費カロリー kcal
+            直近の記録<br>
+            経路 方法 距離 消費カロリー &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    	<input type="button" class="button" name="regist" value="インポート">
+
             </form>
     </main>
 

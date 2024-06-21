@@ -30,7 +30,7 @@ const leafletLine = function(startLatLng, goalLatLng, callbackRoutesfound) {
 			//移動方法をdrivingからwalkingに変更
 			profile:"walking"
 		}),
-		lineOptions: { styles: [{ color:"red", weight:8, opacity:0.5 }] }
+		lineOptions: { styles: [{ color:"green", weight:8, opacity:0.5 }] }
 	}).on('routesfound', function(e) {
 		callbackRoutesfound(e);
 	});
