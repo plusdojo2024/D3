@@ -68,11 +68,7 @@
                 <option value="0">---</option>
                 <option value="1">ウォーキング</option>
                 <option value="2">ランニング</option>
-                <option value="3">野球</option>
-                <option value="4">バスケットボール</option>
-                <option value="5">ドッジボール</option>
-                <option value="6">バレーボール</option>
-                <option value="7">サッカー</option>
+                <option value="3">自転車</option>
 
             </select>
             <input type="text" class="text" name="my_distance" id="my_distance" value=""> m    &nbsp;
