@@ -41,12 +41,12 @@ public class ResultServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしてなかったらログインサーブレットにリダイレクト
-/*		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		LoginUser loginUser= (LoginUser)session.getAttribute("loginUser");
 		if (loginUser == null) {
 			response.sendRedirect("/D3/LoginServlet");
 			return;
-		}*/
+		}
 
 
 		// リクエストパラメータを取得する
@@ -72,15 +72,7 @@ public class ResultServlet extends HttpServlet {
 		request.setAttribute("d", d);
 
 		
-		
-		HttpSession session = request.getSession();
-//		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
-//		if (loginUser == null) {
-//			response.sendRedirect("/D3/LoginServlet");
-//			return;
-//		}		
-		//セッションスコープのデータを受け取る
-		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
+				//セッションスコープのデータを受け取る
 		List<Level> lvList = loginUser.getLvList();
 		//session.setAttribute("id", new LoginUser(id));
 		
@@ -93,23 +85,44 @@ public class ResultServlet extends HttpServlet {
 		request.setAttribute("nexp", nexp);*/
 		int number = loginUser.getNumber();
 		int userLevel = loginUser.getUserLevel();
-		Level levelinfo = loginUser.getPickupLvList(userLevel);
-		double goalKcal = levelinfo.getGoalKcal();
-		double resultKcal = 0;
+		Level levelInfo = loginUser.getPickupLvList(userLevel);
+		double goalKcal = levelInfo.getGoalKcal();
+		double resultKcal = 0;//ここ計算にする
+		int judge;
+		int userExp = 0;// = loginUser.getUserExp();
+		int nextLevelExp = levelInfo.getNextLevelExp();
 		
 		request.setAttribute("userLevel", userLevel);
 		request.setAttribute("goalKcal", goalKcal);
 		
 		
+		java.sql.Date thisDate= java.sql.Date.valueOf(y + m + d);
 		
 		//DayResultのデータ受け取り
 		DayResultDao drDao = new DayResultDao();
 		List<DayResult> drList = drDao.getDayResultList(loginUser.getNumber());
 		//セッションスコープの更新
-		loginUser.setDrList(drList);
-		session.setAttribute("loginUser",loginUser);
+/*		loginUser.setDrList(drList);
+		session.setAttribute("loginUser",loginUser);*/
+		if(goalKcal >= resultKcal) {
+			judge = 1;
+		}else {
+			judge = 0;
+		}
 		
-				
+		drDao.update(new DayResult(thisDate, goalKcal, resultKcal, judge, number));
+
+		//累計達成日を計算してレベル上げる→登録
+		for(DayResult dayResult : drList) {
+			userExp = userExp + dayResult.getJudge();
+		}		
+		if(userExp >= nextLevelExp) {
+			userLevel = userLevel + 1 ;
+		}
+		
+		
+
+		
 		//int target = (int)(getGoalKcal() - getResultKcal) * 1000 / 30); DBからの情報所得して計算のやつ
 		
 		//targetを計算してスコープに格納(→jspに表示)
@@ -129,13 +142,13 @@ public class ResultServlet extends HttpServlet {
 		//検索結果をリクエストスコープに格納する
 		request.setAttribute("record", recordData);
 		
-/*		for(Record record : recordData) {
+		for(Record record : recordData) {
 			resultKcal += record.getKcal();
-		}*/
+		}
 		
-		//DB・DAOで該当日のその他の運動データを検索する
+		//DB・DAOで該当日のマップ入力運動データを検索する
 		RouteRecordDao rDao = new RouteRecordDao();
-		List<RouteRecord> routeRecordData = rDao.collect(Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
+		List<RouteRecord> routeRecordData = rDao.collect(number, Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
 		//検索結果をリクエストスコープに格納する
 		request.setAttribute("routerecord", routeRecordData);
 		
@@ -159,12 +172,12 @@ public class ResultServlet extends HttpServlet {
 	//削除機能
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//もしもログインしてなかったらログインサーブレットにリダイレクト
-/*		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		LoginUser loginUser= (LoginUser)session.getAttribute("loginUser");
 		if (loginUser == null) {
 			response.sendRedirect("/D3/LoginServlet");
 			return;
-		}*/
+		}
 		
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
