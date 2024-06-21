@@ -126,6 +126,12 @@ progress {
 .actrec{
 	font-size: 25px;
 	left: 250px;
-    bottom: 200px;
+    bottom: 160px;
     position: relative;
+}
+
+.resultmessage{
+	position: relative;
+    bottom: 180px;
+    left: 120px;
 }

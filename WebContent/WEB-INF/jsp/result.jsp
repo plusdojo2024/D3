@@ -66,7 +66,7 @@
 		    <p class="map">map</p>
 		    <p class="todayrecord">今日の記録</p>
 
-		    <p>${ResultMessage.message}</p>
+		    <p class="resultmessage">${ResultMessage.message}</p>
 
 		    <p class="actrec">ランニング　${ result.value }㎞　${ result.kcal }kcal</p>
 
