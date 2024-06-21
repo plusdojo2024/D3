@@ -27,10 +27,10 @@ public class CalendarServlet extends HttpServlet {
 		//もしもログインしてなかったらログインサーブレットにリダイレクト
 		HttpSession session = request.getSession();
 		LoginUser loginUser= (LoginUser)session.getAttribute("loginUser");
-		/*if (loginUser == null) {
+		if (loginUser == null) {
 			response.sendRedirect("/D3/LoginServlet");
 			return;
-		}*/
+		}
 
 		//DayResultのデータ受け取り
 		DayResultDao drDao = new DayResultDao();
