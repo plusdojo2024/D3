@@ -67,7 +67,7 @@ public class RecordDao {
 		return result;
 	}
 
-
+	//削除
 	public boolean delete(int number) {
 		Connection conn = null;
 		boolean result = false;
@@ -113,7 +113,7 @@ public class RecordDao {
 		return result;
 	}
 
-
+	
 	public List<Record> collect(int number, int y, int m, int d) {
 		Connection conn = null;
 		List<Record> RecordList = new ArrayList<>();
@@ -128,7 +128,7 @@ public class RecordDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
 			// SQL文を準備する
 			String sql = "SELECT * FROM Record WHERE regist_date = ? and number = ? ";
@@ -159,11 +159,11 @@ public class RecordDao {
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			RecordList = null;
+			RecordList.clear();
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			RecordList = null;
+			RecordList.clear();
 		}
 		finally {
 			// データベースを切断
@@ -173,7 +173,7 @@ public class RecordDao {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					RecordList = null;
+					RecordList.clear();
 				}
 			}
 		}
