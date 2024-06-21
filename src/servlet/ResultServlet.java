@@ -87,19 +87,25 @@ public class ResultServlet extends HttpServlet {
 		
 		java.sql.Date thisDate= java.sql.Date.valueOf(y +"-"+ m +"-"+ d);
 		
-		//DayResultのデータ受け取り
+		//全部の日のDayResultのデータ受け取り
 		DayResultDao drDao = new DayResultDao();
 		List<DayResult> drList = drDao.getDayResultList(loginUser.getNumber());
 		//セッションスコープの更新
 /*		loginUser.setDrList(drList);
 		session.setAttribute("loginUser",loginUser);*/
-		if(goalKcal >= resultKcal) {
+
+		//１日分のDayResultのデータ受け取り ?
+		DayResultDao tdrDao = new DayResultDao();
+		List<DayResult> tdrList = tdrDao.getDayResultList(loginUser.getNumber(), Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
+
+		
+		
+/*		if(goalKcal >= tdrList.getResultKcal()) {
 			judge = 1;
 		}else {
 			judge = 0;
-		}
+		}*/
 		
-		drDao.update(new DayResult(thisDate, goalKcal, resultKcal, judge, number));
 
 		//累計達成日を計算してレベル上げる→登録
 		for(DayResult dayResult : drList) {
@@ -143,9 +149,12 @@ public class ResultServlet extends HttpServlet {
 /*		loginUser.setDrList(drList);
 		session.setAttribute("loginUser",loginUser);*/
 		
+		//DayResultの更新
+		drDao.update(new DayResult(thisDate, goalKcal, resultKcal, judge, number));
 		
-		//コメント用ランダム 5はコメントの数に変える
-		int random = new java.util.Random().nextInt(5) + 1;		
+		
+		//コメント用ランダム 8はコメントの数に変える
+		int random = new java.util.Random().nextInt(8) + 1;		
 		//コメントデータをセッションスコープから受け取る
 		Comment comment = loginUser.getPickupComList(random);
 		String randomCom = comment.getCommentValue();

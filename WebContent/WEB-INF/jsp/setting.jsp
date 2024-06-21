@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>プロフィール設定 | たけのこーちん</title>
+    <title>プロフィール設定 | たけのこーちんぐ</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/setting.css">
 
