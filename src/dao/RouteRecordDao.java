@@ -96,8 +96,6 @@ public class RouteRecordDao {
 				result = true;
 			}
 
-
-
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -122,8 +120,43 @@ public class RouteRecordDao {
     }
 
 
+    public RouteRecord getRoute(int userNumber) {
+    	Connection conn = null;
+    	RouteRecord history = new RouteRecord();
 
-	public boolean delete(int number) {
+    	try {
+    		Class.forName("org.h2.Driver");
+            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D3", "sa", "");
+
+            String sql = "SELECT * FROM Route_Record WHERE userNumber = loginUser AND SELECT loginNumber = (SELECT MAX(recordNumber) FROM Route_Record)";
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+
+
+    	}
+    	catch (SQLException e) {
+            e.printStackTrace();
+            history = null;
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            history = null;
+        }
+        finally {
+            if(conn != null) {
+                try {
+                    conn.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                    history = null;
+                }
+            }
+        }
+    	return history;
+    }
+
+
+    public boolean delete(int number) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -242,7 +275,6 @@ public class RouteRecordDao {
 
 
 	}
-
 
 
 }

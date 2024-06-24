@@ -25,7 +25,7 @@ public class RecordDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのACTIVE_NUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Record VALUES (NULL, ?, ?, ?, ?, ?, ? )";
+			String sql = "INSERT INTO Record VALUES (NULL, ?, ?, ?, ?, ?, ?,? )";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -40,6 +40,8 @@ public class RecordDao {
 			pStmt.setDate(4, new java.sql.Date(sport.getRegistDate().getTime()));
 			pStmt.setInt(5, sport.getNumber());
 			pStmt.setDouble(6, sport.getKcal());
+			pStmt.setString(7, sport.getName());
+
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
@@ -132,7 +134,7 @@ public class RecordDao {
 
 			// SQL文を準備する
 			String sql = "SELECT * FROM Record WHERE regist_date = ? and number = ? ";
-			
+
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
 			pStmt.setDate(1, new java.sql.Date(cal.getTimeInMillis()));
@@ -144,7 +146,7 @@ public class RecordDao {
 
 			// 結果表をコレクションにコピーする
 	        //java.util.Date date2 = new java.util.Date(date1.getTime());
-			
+
 			while (rs.next()) {
 				Record record = new Record(
 					rs.getInt("record_number"),
@@ -153,7 +155,9 @@ public class RecordDao {
 					rs.getString("unit"),
 					new java.util.Date(rs.getDate("regist_date").getTime()),
 					rs.getInt("number"),
-					rs.getDouble("kcal"));
+					rs.getDouble("kcal"),
+					rs.getString("name")
+				);
 				RecordList.add(record);
 			}
 		}
@@ -180,8 +184,8 @@ public class RecordDao {
 
 		// 結果を返す
 		return RecordList;
-		
 
-	}	
+
+	}
 
 }

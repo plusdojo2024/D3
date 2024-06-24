@@ -87,7 +87,7 @@ public class ResultServlet extends HttpServlet {
 		
 		java.sql.Date thisDate= java.sql.Date.valueOf(y +"-"+ m +"-"+ d);
 		
-		//全部の日のDayResultのデータ受け取り
+		//DayResultのデータ受け取り
 		DayResultDao drDao = new DayResultDao();
 		List<DayResult> drList = drDao.getDayResultList(loginUser.getNumber());
 		//セッションスコープの更新
@@ -148,9 +148,6 @@ public class ResultServlet extends HttpServlet {
 		//セッションスコープの更新
 /*		loginUser.setDrList(drList);
 		session.setAttribute("loginUser",loginUser);*/
-		
-		//DayResultの更新
-		drDao.update(new DayResult(thisDate, goalKcal, resultKcal, judge, number));
 		
 		
 		//コメント用ランダム 8はコメントの数に変える

@@ -11,7 +11,7 @@ public class Record implements Serializable {
 	private Date registDate;
 	private int number;
 	private double kcal;
-
+	private String name;
 	public Record() {
 		super();
 		this.recordNumber = 0;
@@ -21,8 +21,9 @@ public class Record implements Serializable {
 		this.registDate = null;
 		this.number = 0;
 		this.kcal = 0.0;
+		this.name = "";
 	}
-	public Record(int recordNumber, int kind, double value, String unit, Date registDate, int number, double kcal) {
+	public Record(int recordNumber, int kind, double value, String unit, Date registDate, int number, double kcal, String name) {
 		super();
 		this.recordNumber = recordNumber;
 		this.kind = kind;
@@ -31,8 +32,15 @@ public class Record implements Serializable {
 		this.registDate = registDate;
 		this.number = number;
 		this.kcal = kcal;
+		this.name = name;
 	}
 
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getRecordNumber() {
 		return recordNumber;
 	}
