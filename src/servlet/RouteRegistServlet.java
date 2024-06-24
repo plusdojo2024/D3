@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,11 +15,17 @@ import javax.servlet.http.HttpSession;
 
 import dao.RouteRecordDao;
 import model.LoginUser;
+import model.ResultMessage;
 import model.RouteRecord;
 
 @WebServlet("/RouteRegistServlet")
 public class RouteRegistServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
+    public RouteRegistServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Calendar nowDate = Calendar.getInstance();
@@ -30,35 +37,30 @@ public class RouteRegistServlet extends HttpServlet {
         request.setAttribute("day", day);
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		session.setAttribute("id","dummy");//todo:ダミー
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("./LoginServlet");
+		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+			response.sendRedirect("/D3/LoginServlet");
 			return;
+		}
+
+		int userNumber = loginUser.getNumber();
+
+		// 履歴の取得
+		RouteRecordDao rrDao = new RouteRecordDao();
+		List<RouteRecord> rrList = rrDao.select(userNumber);
+		if (rrList != null) {
+			RouteRecord history = rrList.get(rrList.size()-1); // Listの最終要素を取得する
+			request.setAttribute("history", history);
+		} else {
+			RouteRecord history = null; // 履歴がない場合
+			request.setAttribute("history", history);
 		}
 
 		// ルート登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/route_regist.jsp");
 		dispatcher.forward(request, response);
 
-
-       /* if(action.equals("done")) {
-            // セッションスコープからルート記録の履歴を取得する
-    		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
-    		List<Route> roList = loginUser.getroList();
-            HttpSession session = request.getSession();
-            LoginUser loginUser = (LoginUser) session.getAttribute("routeRecord");
-            Int routeRegist1 = routeRecord.getrouteNumber();
-            Double routeRegist2 = routeRecord.getstartIdo();
-            Double routeRegist3 = routeRecord.getstartKeido();
-            Double routeRegist4 = routeRecord.getendIdo();
-            Double routeRegist5 = routeRecord.getendKeido();
-            Double routeRegist6 = routeRecord.getdistance();
-            Int routeRegist7 = routeRecord.getmoveKind();
-            Double routeRegist8 = routeRecord.getkcal();
-            Date routeRegist9 = routeRecord.getregistDate();
-            Int routeRegist10 = routeRecord.getnumber();
-            Varchar routeRegist11 = routeRecord.getspot();
-
+		/*
             // 読込処理の呼び出し
             RouteRecordLogic logic = newRouteRecordLogic();
             logic.execute(RouteRecord);
@@ -68,12 +70,6 @@ public class RouteRegistServlet extends HttpServlet {
 
         } */
     }
-
-    public RouteRegistServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // リクエストパラメータの取得
@@ -98,6 +94,10 @@ public class RouteRegistServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
+		int number			= loginUser.getNumber();
+		boolean today_result = false;
+		String today_check1      = request.getParameter("today_check");
+
 
         // 登録する記録を設定する
         RouteRecord routeRegist = new RouteRecord(
@@ -120,8 +120,11 @@ public class RouteRegistServlet extends HttpServlet {
         // エラーがあった場合登録しない
         // エラーがなければDBへ登録する
         RouteRecordDao rrDao = new RouteRecordDao();
-        rrDao.insert(routeRegist);
-
+		if(rrDao.insert(routeRegist)) {
+			request.setAttribute("result", new ResultMessage("登録されました"));
+		}else {
+			request.setAttribute("result", new ResultMessage("登録されませんでした"));
+		}
         // 入力情報のフォワード先
         // 確認ダイアログを表示する？
         doGet(request, response);

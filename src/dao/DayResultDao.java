@@ -25,7 +25,7 @@ public class DayResultDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
 				// SQL文を準備する（AUTO_INCREMENTのACTIVE_NUMBER列にはNULLを指定する）
-				String sql = "INSERT INTO Day_Result VALUES (?, ?, ?, ?, ? )";
+				String sql = "INSERT INTO DayResult VALUES (?, ?, ?, ?, ? )";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -64,7 +64,7 @@ public class DayResultDao {
 		
 		
 		//DayResultを得る
-		public List<DayResult> getDayResultList(int num) {//ymd
+		public List<DayResult> getDayResultList(int num) {
 			Connection conn = null;
 			List<DayResult> DayResultList = new ArrayList<>();
 
@@ -73,10 +73,10 @@ public class DayResultDao {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 				// SQL文を準備する
-				String sql = "SELECT * FROM Day_Result WHERE number = ? ";
+				String sql = "SELECT * FROM DayResult WHERE number = ? ";
 				
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
@@ -196,54 +196,6 @@ public class DayResultDao {
 		
 		
 		
-		// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
-		public boolean update(DayResult sport) {
-			Connection conn = null;
-			boolean result = false;
-
-			try {
-				// JDBCドライバを読み込む
-				Class.forName("org.h2.Driver");
-
-				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
-
-				// SQL文を準備する
-				String sql = "UPDATE Day_result SET goal_kcal=?, result_kcal=?, judge=? WHERE number=? and date = ?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-
-				// SQL文を完成させる
-				pStmt.setDouble(1, sport.getGoalKcal());
-				pStmt.setDouble(2, sport.getResultKcal());
-				pStmt.setInt(3, sport.getJudge());
-				pStmt.setInt(4, sport.getNumber());
-			    java.sql.Date sqlDate = new java.sql.Date(sport.getDate().getTime());
-				pStmt.setDate(5, sqlDate);
-
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-					result = true;
-				}
-			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			finally {
-				// データベースを切断
-				if (conn != null) {
-					try {
-						conn.close();
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-
-			// 結果を返す
-			return result;
-		}
+		
+		
 }

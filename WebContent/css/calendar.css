@@ -12,8 +12,8 @@ body {
 }
 
 /*a:link {
-	color: #00008b;
-	text-decoration: underline;
+	color: #434da2;
+	text-decoration: none;
 }
 a:visited {
 	color: #52734D;
@@ -25,9 +25,8 @@ a:hover {
 }
 a:active {
 	color: #a5c9c1;
-	text-decoration: ;
+	text-decoration: underline;
 }*/
-
 /*月表示CSS*/
 #month {
 	text-align: center;

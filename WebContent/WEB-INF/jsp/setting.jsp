@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>プロフィール設定 | たけのこーちんぐ</title>
+    <title>SettingTest</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/setting.css">
 
@@ -61,7 +61,7 @@
             <br>
             BMI &nbsp;
             <input type="text" class="text" id="bmi" name="bmi" value="${bmi}" size="10" readonly>
-        <p>${ActiveResult.message}</p>
+        <p>${result.message}</p>
             <div class="newer">
             	<input type="hidden" name="number" value="${number}">
                 <input type="submit" class="button" id="updateButton" value="更新">

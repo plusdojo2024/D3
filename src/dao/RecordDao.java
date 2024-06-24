@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import model.Record;
@@ -25,7 +24,7 @@ public class RecordDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのACTIVE_NUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Record VALUES (NULL, ?, ?, ?, ?, ?, ? )";
+			String sql = "INSERT INTO Record VALUES (NULL, ?, ?, ?, ?, ?, ?,? )";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -40,6 +39,8 @@ public class RecordDao {
 			pStmt.setDate(4, new java.sql.Date(sport.getRegistDate().getTime()));
 			pStmt.setInt(5, sport.getNumber());
 			pStmt.setDouble(6, sport.getKcal());
+			pStmt.setString(7, sport.getName());
+
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
@@ -67,7 +68,7 @@ public class RecordDao {
 		return result;
 	}
 
-	//削除
+
 	public boolean delete(int number) {
 		Connection conn = null;
 		boolean result = false;
@@ -113,38 +114,31 @@ public class RecordDao {
 		return result;
 	}
 
-	
-	public List<Record> collect(int number, int y, int m, int d) {
+
+	public List<Record> collect(int y, int m, int d) {
 		Connection conn = null;
 		List<Record> RecordList = new ArrayList<>();
 
-		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.YEAR, y);
-		cal.set(Calendar.MONTH, m);
-		cal.set(Calendar.DATE, d);
-		
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Record WHERE regist_date = ? and number = ? ";
-			
+			String sql = "SELECT * FROM Record WHERE regist_date = ? ";
+
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
-			pStmt.setDate(1, new java.sql.Date(cal.getTimeInMillis()));
-			pStmt.setInt(2, number);
+			pStmt.setString(1, "%");
 
-			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
 	        //java.util.Date date2 = new java.util.Date(date1.getTime());
-			
+
 			while (rs.next()) {
 				Record record = new Record(
 					rs.getInt("record_number"),
@@ -153,17 +147,19 @@ public class RecordDao {
 					rs.getString("unit"),
 					new java.util.Date(rs.getDate("regist_date").getTime()),
 					rs.getInt("number"),
-					rs.getDouble("kcal"));
+					rs.getDouble("kcal"),
+					rs.getString("name")
+				);
 				RecordList.add(record);
 			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			RecordList.clear();
+			RecordList = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			RecordList.clear();
+			RecordList = null;
 		}
 		finally {
 			// データベースを切断
@@ -173,15 +169,15 @@ public class RecordDao {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					RecordList.clear();
+					RecordList = null;
 				}
 			}
 		}
 
 		// 結果を返す
 		return RecordList;
-		
 
-	}	
+
+	}
 
 }
