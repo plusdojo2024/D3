@@ -186,21 +186,25 @@
             let kcal = 0;
             // ウォーキング消費カロリー計算
             if((myMoveKind) === "1"){
-                kcal = myWeight * myDistance * 4.9 * 1.05 ;				// 消費カロリー＝体重×距離×メッツ値×1.05
+                kcal = myWeight * myDistance * 4.9 * 1.05 / 1000;		// 消費カロリー＝体重×距離×メッツ値×1.05
+                kcal = Math.round(kcal * 100) / 100;							//小数第２位で切り捨て
             }
             // ランニング消費カロリー計算
             else if((myMoveKind) === "2"){
-                kcal = myWeight * myDistance * 7.0 * 1.05 ;				// 消費カロリー＝体重×距離×メッツ値×1.05
+                kcal = myWeight * myDistance * 7.0 * 1.05 / 1000;		// 消費カロリー＝体重×距離×メッツ値×1.05
+                kcal = Math.round(kcal * 100) / 100;							//小数第２位で切り捨て
             }
             // サイクリング消費カロリー計算
             else if((myMoveKind) === "3"){
-            	kcal = myWeight * myDistance * 8.0 * 1.05 ;				// 消費カロリー＝体重×距離×メッツ値×1.05
+            	kcal = myWeight * myDistance * 8.0 * 1.05 / 1000 ;		// 消費カロリー＝体重×距離×メッツ値×1.05
+                kcal = Math.round(kcal * 100) / 100;							//小数第２位で切り捨て
             } else {
             	kcal = 0;
             }
 
             let kcalOutput = document.getElementById("kcalOutput");			// id="kcalOutput"から値を取得
             kcalOutput.value = (kcal === 0) ? "" : kcal;					// kcalフォームに値を出力
+
 	};
 
         </script>
