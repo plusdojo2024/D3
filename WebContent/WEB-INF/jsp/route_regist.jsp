@@ -69,7 +69,7 @@
 		</div>
 	<div id="my_leaflet">ここに地図が表示される</div>
 
-            <select class="text" id="moveKind" name="moveKind">
+            <select class="text" id="moveKind" name="moveKind" onchange="kcalCalc()">
 
                 <option value="0">---</option>
                 <option value="1">ウォーキング</option>
@@ -77,8 +77,8 @@
                 <option value="3">自転車</option>
 
             </select>
-            <input type="text" class="text" name="my_distance" id="my_distance" value=""> m    &nbsp;
-            <input type="text" class="text" name="kcal" id="kcal" value=""> kcal
+            <input type="number" class="text" name="my_distance" id="my_distance" value="" onchange="kcalCalc()"> m    &nbsp;
+            <input type="text" class="text" name="kcal" id="kcalOutput" value=""> kcal
 
             <br>
 	<div class="header">
@@ -178,32 +178,30 @@
 
   		const kcalCalc =() => {
             let weight = document.getElementById	("weight");			// 体重が入力されたフォームから値を取得
-            let distance = document.getElementById	("myDistance");		// 距離が入力されたフォームから値を取得
+            let distance = document.getElementById	("my_distance");	// 距離が入力されたフォームから値を取得
             let moveKind = document.getElementById	("moveKind");		// 移動手段が入力されたフォームから値を取得
-            let str = active.value.split			("&&");				// &&でsplitする
-            let kind = str[0];
-            let mets = str[1];
-
-
+            let myWeight = weight.value ||0;
+            let myDistance = distance.value ||0;
+			let myMoveKind = moveKind.value ||0;
+            let kcal = 0;
             // ウォーキング消費カロリー計算
-            if(Number(movekind) === 1){
-                let kcal = weight * myDistance * 4.9 * 1.05;				// 消費カロリー＝体重×距離×メッツ値×1.05
+            if((myMoveKind) === "1"){
+                kcal = myWeight * myDistance * 4.9 * 1.05 ;				// 消費カロリー＝体重×距離×メッツ値×1.05
             }
             // ランニング消費カロリー計算
-            else if(Number(moveKind) === 2){
-                let kcal = weight * myDistance * 7.0 * 1.05 ;				// 消費カロリー＝体重×距離×メッツ値×1.05
+            else if((myMoveKind) === "2"){
+                kcal = myWeight * myDistance * 7.0 * 1.05 ;				// 消費カロリー＝体重×距離×メッツ値×1.05
             }
             // サイクリング消費カロリー計算
-            else if(Number(Kind === 3)){
-            	let kcal = weight * myDistance * 8.0 * 1.05 ;				// 消費カロリー＝体重×距離×メッツ値×1.05
+            else if((myMoveKind) === "3"){
+            	kcal = myWeight * myDistance * 8.0 * 1.05 ;				// 消費カロリー＝体重×距離×メッツ値×1.05
+            } else {
+            	kcal = 0;
             }
 
             let kcalOutput = document.getElementById("kcalOutput");			// id="kcalOutput"から値を取得
-            kcalOutput.value = kcal;										// kcalフォームに値を出力
-
-			// 消費カロリーを出力する
-			const kcal = document.getElementById("kcal").value;
-	}
+            kcalOutput.value = (kcal === 0) ? "" : kcal;					// kcalフォームに値を出力
+	};
 
         </script>
     </body>

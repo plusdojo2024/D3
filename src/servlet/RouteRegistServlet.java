@@ -55,7 +55,7 @@ public class RouteRegistServlet extends HttpServlet {
 			RouteRecord history = null; // 履歴がない場合
 			request.setAttribute("history", history);
 		}
-
+		request.setAttribute("weight", loginUser.getWeight());
 		// ルート登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/route_regist.jsp");
 		dispatcher.forward(request, response);
