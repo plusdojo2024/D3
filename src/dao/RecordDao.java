@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import model.Record;
@@ -68,7 +69,7 @@ public class RecordDao {
 		return result;
 	}
 
-
+	//削除
 	public boolean delete(int number) {
 		Connection conn = null;
 		boolean result = false;
@@ -114,25 +115,32 @@ public class RecordDao {
 		return result;
 	}
 
-
-	public List<Record> collect(int y, int m, int d) {
+	
+	public List<Record> collect(int number, int y, int m, int d) {
 		Connection conn = null;
 		List<Record> RecordList = new ArrayList<>();
 
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, y);
+		cal.set(Calendar.MONTH, m);
+		cal.set(Calendar.DATE, d);
+		
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Record WHERE regist_date = ? ";
+			String sql = "SELECT * FROM Record WHERE regist_date = ? and number = ? ";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
-			pStmt.setString(1, "%");
+			pStmt.setDate(1, new java.sql.Date(cal.getTimeInMillis()));
+			pStmt.setInt(2, number);
 
+			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
@@ -155,11 +163,11 @@ public class RecordDao {
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			RecordList = null;
+			RecordList.clear();
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			RecordList = null;
+			RecordList.clear();
 		}
 		finally {
 			// データベースを切断
@@ -169,7 +177,7 @@ public class RecordDao {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					RecordList = null;
+					RecordList.clear();
 				}
 			}
 		}

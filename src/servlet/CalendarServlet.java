@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.DayResultDao;
+import model.DayResult;
 import model.LoginUser;
 import model.MyCalendar;
 import model.MyCalendarLogic;
@@ -24,10 +27,16 @@ public class CalendarServlet extends HttpServlet {
 		//もしもログインしてなかったらログインサーブレットにリダイレクト
 		HttpSession session = request.getSession();
 		LoginUser loginUser= (LoginUser)session.getAttribute("loginUser");
-		/*if (loginUser == null) {
+		if (loginUser == null) {
 			response.sendRedirect("/D3/LoginServlet");
 			return;
-		}*/
+		}
+
+		//DayResultのデータ受け取り
+		DayResultDao drDao = new DayResultDao();
+		List<DayResult> drList = drDao.getDayResultList(loginUser.getNumber());
+
+		loginUser.setDrList(drList);
 
 		String s_year=request.getParameter("year");
 		String s_month=request.getParameter("month");

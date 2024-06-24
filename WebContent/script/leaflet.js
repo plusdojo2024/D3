@@ -30,7 +30,7 @@ const leafletLine = function(startLatLng, goalLatLng, callbackRoutesfound) {
 			//移動方法をdrivingからwalkingに変更
 			profile:"walking"
 		}),
-		lineOptions: { styles: [{ color:"red", weight:8, opacity:0.5 }] }
+		lineOptions: { styles: [{ color:"green", weight:8, opacity:0.5 }] }
 	}).on('routesfound', function(e) {
 		callbackRoutesfound(e);
 	});
@@ -38,7 +38,8 @@ const leafletLine = function(startLatLng, goalLatLng, callbackRoutesfound) {
 	return line;
 };
 
-//すでに登録されているマーカーを表示（緯度経度はDBから読み込まれる？？）
+//すでに登録されているマーカーを表示（緯度経度はDBから読み込まれる？？） 河合さんにここの部分を渡す <43,44行目をDBから 47行目からもDBから取得する
+/*
 L.marker([35.61946, 139.72091]).addTo(leafletMap);
 L.marker([35.61917, 139.72155]).addTo(leafletMap);
 //すでに登録されている2つのマーカーで経路を表示（緯度経度はDBから読み込まれる？？）
@@ -49,8 +50,10 @@ L.polyline([
 	[35.61918, 139.72155],
 	[35.61917, 139.72155],
 ],{ color: "blue", weight: 8, opacity: 0.5 }).addTo(leafletMap);
+*/
 
 //2つのマーカーでルート探索結果を表示（レイヤー情報操作）
+/*
 const layers = [];
 leafletMap.on('click', function(e) {
 	if (layers.length === 0) {
@@ -115,3 +118,4 @@ leafletMap.on('click', function(e) {
 		layers.length = 0;
 	}
 });
+*/

@@ -6,12 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import model.RouteRecord;
 
 public class RouteRecordDao {
-	public List<RouteRecord> select(int number) {
+    public List<RouteRecord> select(int number) {
         Connection conn =null;
         List<RouteRecord> cardList = new ArrayList<RouteRecord>();
 
@@ -118,6 +119,7 @@ public class RouteRecordDao {
         return result;
     }
 
+
     public RouteRecord getRoute(int userNumber) {
     	Connection conn = null;
     	RouteRecord history = new RouteRecord();
@@ -166,7 +168,7 @@ public class RouteRecordDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
 			// SQL文を準備する
-			String sql = "DELETE FROM RouteRecord WHERE route_number=?";
+			String sql = "DELETE FROM Route_Record WHERE route_number=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -200,23 +202,30 @@ public class RouteRecordDao {
 	}
 
 
-	public List<RouteRecord> collect(int y, int m, int d) {
+	public List<RouteRecord> collect(int number, int y, int m, int d) {
 		Connection conn = null;
 		List<RouteRecord> RouteRecordList = new ArrayList<>();
 
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, y);
+		cal.set(Calendar.MONTH, m);
+		cal.set(Calendar.DATE, d);
+
+		
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Record WHERE regist_date = ? ";
+			String sql = "SELECT * FROM Route_Record WHERE regist_date = ? and number = ?";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
-			pStmt.setString(1, "%");
+			pStmt.setDate(1, new java.sql.Date(cal.getTimeInMillis()));
+			pStmt.setInt(2, number);
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -242,11 +251,11 @@ public class RouteRecordDao {
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			RouteRecordList = null;
+			RouteRecordList.clear();
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			RouteRecordList = null;
+			RouteRecordList.clear();
 		}
 		finally {
 			// データベースを切断
@@ -256,7 +265,7 @@ public class RouteRecordDao {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					RouteRecordList = null;
+					RouteRecordList.clear();
 				}
 			}
 		}

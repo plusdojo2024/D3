@@ -4,7 +4,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
+
         <title>ルート登録|たけのこーちんぐ</title>
+
    		<link rel="stylesheet" href="./css/style_regist.css">
     	<link rel="stylesheet" href="./css/setting2.css">
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -58,16 +60,17 @@
         </div>
 	</div>
 	<main>
-		<!--（見えない）身長体重フォーム-->
-		<input type="hidden" id = "weight" name="weight" placeholder="体重"  value="${weight}" >
 
 		<form id="my_form" action="./ActionRegistServlet" method="post">
+				<!--（見えない）身長体重フォーム-->
+		<input type="hidden" id = "weight" name="weight" placeholder="体重"  value="${weight}" >
 		<div class="header">
 			【マップ入力】 | <a href="/D3/ActiveRegistServlet" class="move">【その他の入力】</a>
 		</div>
 	<div id="my_leaflet">ここに地図が表示される</div>
 
             <select class="text" id="moveKind" name="moveKind">
+
                 <option value="0">---</option>
                 <option value="1">ウォーキング</option>
                 <option value="2">ランニング</option>
@@ -76,6 +79,7 @@
             </select>
             <input type="text" class="text" name="my_distance" id="my_distance" value=""> m    &nbsp;
             <input type="text" class="text" name="kcal" id="kcal" value=""> kcal
+
             <br>
 	<div class="header">
 
@@ -200,6 +204,7 @@
 			// 消費カロリーを出力する
 			const kcal = document.getElementById("kcal").value;
 	}
+
         </script>
     </body>
 </html>
