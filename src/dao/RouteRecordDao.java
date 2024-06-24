@@ -11,7 +11,7 @@ import java.util.List;
 import model.RouteRecord;
 
 public class RouteRecordDao {
-    public List<RouteRecord> select(RouteRecord card) {
+	public List<RouteRecord> select(int number) {
         Connection conn =null;
         List<RouteRecord> cardList = new ArrayList<RouteRecord>();
 
@@ -20,80 +20,11 @@ public class RouteRecordDao {
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D3", "sa", "");
 
             // SQL文を準備する
-            String sql = "SELECT * FROM RouteRecord WHERE route_number, start_ido, start_keido, end_ido, end_keido, distance, move_kind, kcal, registDate, number, spot";
+            String sql = "SELECT * FROM Route_Record WHERE number = ? order by regist_date";
             PreparedStatement pStmt = conn.prepareStatement(sql);
             // SQL文を完成させる
-            if (card.getroute_number() != null) {
-                pStmt.setInt(1, "%" + card.route_number() + "%");
-            }
-            else {
-                pStmt.setInt(1, "%");
-            }
-            if (card.getstart_ido() != null) {
-            pStmt.setDouble(2, "%" + card.getstart_ido() + "%");
-            }
-            else {
-            pStmt.setDouble(2, "%");
-            }
+            pStmt.setInt(1, number);
 
-            if (card.getstart_keido() != null) {
-            pStmt.setDouble(3, "%" + card.getstart_keido() + "%");
-            }
-            else {
-            pStmt.setDouble(3, "%");
-            }
-            if (card.getend_ido() != null) {
-            pStmt.setDouble(4, "%" + card.getend_ido() + "%");
-            }
-            else {
-            pStmt.setDouble(4, "%");
-            }
-
-            if (card.getend_keido() != null) {
-            pStmt.setDouble(5, "%" + card.getend_keido() + "%");
-            }
-            else {
-            pStmt.setDouble(5, "%");
-            }
-            if (card.getdistance() != null) {
-            pStmt.setDouble(6, "%" + card.getdistance() + "%");
-            }
-            else {
-            pStmt.setDouble(6, "%");
-            }
-
-            if (card.getmove_kind() != null) {
-            pStmt.setInt(7, "%" + card.getmove_kind() + "%");
-            }
-            else {
-            pStmt.setInt(7, "%");
-            }
-            if (card.getkcal() != null) {
-            pStmt.setDouble(8, "%" + card.getkcal() + "%");
-            }
-            else {
-            pStmt.setDouble(8, "%");
-            }
-
-            if (card.getregist_date() != null) {
-            pStmt.setDate(9, "%" + card.getregist_date() + "%");
-            }
-            else {
-            pStmt.setDate(9, "%");
-            }
-            if (card.getnumber() != null) {
-            pStmt.setInt(10, "%" + card.getnumber() + "%");
-            }
-            else {
-            pStmt.setInt(10, "%");
-            }
-
-            if (card.getspot() != null) {
-            pStmt.setVarchar(11, "%" + card.getspot() + "%");
-            }
-            else {
-            pStmt.setVarchar(11, "%");
-            }
             // SQL文を実行し、結果表を取得する
             ResultSet rs = pStmt.executeQuery();
 
@@ -110,7 +41,7 @@ public class RouteRecordDao {
                 rs.getDouble("kcal"),
                 rs.getDate("regist_date"),
                 rs.getInt("number"),
-                rs.getString("spot"),
+                rs.getString("spot")
                 );
                 cardList.add(record);
             }
@@ -136,6 +67,7 @@ public class RouteRecordDao {
         }
 
         return cardList;
+   }
 
     public boolean insert(RouteRecord card) {
         Connection conn = null;
@@ -145,87 +77,84 @@ public class RouteRecordDao {
             Class.forName("org.h2.Driver");
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D3", "sa", "");
 
-            String sql = "INSERT INTO RouteRecord VALUES NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
+            String sql = "INSERT INTO Route_Record VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pStmt = conn.prepareStatement(sql);
+            pStmt.setDouble(1, card.getStartIdo());
+            pStmt.setDouble(2, card.getStartKeido());
+            pStmt.setDouble(3, card.getEndIdo());
+            pStmt.setDouble(4, card.getEndKeido());
+            pStmt.setDouble(5, card.getDistance());
+            pStmt.setInt(6, card.getMoveKind());
+            pStmt.setDouble(7, card.getKcal());
+            pStmt.setDate(8, new java.sql.Date(card.getRegistDate().getTime()));
+            pStmt.setInt(9, card.getNumber());
+            pStmt.setString(10, card.getSpot());
 
-			if (card.getroute_number() != null && !card.getroute_number().equals("")) {
-				pStmt.setInt(1, card.getroute_number());
-			}
-			else {
-				pStmt.setInt(1, "（未設定）");
-			}
-			if (card.getstart_ido() != null && !card.getstart_ido().equals("")) {
-				pStmt.setDouble(2, card.getstart_ido());
-			}
-			else {
-				pStmt.setDouble(2, "（未設定）");
-			}
-
-			if (card.getstart_keido() != null && !card.getstart_keido().equals("")) {
-				pStmt.setDouble(3, card.getstart_keido());
-			}
-			else {
-				pStmt.setDouble(3, "（未設定）");
-			}
-			if (card.getend_ido() != null && !card.getend_ido().equals("")) {
-				pStmt.setDouble(4, card.getend_ido());
-			}
-			else {
-				pStmt.setDouble(4, "（未設定）");
-			}
-
-			if (card.getend_keido() != null && !card.getend_keido().equals("")) {
-				pStmt.setDouble(5, card.getend_keido());
-			}
-			else {
-				pStmt.setDouble(5, "（未設定）");
-			}
-			if (card.getdistance() != null && !card.getdistance().equals("")) {
-				pStmt.setDouble(6, card.getdistance());
-			}
-			else {
-				pStmt.setDouble(6, "（未設定）");
-			}
-
-			if (card.getmove_kind() != null && !card.getmove_kind().equals("")) {
-				pStmt.setInt(7, card.getmove_kind());
-			}
-			else {
-				pStmt.setInt(7, "（未設定）");
-			}
-			if (card.getkcal() != null && !card.getkcal().equals("")) {
-				pStmt.setDouble(8, card.getkcal());
-			}
-			else {
-				pStmt.setDouble(8, "（未設定）");
-			}
-
-			if (card.getregist_date() != null && !card.getregist_date().equals("")) {
-				pStmt.setDate(9, card.getregist_date());
-			}
-			else {
-				pStmt.setDate(9, "（未設定）");
-			}
-			if (card.getnumber() != null && !card.getnumber().equals("")) {
-				pStmt.setInt(10, card.getnumber());
-			}
-			else {
-				pStmt.setInt(10, "（未設定）");
-			}
-
-			if (card.getspot() != null && !card.getspot().equals("")) {
-				pStmt.setVarchar(11, card.getspot());
-			}
-			else {
-				pStmt.setVarchar(11, "（未設定）");
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
 			}
 
         }
+        catch (SQLException e) {
+            e.printStackTrace();
+            result = false;
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            result = false;
+        }
+        finally {
+            if(conn != null) {
+                try {
+                    conn.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                    result = false;
+                }
+            }
+        }
+        return result;
+    }
+
+    public RouteRecord getRoute(int userNumber) {
+    	Connection conn = null;
+    	RouteRecord history = new RouteRecord();
+
+    	try {
+    		Class.forName("org.h2.Driver");
+            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D3", "sa", "");
+
+            String sql = "SELECT * FROM Route_Record WHERE userNumber = loginUser AND SELECT loginNumber = (SELECT MAX(recordNumber) FROM Route_Record)";
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+
+
+    	}
+    	catch (SQLException e) {
+            e.printStackTrace();
+            history = null;
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            history = null;
+        }
+        finally {
+            if(conn != null) {
+                try {
+                    conn.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                    history = null;
+                }
+            }
+        }
+    	return history;
     }
 
 
-    }
-	public boolean delete(int number) {
+    public boolean delete(int number) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -270,7 +199,7 @@ public class RouteRecordDao {
 		return result;
 	}
 
-    
+
 	public List<RouteRecord> collect(int y, int m, int d) {
 		Connection conn = null;
 		List<RouteRecord> RouteRecordList = new ArrayList<>();
@@ -284,7 +213,7 @@ public class RouteRecordDao {
 
 			// SQL文を準備する
 			String sql = "SELECT * FROM Record WHERE regist_date = ? ";
-			
+
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
 			pStmt.setString(1, "%");
@@ -294,7 +223,7 @@ public class RouteRecordDao {
 
 			// 結果表をコレクションにコピーする
 	        //java.util.Date date2 = new java.util.Date(date1.getTime());
-			
+
 			while (rs.next()) {
 				RouteRecord routeRecord = new RouteRecord(
 					rs.getInt("route_number"),
@@ -334,9 +263,9 @@ public class RouteRecordDao {
 
 		// 結果を返す
 		return RouteRecordList;
-		
 
-	}	
 
-    
+	}
+
+
 }
