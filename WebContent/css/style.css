@@ -72,7 +72,7 @@ body{
   }
 
 .wrapper .main_content{
-    width: 100%;
+    width: 88%;
     margin-left:200px;
 }
 .wrapper .main_content .header{
@@ -204,7 +204,7 @@ ul.drop1:hover li.category8{
     color         : #ffffff;     /* 文字色     */
     line-height   : 1em;         /* 1行の高さ  */
     transition    : .3s;         /* 変化 */
-     box-shadow   : 6px 6px 3px #666666;  /* 影の設定 */
+	border-style  :none;
 
     margin-top	: 30px;
     margin-left   : 850px;
@@ -230,6 +230,10 @@ ul.drop1:hover li.category8{
 
                          /*active_regist その他の入力画面*/
 
+	.errorMessage{		/*エラーメッセージ*/
+		margin-left: 300px;
+		color: red;
+	}
     .active{
             margin-top: 100px;
            margin-left: 250px;

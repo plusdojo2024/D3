@@ -65,21 +65,21 @@
 					<!-- 運動種類選択(1行目)-->
 					<select name="active_number1" id="active_number1"  onchange="myFunc()" class="active_number"><br>
 					<option value=""></option>
-					<option value="${a1.kind}&&${a1.metsValue}"> ${ a1.activeName }</option> <!--valueの中に運動種類とメッツ値が&&で区切られて入っている。-->
-					<option value="${a2.kind}&&${a2.metsValue}"> ${ a2.activeName }</option>
-					<option value="${a3.kind}&&${a3.metsValue}"> ${ a3.activeName }</option>
-					<option value="${a4.kind}&&${a4.metsValue}"> ${ a4.activeName }</option>
-					<option value="${a5.kind}&&${a5.metsValue}"> ${ a5.activeName }</option>
-					<option value="${a6.kind}&&${a6.metsValue}"> ${ a6.activeName }</option>
-					<option value="${a7.kind}&&${a7.metsValue}"> ${ a7.activeName }</option>
-					<option value="${a8.kind}&&${a8.metsValue}"> ${ a8.activeName }</option>
-					<option value="${a9.kind}&&${a9.metsValue}"> ${ a9.activeName }</option>
-					<option value="${a10.kind}&&${a10.metsValue}"> ${ a10.activeName }</option>
-					<option value="${a11.kind}&&${a11.metsValue}"> ${ a11.activeName }</option>
-					<option value="${a12.kind}&&${a12.metsValue}"> ${ a12.activeName }</option>
-					<option value="${a13.kind}&&${a13.metsValue}"> ${ a13.activeName }</option>
-					<option value="${a14.kind}&&${a14.metsValue}"> ${ a14.activeName }</option>
-					<option value="${a15.kind}&&${a15.metsValue}"> ${ a15.activeName }</option>
+					<option value="${a1.kind}&&${a1.metsValue}&&${ a1.activeName }&&${a1.activeNumber }"> ${ a1.activeName }</option> <!--valueの中に運動種類とメッツ値が&&で区切られて入っている。-->
+					<option value="${a2.kind}&&${a2.metsValue}&&${ a2.activeName }&&${a2.activeNumber }""> ${ a2.activeName }</option>
+					<option value="${a3.kind}&&${a3.metsValue}&&${ a3.activeName }&&${a3.activeNumber }""> ${ a3.activeName }</option>
+					<option value="${a4.kind}&&${a4.metsValue}&&${ a4.activeName }&&${a4.activeNumber }""> ${ a4.activeName }</option>
+					<option value="${a5.kind}&&${a5.metsValue}&&${ a5.activeName }&&${a5.activeNumber }""> ${ a5.activeName }</option>
+					<option value="${a6.kind}&&${a6.metsValue}&&${ a6.activeName }&&${a6.activeNumber }""> ${ a6.activeName }</option>
+					<option value="${a7.kind}&&${a7.metsValue}&&${ a7.activeName }&&${a7.activeNumber }""> ${ a7.activeName }</option>
+					<option value="${a8.kind}&&${a8.metsValue}&&${ a8.activeName }&&${a8.activeNumber }""> ${ a8.activeName }</option>
+					<option value="${a9.kind}&&${a9.metsValue}&&${ a9.activeName }&&${a9.activeNumber }""> ${ a9.activeName }</option>
+					<option value="${a10.kind}&&${a10.metsValue}&&${ a10.activeName }&&${a10.activeNumber }""> ${ a10.activeName }</option>
+					<option value="${a11.kind}&&${a11.metsValue}&&${ a11.activeName }&&${a11.activeNumber }""> ${ a11.activeName }</option>
+					<option value="${a12.kind}&&${a12.metsValue}&&${ a12.activeName }&&${a12.activeNumber }""> ${ a12.activeName }</option>
+					<option value="${a13.kind}&&${a13.metsValue}&&${ a13.activeName }&&${a13.activeNumber }""> ${ a13.activeName }</option>
+					<option value="${a14.kind}&&${a14.metsValue}&&${ a14.activeName }&&${a14.activeNumber }""> ${ a14.activeName }</option>
+					<option value="${a15.kind}&&${a15.metsValue}&&${ a15.activeName }&&${a15.activeNumber }""> ${ a15.activeName }</option>
 					</select>
 					<!-- 運動時間選択(1行目） -->
 					<select name="time1" id="time1"  onchange="kcalCalc()" class="time"> <!-- 時間を選んだら処理 -->
@@ -107,21 +107,21 @@
 					<!-- 運動種類選択(2行目) -->
 					<select name="active_number2" id="active_number2"  onchange="myFunc2()" class="active_number">
 					<option value=""></option>
-					<option value="${a1.kind}&&${a1.metsValue}"> ${ a1.activeName }</option>
-					<option value="${a2.kind}&&${a2.metsValue}"> ${ a2.activeName }</option>
-					<option value="${a3.kind}&&${a3.metsValue}"> ${ a3.activeName }</option>
-					<option value="${a4.kind}&&${a4.metsValue}"> ${ a4.activeName }</option>
-					<option value="${a5.kind}&&${a5.metsValue}"> ${ a5.activeName }</option>
-					<option value="${a6.kind}&&${a6.metsValue}"> ${ a6.activeName }</option>
-					<option value="${a7.kind}&&${a7.metsValue}"> ${ a7.activeName }</option>
-					<option value="${a8.kind}&&${a8.metsValue}"> ${ a8.activeName }</option>
-					<option value="${a9.kind}&&${a9.metsValue}"> ${ a9.activeName }</option>
-					<option value="${a10.kind}&&${a10.metsValue}"> ${ a10.activeName }</option>
-					<option value="${a11.kind}&&${a11.metsValue}"> ${ a11.activeName }</option>
-					<option value="${a12.kind}&&${a12.metsValue}"> ${ a12.activeName }</option>
-					<option value="${a13.kind}&&${a13.metsValue}"> ${ a13.activeName }</option>
-					<option value="${a14.kind}&&${a14.metsValue}"> ${ a14.activeName }</option>
-					<option value="${a15.kind}&&${a15.metsValue}"> ${ a15.activeName }</option>
+					<option value="${a1.kind}&&${a1.metsValue}&&${ a1.activeName }&&${a1.activeNumber }"> ${ a1.activeName }</option> <!--valueの中に運動種類とメッツ値が&&で区切られて入っている。-->
+					<option value="${a2.kind}&&${a2.metsValue}&&${ a2.activeName }&&${a2.activeNumber }""> ${ a2.activeName }</option>
+					<option value="${a3.kind}&&${a3.metsValue}&&${ a3.activeName }&&${a3.activeNumber }""> ${ a3.activeName }</option>
+					<option value="${a4.kind}&&${a4.metsValue}&&${ a4.activeName }&&${a4.activeNumber }""> ${ a4.activeName }</option>
+					<option value="${a5.kind}&&${a5.metsValue}&&${ a5.activeName }&&${a5.activeNumber }""> ${ a5.activeName }</option>
+					<option value="${a6.kind}&&${a6.metsValue}&&${ a6.activeName }&&${a6.activeNumber }""> ${ a6.activeName }</option>
+					<option value="${a7.kind}&&${a7.metsValue}&&${ a7.activeName }&&${a7.activeNumber }""> ${ a7.activeName }</option>
+					<option value="${a8.kind}&&${a8.metsValue}&&${ a8.activeName }&&${a8.activeNumber }""> ${ a8.activeName }</option>
+					<option value="${a9.kind}&&${a9.metsValue}&&${ a9.activeName }&&${a9.activeNumber }""> ${ a9.activeName }</option>
+					<option value="${a10.kind}&&${a10.metsValue}&&${ a10.activeName }&&${a10.activeNumber }""> ${ a10.activeName }</option>
+					<option value="${a11.kind}&&${a11.metsValue}&&${ a11.activeName }&&${a11.activeNumber }""> ${ a11.activeName }</option>
+					<option value="${a12.kind}&&${a12.metsValue}&&${ a12.activeName }&&${a12.activeNumber }""> ${ a12.activeName }</option>
+					<option value="${a13.kind}&&${a13.metsValue}&&${ a13.activeName }&&${a13.activeNumber }""> ${ a13.activeName }</option>
+					<option value="${a14.kind}&&${a14.metsValue}&&${ a14.activeName }&&${a14.activeNumber }""> ${ a14.activeName }</option>
+					<option value="${a15.kind}&&${a15.metsValue}&&${ a15.activeName }&&${a15.activeNumber }""> ${ a15.activeName }</option>
 				</select>
 					<!-- 運動時間選択(2行目) -->
 				 <select name="time2" id="time2"  onchange="kcalCalc2()" class="time"><!-- 時間を選んだら処理2 -->
@@ -149,22 +149,22 @@
         	 							<!-- 運動種類選択3 -->
         	 	<!-- 運動種類選択(3行目)-->
          		<select name="active_number3" id="active_number3" onchange="myFunc3()" class="active_number">
-					<option value="0"></option>
-					<option value="${a1.kind}&&${a1.metsValue}"> ${ a1.activeName }</option>
-					<option value="${a2.kind}&&${a2.metsValue}"> ${ a2.activeName }</option>
-					<option value="${a3.kind}&&${a3.metsValue}"> ${ a3.activeName }</option>
-					<option value="${a4.kind}&&${a4.metsValue}"> ${ a4.activeName }</option>
-					<option value="${a5.kind}&&${a5.metsValue}"> ${ a5.activeName }</option>
-					<option value="${a6.kind}&&${a6.metsValue}"> ${ a6.activeName }</option>
-					<option value="${a7.kind}&&${a7.metsValue}"> ${ a7.activeName }</option>
-					<option value="${a8.kind}&&${a8.metsValue}"> ${ a8.activeName }</option>
-					<option value="${a9.kind}&&${a9.metsValue}"> ${ a9.activeName }</option>
-					<option value="${a10.kind}&&${a10.metsValue}"> ${ a10.activeName }</option>
-					<option value="${a11.kind}&&${a11.metsValue}"> ${ a11.activeName }</option>
-					<option value="${a12.kind}&&${a12.metsValue}"> ${ a12.activeName }</option>
-					<option value="${a13.kind}&&${a13.metsValue}"> ${ a13.activeName }</option>
-					<option value="${a14.kind}&&${a14.metsValue}"> ${ a14.activeName }</option>
-					<option value="${a15.kind}&&${a15.metsValue}"> ${ a15.activeName }</option>
+					<option value=""></option>
+					<option value="${a1.kind}&&${a1.metsValue}&&${ a1.activeName }&&${a1.activeNumber }"> ${ a1.activeName }</option> <!--valueの中に運動種類とメッツ値が&&で区切られて入っている。-->
+					<option value="${a2.kind}&&${a2.metsValue}&&${ a2.activeName }&&${a2.activeNumber }""> ${ a2.activeName }</option>
+					<option value="${a3.kind}&&${a3.metsValue}&&${ a3.activeName }&&${a3.activeNumber }""> ${ a3.activeName }</option>
+					<option value="${a4.kind}&&${a4.metsValue}&&${ a4.activeName }&&${a4.activeNumber }""> ${ a4.activeName }</option>
+					<option value="${a5.kind}&&${a5.metsValue}&&${ a5.activeName }&&${a5.activeNumber }""> ${ a5.activeName }</option>
+					<option value="${a6.kind}&&${a6.metsValue}&&${ a6.activeName }&&${a6.activeNumber }""> ${ a6.activeName }</option>
+					<option value="${a7.kind}&&${a7.metsValue}&&${ a7.activeName }&&${a7.activeNumber }""> ${ a7.activeName }</option>
+					<option value="${a8.kind}&&${a8.metsValue}&&${ a8.activeName }&&${a8.activeNumber }""> ${ a8.activeName }</option>
+					<option value="${a9.kind}&&${a9.metsValue}&&${ a9.activeName }&&${a9.activeNumber }""> ${ a9.activeName }</option>
+					<option value="${a10.kind}&&${a10.metsValue}&&${ a10.activeName }&&${a10.activeNumber }""> ${ a10.activeName }</option>
+					<option value="${a11.kind}&&${a11.metsValue}&&${ a11.activeName }&&${a11.activeNumber }""> ${ a11.activeName }</option>
+					<option value="${a12.kind}&&${a12.metsValue}&&${ a12.activeName }&&${a12.activeNumber }""> ${ a12.activeName }</option>
+					<option value="${a13.kind}&&${a13.metsValue}&&${ a13.activeName }&&${a13.activeNumber }""> ${ a13.activeName }</option>
+					<option value="${a14.kind}&&${a14.metsValue}&&${ a14.activeName }&&${a14.activeNumber }""> ${ a14.activeName }</option>
+					<option value="${a15.kind}&&${a15.metsValue}&&${ a15.activeName }&&${a15.activeNumber }""> ${ a15.activeName }</option>
 										 <!-- 時間3 -->
          		</select>
          		<!--運動時間選択(3行目)-->
