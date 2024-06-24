@@ -1,0 +1,99 @@
+body{
+    background-color: #FEFFDE;
+}
+
+.logo{
+    text-align: center;
+}
+.logo > img{
+    width: 250px;
+    height: auto;
+    object-fit: contain;
+}
+
+.loginError_space{
+    width: 300px;
+    margin: 0 auto;
+}
+#error_message{
+    color: #ff0000;
+}
+
+.login_screen{
+    /* background-color: #DDFFBC; */
+    background-color: #91C788;
+    /* background-color: #52734D; */
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+label{
+    color: #FFF;
+    font-size: small;
+    font-weight: bold;
+}
+input[type="text"] {
+    width: 80%;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#error_id, #error_password{
+    color: #ff0000;
+}
+/* .password_wrapper{
+    display: flex;
+    max-width: 250px;
+    border: 1px solid #000;
+    border-radius: 4px;
+} */
+input[type="password"] {
+    width: 80%;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* border: none; */
+}
+.submit{
+    border: 2.25px solid #52734D;
+    border-radius : 5%;          /* 角丸       */
+    font-size     : 12pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 10px 10px;   /* 余白       */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+    color         : #52734D;     /* 背景色     */
+    background    : #ffffff;     /* 文字色     */
+    font-weight: bold;
+
+}
+.submit:hover{
+    box-shadow    : none;        /* カーソル時の影消去 */
+    background-color: #52734D;   /* ボタン背景色 */
+    color         : #ffffff;     /* 文字色 */
+}
+.reset{
+    background    : #faab78;     /* ボタン背景色 */
+    color         : #ffffff;     /* 文字色 */
+    border: 2.25px solid #faab78;
+    border-radius : 5%;          /* 角丸       */
+    font-size     : 12pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 10px 10px;   /* 余白       */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+    font-weight: bold;
+}
+.reset:hover{
+    box-shadow    : none;        /* カーソル時の影消去 */
+    color         : #faab78;     /* 背景色     */
+    background    : #ffffff;     /* 文字色     */
+}

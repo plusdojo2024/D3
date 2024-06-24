@@ -108,15 +108,12 @@ public class LoginServlet extends HttpServlet {
 		else {											// ログイン失敗
 			// リクエストスコープに、メッセージを格納する
 			request.setAttribute("loginError",
-			new LoginError("IDまたはpasswordに間違いがあります"));
+			new LoginError("IDまたはPasswordに間違いがあります"));
 
 			// ログインページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
 
-			// 結果ページにフォワードする
-			// RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
-			// dispatcher.forward(request, response);
 		}
 	}
 
