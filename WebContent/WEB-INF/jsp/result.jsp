@@ -63,7 +63,7 @@
 
 		    <p class="randomcomment">${ requestScope.randomcom }</p>
 		    <div class="chara">
-		    	<img src="./img/chara1.png" width="150px">
+		    	<img src="./img/chara1.png">
 		    </div>
 		    <p class="nowlv">level. ${ requestScope.userLevel}</p>
 		    <p class="map" id="my_leaflet">map</p>
@@ -71,32 +71,26 @@
 
 		    <p class="resultmessage">${ResultMessage.message}</p>
 
-		    <p class="actrec">ランニング　${ result.value }㎞　${ result.kcal }kcal</p>
+		    <!-- <p class="actrec">ランニング　${ result.value }㎞　${ result.kcal }kcal</p> -->
 
 
-			<c:forEach var="e" items="${recordList}" >
-			    <form action="./ResultServlet" method="post">
-			    	<input type="hidden" name="y" value="${ e.y }">
-			    	<input type="hidden" name="m" value="${ e.m }">
-			    	<input type="hidden" name="d" value="${ e.d }">
-			    	<input type="text" name="record_number" value="${ e.recordNumber }"><!-- textをhiddenにすると画面表示されない -->
-			    	<input type="text" name="redist_date" value="${ e.registDate }"><!-- textをhiddenにすると画面表示されない -->
-			    	<input type="text" name="kind" value="${ e.kind }">
-			    	<input type="text" name="value" value="${ e.value }">
-			    	<input type="text" name="unit" value="${ e.unit }">
-			    	<input type="text" name="kcal" value="${ e.kcal }">
-			    	<label>label</label>
+			<c:forEach var="e" items="${record}">
+			    <form action="./ResultServlet" method="post" class="actrec">
+			    	<input type="hidden" name="record_number" value="${ e.recordNumber }"><!-- textをhiddenにすると画面表示されない -->
+			    	<input type="hidden" name="redist_date" value="${ e.registDate }"><!-- textをhiddenにすると画面表示されない -->
+			    	<input type="hidden" name="kind" value="${ e.kind }">
+			    	<label>${ e.name }  </label>
+			    	<label>${ e.value }</label>
+			    	<label>${ e.unit }  </label>
+			    	<label>${ e.kcal }kcal</label>
 			    	<input type="image" name="submit" src="./img/gomi.png" value="削除1" onclick="deleteMessage()">
 			    </form>
 		    </c:forEach>
 
- 			<c:forEach var="r" items="${routeRecordList}" >
-			    <form action="./ResultServlet" method="post">
-			    	<input type="hidden" name="y" value="${ r.y }">
-			    	<input type="hidden" name="m" value="${ r.m }">
-			    	<input type="hidden" name="d" value="${ r.d }">
-			    	<input type="text" name="route_number" value="${ r.routeNumber }">
-			    	<input type="text" name="redist_date" value="${ r.registDate }">
+ 			<c:forEach var="r" items="${routerecord}" ><!-- 大文字？小文字？ -->
+			    <form action="./ResultServlet" method="post" class="actrec">
+			    	<input type="hidden" name="route_number" value="${ r.routeNumber }">
+			    	<input type="hidden" name="redist_date" value="${ r.registDate }">
 			    	<input type="text" name="move_kind" value="${ r.moveKind }">
 			    	<input type="text" name="distance" value="${ r.distance }">
 			    	<input type="text" name="kcal" value="${ r.kcal }">
