@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-
         <title>ルート登録|たけのこーちんぐ</title>
-
    		<link rel="stylesheet" href="./css/style_regist.css">
     	<link rel="stylesheet" href="./css/setting2.css">
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -19,97 +18,84 @@
         }
     </style>
     <body>
+		<div class="wrapper">
+    	    <div class="sidebar">
+        	    <h2>Menu</h2>
+        		<ul>
+            		<li><a href="/D3/ResultServlet?y=${year}&m=${month}&d=${day}" class="js-header-nav-link">ホーム<i></i></a></li>
+            		<li><a href="/D3/RouteRegistServlet"class="js-header-nav-link">入力<i></i></a></li>
+            		<ul class="drop1" ontouchstart="1">
+	                	<li class="category" >グループ</li>
+	                	<li class="category1"><a href="/D3/MyScheduleServlet">個人</a></li>
+	                	<li class="category2"><a href="/D3/GroupManagerServlet">グループ管理</a></li>
 
-	<div class="wrapper">
-        <div class="sidebar">
-            <h2>Menu</h2>
-        <ul>
-            <li><a href="/D3/ResultServlet?y=${year}&m=${month}&d=${day}" class="js-header-nav-link">ホーム<i></i></a></li>
-            <li><a href="/D3/RouteRegistServlet"class="js-header-nav-link">入力<i></i></a></li>
-            <ul class="drop1" ontouchstart="1">
-                <li class="category" >グループ</li>
-                <li class="category1"><a href="/D3/MyScheduleServlet">個人</a></li>
-                <li class="category2"><a href="/D3/GroupManagerServlet">グループ管理</a></li>
+		                <li class="category3">
+			                <div><a href="/D3/GroupScheduleServlet">グループ1</a></div>
+			                <div><a href="/D3/GroupScheduleServlet">グループ2</a></div>
+			                <div><a href="/D3/GroupScheduleServlet">グループ3</a></div>
+			                <div><a href="/D3/GroupScheduleServlet">グループ4</a></div>
+			                <div><a href="/D3/GroupScheduleServlet">グループ5</a></div>
+			                <div><a href="#">グループ6</a></div>
+			                <div><a href="#">グループ7</a></div>
+			                <div><a href="#">グループ8</a></div>
+			                <div><a href="#">グループ9</a></div>
+			                <div><a href="#">グループ10</a></div>
+			                <div><a href="#">グループ11</a></div>
+			                <div><a href="#">グループ12</a></div>
+                		</li>
+        			</ul>
+        			<li class="setting"><a href="/D3/SettingServlet">設定</a></li>
+             		<li><a href="/D3/LogoutServlet" onclick="if(!confirm('本当にログアウトしますか？'))return false">ログアウト</a></li>
+        		</ul>
+			</div>
+    	<div class="main_content">
+	    	<!--ヘッダー-->
+			<div class="header">
+				【マップ入力】 | <a href="/D3/ActiveRegistServlet" class="move">【その他の入力】</a>
+			</div>
+			<main>
+				<!--確認メッセージ-->
+				<p class ="errorMessage">${result.message}</p>
+				<!--確認メッセージ-->
+				<div id="my_leaflet">ここに地図が表示される</div>
+				<form id="my_form" action="/D3/RouteRegistServlet" method="post">
+						<!--（見えない）身長体重フォーム-->
+					<input type="hidden" id ="weight" name="weight" placeholder="体重" value="${weight}">
+		            <select class="text" id="moveKind" name="moveKind" onchange="kcalCalc()">
 
+		                <option value="0">---</option>
+		                <option value="1">ウォーキング</option>
+		                <option value="2">ランニング</option>
+		                <option value="3">自転車</option>
 
-                <li class="category3">
-                <div><a href="/D3/GroupScheduleServlet">グループ1</a></div>
-                <div><a href="/D3/GroupScheduleServlet">グループ2</a></div>
-                <div><a href="/D3/GroupScheduleServlet">グループ3</a></div>
-                <div><a href="/D3/GroupScheduleServlet">グループ4</a></div>
-                <div><a href="/D3/GroupScheduleServlet">グループ5</a></div>
-                <div><a href="#">グループ6</a></div>
-                <div><a href="#">グループ7</a></div>
-                <div><a href="#">グループ8</a></div>
-                <div><a href="#">グループ9</a></div>
-                <div><a href="#">グループ10</a></div>
-                <div><a href="#">グループ11</a></div>
-                <div><a href="#">グループ12</a></div>
-                </li>
+		            </select>
+		            <input type="number" class="text" name="my_distance" id="my_distance" value="" onchange="kcalCalc()"> m    &nbsp;
+		            <input type="text" class="text" name="kcal" id="kcalOutput" value=""> kcal<br>
+					<input type="hidden" name="my_lat1" id="my_lat1">
+					<input type="hidden" name="my_lng1" id="my_lng1">
+					<input type="hidden" name="my_lat2" id="my_lat2">
+					<input type="hidden" name="my_lng2" id="my_lng2">
+					<input type="hidden" name="my_route" id="my_route">
+		    		<input type="submit" class="button" name="regist" value="登録"><br>
+		        	<input type="reset" class="button" name="reset" value="リセット"><br>
 
-            </ul>
-
-                <li class="setting"><a href="/D3/SettingServlet">設定</a></li>
-                <li><a href="/D3/LogoutServlet" onclick="if(!confirm('本当にログアウトしますか？'))return false">ログアウト</a></li>
-        </ul>
-        </div>
-        <div class="main_content">
-              <!--ヘッダー-->
-
-
-        </div>
-	</div>
-	<main>
-
-		<form id="my_form" action="/D3/RouteRegistServlet" method="post">
-				<!--（見えない）身長体重フォーム-->
-		<input type="hidden" id = "weight" name="weight" placeholder="体重"  value="${weight}" >
-		<div class="header">
-			【マップ入力】 | <a href="/D3/ActiveRegistServlet" class="move">【その他の入力】</a>
-		</div>
-		<!--確認メッセージ-->
-		<p class ="errorMessage">${result.message}</p>
-		<!--確認メッセージ-->
-	<div id="my_leaflet">ここに地図が表示される</div>
-
-            <select class="text" id="moveKind" name="moveKind" onchange="kcalCalc()">
-
-                <option value="0">---</option>
-                <option value="1">ウォーキング</option>
-                <option value="2">ランニング</option>
-                <option value="3">自転車</option>
-
-            </select>
-            <input type="number" class="text" name="my_distance" id="my_distance" value="" onchange="kcalCalc()"> m    &nbsp;
-            <input type="text" class="text" name="kcal" id="kcalOutput" value=""> kcal
-
-            <br>
-	<div class="header">
-
-		<input type="hidden" name="my_lat1" id="my_lat1">
-		<input type="hidden" name="my_lng1" id="my_lng1">
-
-		<input type="hidden" name="my_lat2" id="my_lat2">
-		<input type="hidden" name="my_lng2" id="my_lng2">
-
-		<input type="hidden" name="my_route" id="my_route">
-
-    	<input type="submit" class="button" name="regist" value="登録">
-        <input type="reset" class="button" name="reset" value="リセット"><br>
+		            直近の記録<br>
+		            <c:if test="${history.moveKind == 1}">
+				    	<label>ウォーキング</label>
+			    	</c:if>
+			    	<c:if test="${history.moveKind == 2}">
+				    	<label>ランニング</label>
+			    	</c:if>
+			    	<c:if test="${history.moveKind == 3}">
+				    	<label>自転車</label>
+			    	</c:if>
+		            <label>${history.distance}m</label>
+		            <label>${history.kcal}kcal</label>
+		    		<input type="button" class="button" name="regist" value="インポート">
+		        </form>
+		    </main>
+    	</div>
     </div>
-
-
-            直近の記録<br>
-            経路 &nbsp;&nbsp;&nbsp;&nbsp;方法 距離 消費カロリー<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    	<input type="button" class="button" name="regist" value="インポート">
-
-            </form>
-    </main>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
@@ -213,9 +199,7 @@
 
             let kcalOutput = document.getElementById("kcalOutput");			// id="kcalOutput"から値を取得
             kcalOutput.value = (kcal === 0) ? "" : kcal;					// kcalフォームに値を出力
-
-	};
-
-        </script>
+		};
+    </script>
     </body>
 </html>
