@@ -262,6 +262,7 @@ ul.drop1:hover li.category8{
 
 	.errorMessage{		/*エラーメッセージ*/
 		margin-left: 300px;
+
 		color: red;
 	}
     .active{
@@ -310,7 +311,10 @@ ul.drop1:hover li.category8{
 
 }
                          /*チェックボックス*/
-
+ /*チェックボックス*/
+ .kcal{
+ font-size:25px;
+ margin-left: 10px;}
 
 
                             /*active_regist その他の入力画面*/

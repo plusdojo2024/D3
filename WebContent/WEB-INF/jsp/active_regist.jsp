@@ -99,8 +99,8 @@
 				</select>
 					<!-- 歩数入力(1行目) -->
 					<input type="text" id = "step1" name="step1" placeholder="歩数"  value="" onKeyup="kcalCalc()">
-					<!-- 消費カロリー表示(2行目) -->
-					<input type="text" id = "kcalOutput" name="kcal1" placeholder="消費カロリー"><br>
+					<!-- 消費カロリー表示(1行目) -->
+					<input type="text" id = "kcalOutput" name="kcal1" placeholder="消費カロリー"><span class="kcal">kcal</span><br>
 	<!-- 2行目 -->
 					<!--チェックボックス(2行目)-->
 					<input type="checkbox" id="check2" value="2" name="check2" onchange="func1()" class="scales" />
@@ -142,7 +142,7 @@
 				<!-- 歩数入力(2行目) -->
 				<input type="text" id ="step2" name="step2" placeholder="歩数"  onKeyup="kcalCalc2()">
 				<!-- 消費カロリー表示(2行目) -->
-				<input type="text" name="kcal2" id="kcalOutput2" placeholder="消費カロリー"> <br>
+				<input type="text" name="kcal2" id="kcalOutput2" placeholder="消費カロリー"><span class="kcal">kcal</span> <br>
 	<!-- 3行目 -->
 				<!--チェックボックス(3行目)-->
         		<input type="checkbox" id="check3" value="3" name="check3"  class="scales" />
@@ -187,7 +187,7 @@
         		    <!--歩数入力(3行目)-->
         		    <input type="text" id ="step3" name="step3" placeholder="歩数" onKeyup="kcalCalc3()">
 					<!--消費カロリー表示(3行目)-->
-       				<input type="text" id ="kcalOutput3" name="kcal3" placeholder="消費カロリー"> <br>
+       				<input type="text" id ="kcalOutput3" name="kcal3" placeholder="消費カロリー"><span class="kcal">kcal</span> <br>
 					<!--登録ボタン-->
 					<input type="submit" name="submit" value="登録" class="button" onclick="if(!confirm('上記の内容で登録しますか？'))return false">
 
