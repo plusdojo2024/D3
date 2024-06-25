@@ -63,7 +63,7 @@
 
 		    <p class="randomcomment">${ requestScope.randomcom }</p>
 		    <div class="chara">
-		    	<img src="./img/chara1.png">
+		    	<img src="./img/chara1.png" width=120px>
 		    </div>
 		    <p class="nowlv">level. ${ requestScope.userLevel}</p>
 		    <p class="map" id="my_leaflet">map</p>
@@ -73,9 +73,9 @@
 
 		    <!-- <p class="actrec">ランニング　${ result.value }㎞　${ result.kcal }kcal</p> -->
 
-
 			<c:forEach var="e" items="${record}">
 			    <form action="./ResultServlet" method="post" class="actrec">
+					<input type="hidden" name="type" value="1"><!-- textをhiddenにすると画面表示されない -->
 			    	<input type="hidden" name="record_number" value="${ e.recordNumber }"><!-- textをhiddenにすると画面表示されない -->
 			    	<input type="hidden" name="redist_date" value="${ e.registDate }"><!-- textをhiddenにすると画面表示されない -->
 			    	<input type="hidden" name="kind" value="${ e.kind }">
@@ -83,19 +83,26 @@
 			    	<label>${ e.value }</label>
 			    	<label>${ e.unit }  </label>
 			    	<label>${ e.kcal }kcal</label>
-			    	<input type="image" name="submit" src="./img/gomi.png" value="削除1" onclick="deleteMessage()">
+			    	<input type="image" name="submit" src="./img/gomi.png" alt="削除" onclick="deleteMessage()">
+					<input type="hidden" name="check" id="check">
+			    	
 			    </form>
 		    </c:forEach>
 
- 			<c:forEach var="r" items="${routerecord}" ><!-- 大文字？小文字？ -->
+ 			<c:forEach var="r" items="${routerecord}" >
 			    <form action="./ResultServlet" method="post" class="actrec">
+			    	<input type="hidden" name="type" value="2">
 			    	<input type="hidden" name="route_number" value="${ r.routeNumber }">
 			    	<input type="hidden" name="redist_date" value="${ r.registDate }">
 			    	<input type="text" name="move_kind" value="${ r.moveKind }">
 			    	<input type="text" name="distance" value="${ r.distance }">
 			    	<input type="text" name="kcal" value="${ r.kcal }">
-			    	<label>label</label>
-			    	<input type="image" name="submit" src="./img/gomi.png" value="削除2" onclick="deleteMessage()">
+			    	<label>${ r.moveKind }  </label>
+			    	<label>${ r.distance }m  </label>
+			    	<label>${ r.kcal }kcal</label>
+			    	<input type="image" name="submit" src="./img/gomi.png" alt="削除" onclick="deleteMessage()">
+			    	<input type="hidden" name="check" id="check">
+			    	
 			    </form>
 		    </c:forEach>
 
@@ -131,9 +138,6 @@
 
 
 	//歩数計算
-    //let gapkcal = ${requestScope.goalKcal} - ${requestScope.resultKcal};
-	//let steps = Math.round(gapkcal * 100000 / (${loginUser.height}* ${loginUser.weight} * 0.45 * 1.05));
-
 	let gapKcal = ${requestScope.goalKcal} - ${requestScope.resultKcal};
 	gapKcal= Math.round(gapKcal * 100) / 100;
 

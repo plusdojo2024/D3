@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import dao.DayResultDao;
 import dao.RecordDao;
 import dao.RouteRecordDao;
+import dao.UserDao;
 import model.Comment;
 import model.DayResult;
 import model.Level;
@@ -77,7 +78,6 @@ public class ResultServlet extends HttpServlet {
 		Level levelInfo = loginUser.getPickupLvList(userLevel);
 		double goalKcal = levelInfo.getGoalKcal();
 		double resultKcal = 0;//ここ計算にする？
-		int judge = 0;
 		int userExp = 0;// = loginUser.getUserExp();
 		int nextLevelExp = levelInfo.getNextLevelExp();
 		
@@ -87,33 +87,10 @@ public class ResultServlet extends HttpServlet {
 		
 		java.sql.Date thisDate= java.sql.Date.valueOf(y +"-"+ m +"-"+ d);
 		
-		//DayResultのデータ受け取り
-		DayResultDao drDao = new DayResultDao();
-		List<DayResult> drList = drDao.getDayResultList(loginUser.getNumber());
 		//セッションスコープの更新
 /*		loginUser.setDrList(drList);
 		session.setAttribute("loginUser",loginUser);*/
 
-		//１日分のDayResultのデータ受け取り ?
-//		DayResultDao drDao = new DayResultDao();
-//		List<DayResult> tdrList = drDao.getDayResultList(loginUser.getNumber(), Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
-
-		
-		
-/*		if(goalKcal >= tdrList.getResultKcal()) {
-			judge = 1;
-		}else {
-			judge = 0;
-		}*/
-		
-
-		//累計達成日を計算してレベル上げる→登録
-		for(DayResult dayResult : drList) {
-			userExp = userExp + dayResult.getJudge();
-		}		
-		if(userExp >= nextLevelExp) {
-			userLevel = userLevel + 1 ;
-		}
 		
 		
 		//DB・DAOで該当日の結果データを検索する
@@ -147,6 +124,47 @@ public class ResultServlet extends HttpServlet {
 		//消費カロリーをリクエストスコープに
 		request.setAttribute("resultKcal", resultKcal);
 	
+		
+		//１日分のDayResultのデータ受け取り ?
+		DayResultDao tdrDao = new DayResultDao();
+		List<DayResult> tdrList = tdrDao.getDayResultList(loginUser.getNumber(), Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
+
+				
+		if(tdrList.size() ==1) {
+			DayResult dr = tdrList.get(0);
+			dr.setResultKcal(resultKcal);
+			dr.setGoalKcal(goalKcal);
+			dr.setJudge((goalKcal <= resultKcal) ? 1 : 0);
+			tdrDao.update(dr);
+		}else {
+			DayResult dr = new DayResult(
+				thisDate,
+				goalKcal,
+				resultKcal,
+				(goalKcal <= resultKcal) ? 1 : 0,
+				number
+			); 
+			tdrDao.insert(dr);			
+		}
+		
+		
+		//DayResultのデータ受け取り
+		DayResultDao drDao = new DayResultDao();
+		List<DayResult> drList = drDao.getDayResultList(loginUser.getNumber());
+
+		//累計達成日を計算してレベル上げる→登録
+		for(DayResult dayResult : drList) {
+			userExp = userExp + dayResult.getJudge();
+		}
+		
+		if(userExp >= nextLevelExp) {
+			userLevel = userLevel + 1 ;
+			loginUser.setUserLevel(userLevel);
+			UserDao udao = new UserDao();
+			udao.updateUser(loginUser);
+		}
+		
+		
 		//セッションスコープの更新
 /*		loginUser.setDrList(drList);
 		session.setAttribute("loginUser",loginUser);*/
@@ -182,19 +200,21 @@ public class ResultServlet extends HttpServlet {
 		
 		
 		//削除を行う
-		if (request.getParameter("submit").equals("削除1")) {
-			RecordDao bDao = new RecordDao();
+		RecordDao bDao = new RecordDao();
+		RouteRecordDao  rDao = new RouteRecordDao();
+
+		String type = request.getParameter("type");
+		if (type.equals("1")) {
 			if (bDao.delete(Integer.parseInt(recordNumber))){
-				request.setAttribute("result", new ResultMessage("レコードを削除しました。"));
+				request.setAttribute("ResultMessage", new ResultMessage("レコードを削除しました。"));
 			}else { // 削除失敗
-				request.setAttribute("result", new ResultMessage("レコードを削除できませんでした。"));
+				request.setAttribute("ResultMessage", new ResultMessage("レコードを削除できませんでした。"));
 			}
-		}else if(request.getParameter("submit").equals("削除2")) {
-			RouteRecordDao  rDao = new RouteRecordDao();
+		}else if(type.equals("2")) {
 			if (rDao.delete(Integer.parseInt(routeNumber))){  // 削除成功 
-				request.setAttribute("result", new ResultMessage("レコードを削除しました。"));
+				request.setAttribute("ResultMessage", new ResultMessage("レコードを削除しました。"));
 			}else{ // 削除失敗
-				request.setAttribute("result", new ResultMessage("レコードを削除できませんでした。"));
+				request.setAttribute("ResultMessage", new ResultMessage("レコードを削除できませんでした。"));
 			}
 		}
 

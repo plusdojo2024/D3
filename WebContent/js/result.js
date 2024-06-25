@@ -15,6 +15,9 @@ function makeDay(y, m, d){
 
 function deleteMessage(){
 	if(confirm("本当に削除しますか？")) {
+/*		let check = document.getElementById("check");
+		let str = "1";
+		check.value	= str;	*/	
 		return true;
 	} else{
 		alert('キャンセルしました');
@@ -22,6 +25,17 @@ function deleteMessage(){
 	}
 }
 
-
+/*function deleteMessage2(){
+	if(confirm("本当に削除しますか？")) {
+		let check = document.getElementById("check");
+		let str = "2";
+		check.value	= str;				
+		return true;
+	} else{
+		alert('キャンセルしました');
+		event.preventDefault();
+	}
+}
+*/
 
 

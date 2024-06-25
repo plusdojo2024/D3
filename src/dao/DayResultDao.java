@@ -157,7 +157,7 @@ public class DayResultDao {
 				// 結果表をコレクションにコピーする
 		        //java.util.Date date2 = new java.util.Date(date1.getTime());
 				
-				while (rs.next()) {
+				if (rs.next()) {
 					DayResult dayResult = new DayResult(
 						new java.util.Date(rs.getDate("date").getTime()),
 						rs.getDouble("goal_kcal"),
