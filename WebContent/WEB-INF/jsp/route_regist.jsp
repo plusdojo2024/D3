@@ -61,12 +61,15 @@
 	</div>
 	<main>
 
-		<form id="my_form" action="./ActionRegistServlet" method="post">
+		<form id="my_form" action="/D3/RouteRegistServlet" method="post">
 				<!--（見えない）身長体重フォーム-->
 		<input type="hidden" id = "weight" name="weight" placeholder="体重"  value="${weight}" >
 		<div class="header">
 			【マップ入力】 | <a href="/D3/ActiveRegistServlet" class="move">【その他の入力】</a>
 		</div>
+		<!--確認メッセージ-->
+		<p class ="errorMessage">${result.message}</p>
+		<!--確認メッセージ-->
 	<div id="my_leaflet">ここに地図が表示される</div>
 
             <select class="text" id="moveKind" name="moveKind" onchange="kcalCalc()">
@@ -91,13 +94,14 @@
 
 		<input type="hidden" name="my_route" id="my_route">
 
-    	<input type="button" class="button" name="regist" value="登録">
-        <input type="button" class="button" name="reset" value="リセット"><br>
+    	<input type="submit" class="button" name="regist" value="登録">
+        <input type="reset" class="button" name="reset" value="リセット"><br>
     </div>
 
 
             直近の記録<br>
-            経路 方法 距離 消費カロリー &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            経路 &nbsp;&nbsp;&nbsp;&nbsp;方法 距離 消費カロリー<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -182,21 +186,26 @@
             let moveKind = document.getElementById	("moveKind");		// 移動手段が入力されたフォームから値を取得
             let myWeight = weight.value ||0;
             let myDistance = distance.value ||0;
+            myDistance = myDistance / 1000;
 			let myMoveKind = moveKind.value ||0;
             let kcal = 0;
+            let time = 0;
             // ウォーキング消費カロリー計算
             if((myMoveKind) === "1"){
-                kcal = myWeight * myDistance * 4.9 * 1.05 / 1000;		// 消費カロリー＝体重×距離×メッツ値×1.05
+            	time = myDistance / 4.9;
+                kcal = myWeight * time * 3.3 * 1.05;		// 消費カロリー＝体重×時間×メッツ値×1.05
                 kcal = Math.round(kcal * 100) / 100;							//小数第２位で切り捨て
             }
             // ランニング消費カロリー計算
             else if((myMoveKind) === "2"){
-                kcal = myWeight * myDistance * 7.0 * 1.05 / 1000;		// 消費カロリー＝体重×距離×メッツ値×1.05
+            	time = myDistance / 8.3;
+                kcal = myWeight * time * 9.0 * 1.05;		// 消費カロリー＝体重×時間×メッツ値×1.05
                 kcal = Math.round(kcal * 100) / 100;							//小数第２位で切り捨て
             }
             // サイクリング消費カロリー計算
             else if((myMoveKind) === "3"){
-            	kcal = myWeight * myDistance * 8.0 * 1.05 / 1000 ;		// 消費カロリー＝体重×距離×メッツ値×1.05
+            	time = myDistance / 15.0;
+                kcal = myWeight * time * 8.0 * 1.05;		// 消費カロリー＝体重×時間×メッツ値×1.05
                 kcal = Math.round(kcal * 100) / 100;							//小数第２位で切り捨て
             } else {
             	kcal = 0;

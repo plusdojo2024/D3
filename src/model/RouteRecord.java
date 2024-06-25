@@ -29,6 +29,20 @@ public class RouteRecord implements Serializable {
 		this.number = 0;
 		this.spot = "";
 	}
+	public RouteRecord(double startIdo, double startKeido, double endIdo, double endKeido,
+			double distance, int moveKind, double kcal, Date registDate, int number, String spot) {
+		super();
+		this.startIdo = startIdo;
+		this.startKeido = startKeido;
+		this.endIdo = endIdo;
+		this.endKeido = endKeido;
+		this.distance = distance;
+		this.moveKind = moveKind;
+		this.kcal = kcal;
+		this.registDate = registDate;
+		this.number = number;
+		this.spot = spot;
+	}
 	public RouteRecord(int routeNumber, double startIdo, double startKeido, double endIdo, double endKeido,
 			double distance, int moveKind, double kcal, Date registDate, int number, String spot) {
 		super();

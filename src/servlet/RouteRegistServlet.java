@@ -48,11 +48,11 @@ public class RouteRegistServlet extends HttpServlet {
 		// 履歴の取得
 		RouteRecordDao rrDao = new RouteRecordDao();
 		List<RouteRecord> rrList = rrDao.select(userNumber);
-		if (rrList != null) {
-			RouteRecord history = rrList.get(rrList.size()-1); // Listの最終要素を取得する
+		if (rrList.isEmpty()) {
+			RouteRecord history = null; // 履歴がない場合
 			request.setAttribute("history", history);
 		} else {
-			RouteRecord history = null; // 履歴がない場合
+			RouteRecord history = rrList.get(rrList.size()-1); // Listの最終要素を取得する
 			request.setAttribute("history", history);
 		}
 		request.setAttribute("weight", loginUser.getWeight());
@@ -94,9 +94,9 @@ public class RouteRegistServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
-		int number			= loginUser.getNumber();
-		boolean today_result = false;
-		String today_check1      = request.getParameter("today_check");
+		// int number			= loginUser.getNumber();
+		// boolean today_result = false;
+		// String today_check1      = request.getParameter("today_check");
 
 
         // 登録する記録を設定する
@@ -122,7 +122,7 @@ public class RouteRegistServlet extends HttpServlet {
         RouteRecordDao rrDao = new RouteRecordDao();
 		if(rrDao.insert(routeRegist)) {
 			request.setAttribute("result", new ResultMessage("登録されました"));
-		}else {
+		} else {
 			request.setAttribute("result", new ResultMessage("登録されませんでした"));
 		}
         // 入力情報のフォワード先

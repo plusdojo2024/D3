@@ -18,7 +18,7 @@ public class RouteRecordDao {
 
         try {
             Class.forName("org.h2.Driver");
-            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D3", "sa", "");
+            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
             // SQL文を準備する
             String sql = "SELECT * FROM Route_Record WHERE number = ? order by regist_date";
@@ -38,7 +38,7 @@ public class RouteRecordDao {
                 rs.getDouble("end_ido"),
                 rs.getDouble("end_keido"),
                 rs.getDouble("distance"),
-                rs.getInt("mov_kind"),
+                rs.getInt("move_kind"),
                 rs.getDouble("kcal"),
                 rs.getDate("regist_date"),
                 rs.getInt("number"),
@@ -76,7 +76,7 @@ public class RouteRecordDao {
 
         try {
             Class.forName("org.h2.Driver");
-            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D3", "sa", "");
+            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
             String sql = "INSERT INTO Route_Record VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -126,7 +126,7 @@ public class RouteRecordDao {
 
     	try {
     		Class.forName("org.h2.Driver");
-            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D3", "sa", "");
+            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
             String sql = "SELECT * FROM Route_Record WHERE userNumber = loginUser AND SELECT loginNumber = (SELECT MAX(recordNumber) FROM Route_Record)";
             PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -211,7 +211,7 @@ public class RouteRecordDao {
 		cal.set(Calendar.MONTH, (m-1));
 		cal.set(Calendar.DATE, d);
 
-		
+
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
