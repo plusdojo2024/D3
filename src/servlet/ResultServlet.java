@@ -113,9 +113,7 @@ public class ResultServlet extends HttpServlet {
 		RouteRecordDao rDao = new RouteRecordDao();
 		List<RouteRecord> routeRecordData = rDao.collect(number, Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
 		request.setAttribute("routerecord", routeRecordData);
-		
-		System.out.println(routeRecordData.size());
-		
+				
 		//今日の消費カロリー計算　ルートも
 		for(RouteRecord routeRecord : routeRecordData) {
 			resultKcal += routeRecord.getKcal();
@@ -165,6 +163,7 @@ public class ResultServlet extends HttpServlet {
 			udao.updateUser(loginUser);
 		}
 		
+		request.setAttribute("userLevel", userLevel);
 		
 		//セッションスコープの更新
 /*		loginUser.setDrList(drList);

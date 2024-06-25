@@ -94,7 +94,15 @@
 			    	<input type="hidden" name="route_number" value="${ r.routeNumber }">
 			    	<input type="hidden" name="redist_date" value="${ r.registDate }">
 			    	<input type="hidden" name="move_kind" value="${ r.moveKind }">
-			    	<label>${ r.moveKind }  </label>
+			    	<c:if test="${ r.moveKind == 0 }">
+				    	<label>ウォーキング</label>			    		
+			    	</c:if>
+			    	<c:if test="${ r.moveKind == 1}">
+				    	<label>ランニング</label>			    		
+			    	</c:if>
+			    	<c:if test="${ r.moveKind == 2 }">
+				    	<label>自転車</label>			    		
+			    	</c:if>
 			    	<label>${ r.distance }m  </label>
 			    	<label>${ r.kcal }kcal</label>
 			    	<input type="image" name="submit" src="./img/gomi.png" alt="削除" onclick="deleteMessage()">
@@ -154,14 +162,17 @@
     
   //運動種類(0～2)に応じて運動名を表示
     let kind = document.getElementById("move_kind").value ;
-    let name = document.getElementById("name");
+    let rname;
     if(kind === "0"){
-    	name.value = "ウォーキング";
+    	rname.value = "ウォーキング";
     }else if(kind === "1"){
-    	name.value = "ランニング";
+    	rname.value = "ランニング";
     }else{
-    	name.value = "自転車";
+    	rname.value = "自転車";
     }
+    document.getElementById("rname").textContent = rname;
+
+    
     </script>
 </body>
 </html>
