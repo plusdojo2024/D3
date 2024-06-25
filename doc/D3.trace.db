@@ -594,3 +594,874 @@ NULL,
 150,
 'ヨガ',
  ) [42001-200]
+2024-06-21 16:13:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.15[*]，
+0．
+8.0，
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.15[*]，
+0．
+8.0，
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.15，
+0．
+8.0，
+"2024-06-21",
+1,
+"35.68376,139.7344106",
+ ) [42000-200]
+2024-06-21 16:15:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1[*]，
+0．
+8.0，
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1[*]，
+0．
+8.0，
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1，
+0．
+8.0，
+"2024-06-21",
+1,
+"35.68376,139.7344106",
+ ) [42000-200]
+2024-06-21 16:16:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1[*]，
+0,
+8.0，
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1[*]，
+0,
+8.0，
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1，
+0,
+8.0，
+"2024-06-21",
+1,
+"35.68376,139.7344106",
+ ) [42000-200]
+2024-06-21 16:16:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1,
+0,
+8.0[*]，
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1,
+0,
+8.0[*]，
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1,
+0,
+8.0，
+"2024-06-21",
+1,
+"35.68376,139.7344106",
+ ) [42000-200]
+2024-06-21 16:16:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1,
+0,
+8.0,
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1,
+0,
+8.0,
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1,
+0,
+8.0,
+"2024-06-21",
+1,
+"35.68376,139.7344106",
+ ) [42001-200]
+2024-06-21 16:16:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1,
+0,
+8.0,
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1,
+0,
+8.0,
+""2024-06-21"",
+1,
+""35.68376,139.7344106"",
+ )[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.6834712,
+139.7357717,
+0.1,
+0,
+8.0,
+"2024-06-21",
+1,
+"35.68376,139.7344106",
+ ) [42001-200]
+2024-06-21 16:19:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+""2024-06-21"",
+1,
+""35.6837532,139.7351674,"",
+ )[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+""2024-06-21"",
+1,
+""35.6837532,139.7351674,"",
+ )[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+"2024-06-21",
+1,
+"35.6837532,139.7351674,",
+ ) [42001-200]
+2024-06-21 16:20:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+""2024-06-21"",
+1,
+""35.6837532,139.7351674"",
+ )[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+""2024-06-21"",
+1,
+""35.6837532,139.7351674"",
+ )[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+"2024-06-21",
+1,
+"35.6837532,139.7351674",
+ ) [42001-200]
+2024-06-21 16:32:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+""2024-06-21"",
+1,
+""35.6837532,139.7351674"",
+ )[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+""2024-06-21"",
+1,
+""35.6837532,139.7351674"",
+ )[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+"2024-06-21",
+1,
+"35.6837532,139.7351674",
+ ) [42001-200]
+2024-06-21 16:49:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+'2024-06-21',
+1,
+'35.6837532,139.7351674',
+ )[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+'2024-06-21',
+1,
+'35.6837532,139.7351674',
+ )[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+'2024-06-21',
+1,
+'35.6837532,139.7351674',
+ ) [42001-200]
+2024-06-21 16:50:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+'2024-06-21',
+1,
+'35.6837532,139.7351674',
+ )[*]"; 期待されるステートメント "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "INSERT INTO ROUTE_RECORD VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+'2024-06-21',
+1,
+'35.6837532,139.7351674',
+ )[*]"; expected "DEFAULT, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+INSERT INTO route_record VALUES ( 
+NULL, 
+35.6834712,
+139.7357717,
+35.68376,
+139.7344106,
+0.1,
+0,
+8.0,
+'2024-06-21',
+1,
+'35.6837532,139.7351674',
+ ) [42001-200]
+2024-06-24 10:13:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:17:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:22:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:26:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:26:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:26:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:27:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:27:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:27:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:27:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:27:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:27:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:27:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:50:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:51:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:51:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:51:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:53:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:53:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:53:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:58:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 10:58:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 11:31:27 database: flush
+org.h2.message.DbException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/data/D3.mv.db [1.4.199/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/data/D3.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:90)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2787)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:441)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:404)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3343)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:95)
+	at org.h2.engine.Database.getPageStore(Database.java:2739)
+	at org.h2.engine.Database.open(Database.java:769)
+	at org.h2.engine.Database.openDatabase(Database.java:319)
+	at org.h2.engine.Database.<init>(Database.java:313)
+	at org.h2.engine.Engine.openSession(Engine.java:69)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at dao.UserDao.isLoginOK(UserDao.java:24)
+	at servlet.LoginServlet.doPost(LoginServlet.java:59)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/data/D3.mv.db [1.4.199/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/data/D3.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	... 50 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/pleiades/workspace/data/D3.mv.db [1.4.199/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:883)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:390)
+	... 44 more
+2024-06-24 11:31:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 11:31:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 11:43:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 11:43:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 11:51:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 11:51:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 11:52:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 11:57:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 13:07:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 13:34:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 13:34:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 13:45:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:02:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:03:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:12:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:13:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:13:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:38:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:38:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:39:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:42:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:42:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:42:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 14:43:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:13:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:26:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:28:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:28:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:43:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:52:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:53:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:57:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:57:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:57:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:58:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:58:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:58:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:58:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:59:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:59:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:59:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 15:59:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:00:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:01:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:01:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:01:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:01:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:01:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:03:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:03:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:04:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:04:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:04:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:05:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:05:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:05:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:05:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:06:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:06:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:06:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:06:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:06:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:13:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:28:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:29:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 16:29:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 17:10:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 17:28:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
+2024-06-24 17:42:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "
+Syntax error in SQL statement "SELECT * FROM DAY_RESULT WHERE NUMBER = ? DATE[*] = ? "; SQL statement:
+SELECT * FROM Day_Result WHERE number = ? date = ? [42000-199]
