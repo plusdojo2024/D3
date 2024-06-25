@@ -88,9 +88,9 @@ public class LoginUser extends User implements Serializable {
 
 		for(DayResult search : this.drList) {
 			Date targetDate = search.getDate();
-			int year = targetDate.getYear();
+			int year = targetDate.getYear() + 1900;
 			int month = targetDate.getMonth()+1;
-			int day = targetDate.getDay();
+			int day = targetDate.getDate();
 			if(y == year && m == month && d == day) {
 				dayJudge = search.getJudge();
 			}

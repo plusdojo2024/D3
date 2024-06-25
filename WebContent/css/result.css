@@ -143,6 +143,18 @@ p#my_leaflet{
 /*削除のメッセージ*/
 .resultmessage{
 	position: relative;
-    bottom: 180px;
+    bottom: 240px;
     left: 120px;
+}
+
+.routerec{
+	position: relative;
+	bottom: 130px;
+    right: 160px;
+}
+
+input[type="image"]{
+	position: relative;
+	left: 550px;
+    bottom: 90px;
 }

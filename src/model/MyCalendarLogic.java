@@ -66,7 +66,7 @@ public class MyCalendarLogic {
 
 					//todo test用　全部の日を達成にする
 					//judge[i][j] = 1; //消す
-					judge[i][j] = loginUser.getDayJudge(y, m, date) ;
+					judge[i][j] = loginUser.getDayJudge(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, date) ;
 
 					//今作業しているマイカレンダーが今月のカレンダーだったら
 					if (m == mc.getMonth() - 1 && y == mc.getYear()) {
@@ -82,18 +82,25 @@ public class MyCalendarLogic {
 						} else if ((m < mc.getMonth() - 1 && y == mc.getYear()) || y < mc.getYear()) {
 						//今月以降の先頭に＄を付与する
 							data[i][j] = "$" + data[i][j];
-						}
-						if(judge[i][j] == 1) {
-							data[i][j] = data[i][j] + "@";
-						}
+					}
+					if(judge[i][j] == 1) {
+						data[i][j] = data[i][j] + "@";
+					}
 
-						}
+				}
 			}
 		}
 		//作成した2次元配列をマイカレンダーにセットする。
 		mc.setData(data);
 		//mc.setJudge(judge);
 		mc.setJudge(judge);
+		for(var data1:judge) {
+		for(var data2:data1)
+
+		System.out.print(data2);
+		System.out.println();
+
+		}
 		return mc;
 	}
 }
