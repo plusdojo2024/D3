@@ -95,8 +95,8 @@ public class ResultServlet extends HttpServlet {
 		session.setAttribute("loginUser",loginUser);*/
 
 		//１日分のDayResultのデータ受け取り ?
-		DayResultDao tdrDao = new DayResultDao();
-		List<DayResult> tdrList = tdrDao.getDayResultList(loginUser.getNumber(), Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
+//		DayResultDao drDao = new DayResultDao();
+//		List<DayResult> tdrList = drDao.getDayResultList(loginUser.getNumber(), Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
 
 		
 		
@@ -136,7 +136,9 @@ public class ResultServlet extends HttpServlet {
 		RouteRecordDao rDao = new RouteRecordDao();
 		List<RouteRecord> routeRecordData = rDao.collect(number, Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
 		request.setAttribute("routerecord", routeRecordData);
-
+		
+		System.out.println(routeRecordData.size());
+		
 		//今日の消費カロリー計算　ルートも
 		for(RouteRecord routeRecord : routeRecordData) {
 			resultKcal += routeRecord.getKcal();

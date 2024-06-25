@@ -9,6 +9,9 @@
 <title>運動記録 | たけのこーちんぐ</title>
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/result.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+	<link rel="stylesheet" href="./style/leaflet.css" />
 
 </head>
 <body>
@@ -63,7 +66,7 @@
 		    	<img src="./img/chara1.png" width="150px">
 		    </div>
 		    <p class="nowlv">level. ${ requestScope.userLevel}</p>
-		    <p class="map">map</p>
+		    <p class="map" id="my_leaflet">map</p>
 		    <p class="todayrecord">今日の記録</p>
 
 		    <p class="resultmessage">${ResultMessage.message}</p>
@@ -105,8 +108,29 @@
     	</div>
     </div>
 
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+	<script src="./script/leaflet.js"></script>
 
     <script type="text/javascript" src="./js/result.js"></script>
+	<script>
+		<c:forEach var="item" items="${routerecord}">
+			var st = [${item.startIdo}, ${item.startKeido}];
+			var ed = [${item.endIdo}, ${item.endKeido}];
+			var sp = "${item.spot}".split(" - ");
+			var route = [];
+			for(let idokeido of sp){
+				route.push(idokeido.split(","));
+			}
+		        L.marker(st).addTo(leafletMap);//スタート地点
+		        L.marker(ed).addTo(leafletMap);//ゴール地点
+		        //すでに登録されている2つのマーカーで経路を表示（緯度経度はDBから読み込まれる？？）
+		        L.polyline(
+		        	route
+		        	,{ color: "blue", weight: 8, opacity: 0.5 }).addTo(leafletMap);
+		</c:forEach>
+	</script>
+
     <script>
     //日付表示
     makeDay(${requestScope.y}, ${requestScope.m}, ${requestScope.d});
@@ -128,10 +152,22 @@
 	let stepLength = height * 0.45;
 	let steps = distance / stepLength;
 	steps = Math.round(steps);
-    
+    if(steps <= 0){
+    	steps = 0;
+    }
     document.getElementById("steps").textContent = steps;
     
     
+  //運動種類(0～2)に応じて運動名を表示
+    let kind = document.getElementById("move_kind").value ;
+    let name = document.getElementById("name");
+    if(kind === "0"){
+    	name.value = "ウォーキング";
+    }else if(kind === "1"){
+    	name.value = "ランニング";
+    }else{
+    	name.value = "自転車";
+    }
     </script>
 </body>
 </html>

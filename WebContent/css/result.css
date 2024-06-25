@@ -13,6 +13,10 @@ body {
 	width: 88%;
     margin-left: 200px;
     position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+    top: 0;
+    bottom: 0;
 }
 /*カレンダー画像*/
 .calendar {

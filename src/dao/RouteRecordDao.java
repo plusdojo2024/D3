@@ -208,7 +208,7 @@ public class RouteRecordDao {
 
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, y);
-		cal.set(Calendar.MONTH, m);
+		cal.set(Calendar.MONTH, (m-1));
 		cal.set(Calendar.DATE, d);
 
 		
