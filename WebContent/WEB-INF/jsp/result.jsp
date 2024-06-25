@@ -84,24 +84,20 @@
 			    	<label>${ e.unit }  </label>
 			    	<label>${ e.kcal }kcal</label>
 			    	<input type="image" name="submit" src="./img/gomi.png" alt="削除" onclick="deleteMessage()">
-					<input type="hidden" name="check" id="check">
 			    	
 			    </form>
 		    </c:forEach>
 
  			<c:forEach var="r" items="${routerecord}" >
-			    <form action="./ResultServlet" method="post" class="actrec">
+			    <form action="./ResultServlet" method="post" class="routerec">
 			    	<input type="hidden" name="type" value="2">
 			    	<input type="hidden" name="route_number" value="${ r.routeNumber }">
 			    	<input type="hidden" name="redist_date" value="${ r.registDate }">
-			    	<input type="text" name="move_kind" value="${ r.moveKind }">
-			    	<input type="text" name="distance" value="${ r.distance }">
-			    	<input type="text" name="kcal" value="${ r.kcal }">
+			    	<input type="hidden" name="move_kind" value="${ r.moveKind }">
 			    	<label>${ r.moveKind }  </label>
 			    	<label>${ r.distance }m  </label>
 			    	<label>${ r.kcal }kcal</label>
 			    	<input type="image" name="submit" src="./img/gomi.png" alt="削除" onclick="deleteMessage()">
-			    	<input type="hidden" name="check" id="check">
 			    	
 			    </form>
 		    </c:forEach>

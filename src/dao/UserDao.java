@@ -274,7 +274,7 @@ public class UserDao {
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 				// SQL文を準備する
-				String sql2 = "SELECT * FROM User WHERE user_number=?";
+				String sql2 = "SELECT * FROM User WHERE number=?";
 				PreparedStatement pStmt2 =conn.prepareStatement(sql2);
 				pStmt.setInt(1, loginUser.getNumber());
 				// SQL文を実行し、結果表を取得する

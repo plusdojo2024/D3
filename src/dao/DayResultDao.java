@@ -29,11 +29,11 @@ public class DayResultDao {
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
-				pStmt.setDate(0, new java.sql.Date(sport.getDate().getTime()));
-				pStmt.setDouble(1, sport.getGoalKcal());
-				pStmt.setDouble(2, sport.getResultKcal());
-				pStmt.setInt(3, sport.getJudge());
-				pStmt.setInt(4, sport.getNumber());
+				pStmt.setDate(1, new java.sql.Date(sport.getDate().getTime()));
+				pStmt.setDouble(2, sport.getGoalKcal());
+				pStmt.setDouble(3, sport.getResultKcal());
+				pStmt.setInt(4, sport.getJudge());
+				pStmt.setInt(5, sport.getNumber());
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
 					result = true;
@@ -132,7 +132,7 @@ public class DayResultDao {
 
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.YEAR, y);
-			cal.set(Calendar.MONTH, m);
+			cal.set(Calendar.MONTH, m-1);
 			cal.set(Calendar.DATE, d);
 
 			
@@ -144,7 +144,7 @@ public class DayResultDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D3", "sa", "");
 
 				// SQL文を準備する
-				String sql = "SELECT * FROM Day_Result WHERE number = ? date = ?";
+				String sql = "SELECT * FROM Day_Result WHERE number = ? and date = ?";
 				
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる

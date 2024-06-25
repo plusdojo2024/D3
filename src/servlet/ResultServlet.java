@@ -144,13 +144,14 @@ public class ResultServlet extends HttpServlet {
 				(goalKcal <= resultKcal) ? 1 : 0,
 				number
 			); 
-			tdrDao.insert(dr);			
+			tdrDao.insert(dr);
 		}
 		
 		
 		//DayResultのデータ受け取り
 		DayResultDao drDao = new DayResultDao();
 		List<DayResult> drList = drDao.getDayResultList(loginUser.getNumber());
+		loginUser.setDrList(drList);		
 
 		//累計達成日を計算してレベル上げる→登録
 		for(DayResult dayResult : drList) {
