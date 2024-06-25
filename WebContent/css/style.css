@@ -266,8 +266,9 @@ ul.drop1:hover li.category8{
 	}
     .active{
             margin-top: 100px;
-           margin-left: 250px;
+           margin-left: 240px;
             width: 100%;
+
         }
     .active input[type='text'] {
              font: 15px/20px sans-serif;
@@ -284,9 +285,15 @@ ul.drop1:hover li.category8{
             font-size:  25px;
             }
                 /*選択ボックス*/
+	/*運動選択*/
 
-    #sport{
+    .active_number{
         width: 220px;
+        font-size: 25px;
+
+    }
+        .time{
+
         font-size: 25px;
 
     }
