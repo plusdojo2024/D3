@@ -45,8 +45,7 @@ a:active {
 /*カレンダー見出し（曜日）、日にちCSS*/
 .caltable th, .caltable td {
 	border: 1px solid #91C788;
-	padding: 20px;
-	padding: 40px;
+	padding: 35px;
 	font-size: 20px;
 }
 

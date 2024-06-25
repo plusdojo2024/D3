@@ -65,9 +65,8 @@ public class MyCalendarLogic {
 					data[i][j] = String.valueOf(date);
 
 					//todo test用　全部の日を達成にする
-					//int s = .getjudge();
-					judge[i][j] = 1; //消す
-					//judge[i][j] = loginUser.getDayJudge(y, m, date) ;
+					//judge[i][j] = 1; //消す
+					judge[i][j] = loginUser.getDayJudge(y, m, date) ;
 
 					//今作業しているマイカレンダーが今月のカレンダーだったら
 					if (m == mc.getMonth() - 1 && y == mc.getYear()) {
