@@ -61,16 +61,14 @@
 				<form id="my_form" action="/D3/RouteRegistServlet" method="post">
 						<!--（見えない）身長体重フォーム-->
 					<input type="hidden" id ="weight" name="weight" placeholder="体重" value="${weight}">
-		            <select class="text" id="moveKind" name="moveKind" onchange="kcalCalc()">
-
+		            <select class="text" id="moveKind" name="moveKind" onchange="kcalCalc()" required>
 		                <option value="0">---</option>
 		                <option value="1">ウォーキング</option>
 		                <option value="2">ランニング</option>
 		                <option value="3">自転車</option>
-
 		            </select>
-		            <input type="number" class="text" name="my_distance" id="my_distance" value="" onchange="kcalCalc()"> m    &nbsp;
-		            <input type="text" class="text" name="kcal" id="kcalOutput" value=""> kcal<br>
+		            <input type="number" class="text" name="my_distance" id="my_distance" value="" step="0.1" min="0" onchange="kcalCalc()" required> m    &nbsp;
+		            <input type="text" class="text" name="kcal" id="kcalOutput" value="" required> kcal<br>
 					<input type="hidden" name="my_lat1" id="my_lat1">
 					<input type="hidden" name="my_lng1" id="my_lng1">
 					<input type="hidden" name="my_lat2" id="my_lat2">
@@ -91,7 +89,7 @@
 			    	</c:if>
 		            <label>${history.distance}m</label>
 		            <label>${history.kcal}kcal</label>
-		    		<input type="button" class="button" name="regist" value="インポート">
+		    		<input type="submit" class="button" name="regist" value="インポート">
 		        </form>
 		    </main>
     	</div>
@@ -100,7 +98,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 <script src="./script/leaflet.js"></script>
-        <script>
+    <script>
         const layers = [];
         leafletMap.on('click', function(e) {
         	if (layers.length === 0) {

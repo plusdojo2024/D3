@@ -50,20 +50,23 @@
     <main>
     <h2>【プロフィール設定】</h2>
 
-        <form name="setting" method="post" action="./SettingServlet">
+        <form name="setting" method="post" id="data_form" action="./SettingServlet">
             名前 &nbsp;
-            <input type ="text" class="text" id="name" name="name" value="${name}" size="20"><br>
+            <input type ="text" class="text" id="name" name="name" value="${name}" size="20" required><br>
             身長 &nbsp;
-            <input type ="text" class="text" id="height" name="height" value="${height}" size="10">&nbsp; cm
+            <input type ="number" class="text" id="height" name="height" value="${height}" size="10" step="0.1" required>&nbsp; cm
             <br>
             体重 &nbsp;
-            <input type ="text" class="text" id="weight" name="weight" value="${weight}" size="10">&nbsp; kg
+            <input type ="number" class="text" id="weight" name="weight" value="${weight}" size="10" step="0.1" required>&nbsp; kg
             <br>
             BMI &nbsp;
-            <input type="text" class="text" id="bmi" name="bmi" value="${bmi}" size="10" readonly>
-        <p>${ActiveResult.message}</p>
+            <input type="number" class="text" id="bmi" name="bmi" value="${bmi}" size="10" step="0.1" readonly>
+        	<p>${result.message}</p>
             <div class="newer">
             	<input type="hidden" name="number" value="${number}">
+            	<p id="nameErrorObj"></p>
+            	<p id="heightErrorObj"></p>
+            	<p id="weightErrorObj"></p>
                 <input type="submit" class="button" id="updateButton" value="更新">
 
             </div>
@@ -73,8 +76,6 @@
 
         </div>
 	</div>
-
-
 
     <script>
         "use strict";
@@ -89,11 +90,6 @@
             let BmiObj = document.getElementById("bmi");
             bmi = Math.round(bmi*10)/10;
             BmiObj.value = bmi;
-
-
-
-
-
         });
 
     </script>
