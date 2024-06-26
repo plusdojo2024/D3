@@ -148,7 +148,7 @@ public class ActiveRegistServlet extends HttpServlet {
 			RecordDao bDao = new RecordDao();
 			result[0] = bDao.insert(new Record(0, kind, value , unit, registDate, number, kcal,activeNumber[2])  );
 
-		}else {
+			}else {
 			result[0] = true;
 		}
 			//二つ目のチェックボックス
@@ -164,7 +164,7 @@ public class ActiveRegistServlet extends HttpServlet {
 			int kind 		 	= active.getKind();
 			double value 	 	= 0.0;
 			String unit = "";
-			if(time2.equals("")) {
+			if(time2 ==null) {
 				value = Double.parseDouble(step2);
 				unit = "歩数";
 			}else {
@@ -181,44 +181,44 @@ public class ActiveRegistServlet extends HttpServlet {
 			RecordDao bDao = new RecordDao();
 			result[1] = bDao.insert(new Record(0, kind, value , unit, registDate, number, kcal,activeNumber[2]) );
 
+			}else {
+				result[1] = true;
+			}
+			//３つ目のチェックボックス
+		String check3      			   = request.getParameter("check3");
+		if ("3".equals(check3)) {
+			String activeNumber3      = request.getParameter("active_number3");
+			String time3      		   = request.getParameter("time3");
+			String step3      		   = request.getParameter("step3");
+			String kcal3      		   = request.getParameter("kcal3");
+
+			//Active active  	= new Active(1,1,1.0, "サッカー" ); //セッションに入っているマスターデータを取得する
+			String[]activeNumber = activeNumber3.split("&&");
+			Active active  	= loginUser.getPickupAcList(Integer.parseInt(activeNumber[3]));
+
+			int kind 		 	= active.getKind();
+			double value 	 	= 0.0;
+			String unit = "";
+			if(time3 ==null) {
+				value = Double.parseDouble(step3);
+				unit = "歩数";
+			}else {
+				value = Double.parseDouble(time3);
+				unit = "分";
+			}
+
+			Date registDate  	= new Date();
+			//LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
+			//LoginUser loginUser = new LoginUser(1);//ログインが完成したら削除する部分
+			//int number			= loginUser.getId();
+
+			double kcal 		= Double.parseDouble(kcal3);
+			RecordDao bDao = new RecordDao();
+			result[2] = bDao.insert(new Record(0, kind, value , unit, registDate, number, kcal,activeNumber[2]) );
+
 		}else {
-			result[1] = true;
+			result[2] = true;
 		}
-		//３つ目のチェックボックス
-	String check3      			   = request.getParameter("check3");
-	if ("3".equals(check3)) {
-		String activeNumber3      = request.getParameter("active_number3");
-		String time3      		   = request.getParameter("time3");
-		String step3      		   = request.getParameter("step3");
-		String kcal3      		   = request.getParameter("kcal3");
-
-		//Active active  	= new Active(1,1,1.0, "サッカー" ); //セッションに入っているマスターデータを取得する
-		String[]activeNumber = activeNumber3.split("&&");
-		Active active  	= loginUser.getPickupAcList(Integer.parseInt(activeNumber[3]));
-
-		int kind 		 	= active.getKind();
-		double value 	 	= 0.0;
-		String unit = "";
-		if(time3.equals("")) {
-			value = Double.parseDouble(step3);
-			unit = "歩数";
-		}else {
-			value = Double.parseDouble(time3);
-			unit = "分";
-		}
-
-		Date registDate  	= new Date();
-		//LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
-		//LoginUser loginUser = new LoginUser(1);//ログインが完成したら削除する部分
-		//int number			= loginUser.getId();
-
-		double kcal 		= Double.parseDouble(kcal3);
-		RecordDao bDao = new RecordDao();
-		result[2] = bDao.insert(new Record(0, kind, value , unit, registDate, number, kcal,activeNumber[2]) );
-
-	}else {
-		result[2] = true;
-	}
 /*		int kind 		 	= Integer.parseInt(request.getParameter("kind"));
 		double value 	 	= Double.parseDouble(request.getParameter("value"));
 		String unit 	 	= request.getParameter("unit");
@@ -232,13 +232,12 @@ public class ActiveRegistServlet extends HttpServlet {
 		*/
 
 		// 登録処理を行う
-		if (result[0] && result[1] && result[2]) {	// 登録成功
+		if (!result[0] || !result[1] || !result[2]) {	// 登録成功
+			request.setAttribute("result",
+			new ResultMessage("運動記録を登録できませんでした")); // ResultMessage,javaからメッセージを
+		}else {												// 登録失敗
 			request.setAttribute("result",
 			new ResultMessage("運動記録を登録しました"));	// ResultMessage,javaからメッセージを表示
-		}
-		else {												// 登録失敗
-			request.setAttribute("result",
-			new ResultMessage("運動記録を登録できませんでした。")); // ResultMessage,javaからメッセージを表示
 		}
 		// その他入力ページに戻る
 		doGet(request, response);

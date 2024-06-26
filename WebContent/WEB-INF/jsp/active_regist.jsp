@@ -59,12 +59,12 @@
 			<input type="hidden" id = "kind3">
 			<!--運動の種類フォーム-->
 	<!-- 1行目 -->
-			<form action="./ActiveRegistServlet" method="POST" class="active">
+			<form action="./ActiveRegistServlet" method="POST" class="active" id="formCheck">
 					<!-- チェックボックス(1行目) -->
 					<input type="checkbox" id="check1" value="1" name="check1" onchange="func1()" class="scales" />
 					<!-- 運動種類選択(1行目)-->
-					<select name="active_number1" id="active_number1"  onchange="myFunc()" class="active_number"><br>
-					<option value=""></option>
+					<select name="active_number1" id="active_number1"  onchange="myFunc()" class="active_number" ><br>
+					<option ></option>
 					<option value="${a1.kind}&&${a1.metsValue}&&${ a1.activeName }&&${a1.activeNumber }"> ${ a1.activeName }</option> <!--valueの中に運動種類とメッツ値が&&で区切られて入っている。-->
 					<option value="${a2.kind}&&${a2.metsValue}&&${ a2.activeName }&&${a2.activeNumber }"> ${ a2.activeName }</option>
 					<option value="${a3.kind}&&${a3.metsValue}&&${ a3.activeName }&&${a3.activeNumber }"> ${ a3.activeName }</option>
@@ -83,7 +83,7 @@
 					</select>
 					<!-- 運動時間選択(1行目） -->
 					<select name="time1" id="time1"  onchange="kcalCalc()" class="time"> <!-- 時間を選んだら処理 -->
-					<option value=""></option>
+					<option ></option>
 					<option value="10">10分</option>
 					<option value="20">20分</option>
 					<option value="30">30分</option>
@@ -202,7 +202,42 @@
 			let step1  =   document.getElementById("step1");			//歩数入力フォームから要素を取得
 			step1.disabled = true;										//歩数入力フォームに非活性(disabled)を付与
 			time1.disabled = true;										//時間選択ボックスに非活性(disabled)を付与
-
+		//入力判断(1行目)
+			document.getElementById('check1').addEventListener('change', function() {
+			  let activeNumber = document.getElementById('active_number1');
+			  let kcal 		   = document.getElementById('kcalOutput');
+			  if (this.checked) {
+			    activeNumber.setAttribute('required', '');
+			    kcal.setAttribute('required', '');
+			  } else {
+				activeNumber.removeAttribute('required');
+				kcal.removeAttribute('required');
+			  }
+			});
+			//入力判断(２行目)
+			document.getElementById('check2').addEventListener('change', function() {
+				  let activeNumber = document.getElementById('active_number2');
+				  let kcal 		   = document.getElementById('kcalOutput2');
+				  if (this.checked) {
+				    activeNumber.setAttribute('required', '');
+				    kcal.setAttribute('required', '');
+				  } else {
+					activeNumber.removeAttribute('required');
+					kcal.removeAttribute('required');
+				  }
+				});
+			//入力判断(3行目)
+			document.getElementById('check3').addEventListener('change', function() {
+				  let activeNumber = document.getElementById('active_number3');
+				  let kcal 		   = document.getElementById('kcalOutput3');
+				  if (this.checked) {
+				    activeNumber.setAttribute('required', '');
+				    kcal.setAttribute('required', '');
+				  } else {
+					activeNumber.removeAttribute('required');
+					kcal.removeAttribute('required');
+				  }
+				});
 		//ウォーキング・ランニングを選択すると歩数フォームが活性になる(1列目)
 			const myFunc =() => {										//運動種類が選択された瞬間に起動するメソッド
             let active = document.getElementById("active_number1");		//運動種類選択ボックスから要素を取得
