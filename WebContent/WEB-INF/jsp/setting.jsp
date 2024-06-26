@@ -61,13 +61,13 @@
             <br>
             BMI &nbsp;
             <input type="number" class="text" id="bmi" name="bmi" value="${bmi}" size="10" step="0.1" readonly>
-        	<p>${result.message}</p>
+        	<p>${result.message}</p><br>
             <div class="newer">
-            	<input type="hidden" name="number" value="${number}">
+            	<input type="hidden" name="number" value="${number}"><br>
             	<p id="nameErrorObj"></p>
             	<p id="heightErrorObj"></p>
             	<p id="weightErrorObj"></p>
-                <input type="submit" class="button" id="updateButton" value="更新">
+                <input type="submit" class="button" id="updateButton" value="更新" onclick="if(!confirm('上記の内容で更新しますか？'))return false">
 
             </div>
         </form>
