@@ -118,7 +118,6 @@ public class ActiveRegistServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
-	//	LoginUser loginUser = ;//ログインが完成したら削除する部分
 		int number			= loginUser.getNumber();
 		boolean[] result = {false, false, false};
 		String check1      = request.getParameter("check1");
@@ -127,7 +126,6 @@ public class ActiveRegistServlet extends HttpServlet {
 			String time1      			= request.getParameter("time1");
 			String step1      			= request.getParameter("step1");
 			String kcal1     			 = request.getParameter("kcal1");
-			//Active active  	= new Active(1,1,1.0, "サッカー" ); //セッションに入っているマスターデータを取得する
 			String[]activeNumber = activeNumber1.split("&&");
 			Active active  	= loginUser.getPickupAcList(Integer.parseInt(activeNumber[3]));
 			int kind 		 	= active.getKind();
