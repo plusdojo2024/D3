@@ -133,7 +133,7 @@ public class ActiveRegistServlet extends HttpServlet {
 			String unit = "";
 			if(time1 == null) {						//時間フォームが空だった場合
 				value = Double.parseDouble(step1);
-				unit = "歩数";
+				unit = "歩";
 			}else {
 				value = Double.parseDouble(time1);
 				unit = "分";
@@ -164,7 +164,7 @@ public class ActiveRegistServlet extends HttpServlet {
 			String unit = "";
 			if(time2 ==null) {
 				value = Double.parseDouble(step2);
-				unit = "歩数";
+				unit = "歩";
 			}else {
 				value = Double.parseDouble(time2);
 				unit = "分";
@@ -199,7 +199,7 @@ public class ActiveRegistServlet extends HttpServlet {
 			String unit = "";
 			if(time3 ==null) {
 				value = Double.parseDouble(step3);
-				unit = "歩数";
+				unit = "歩";
 			}else {
 				value = Double.parseDouble(time3);
 				unit = "分";
