@@ -47,53 +47,50 @@
        		</ul>
 		</div>
 	<div class="main_content">
-              <!--ヘッダー-->
-	  <div id="container">
-		<div id="move-button">
-			<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()-1%>"><img src="img/hidari.png" class="migi-hidari" width= 50 height= 40></a>
-	    	<h1 id="month"><%=mc.getYear() %>年<%=mc.getMonth() %>月</h1>
-	    	<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()+1%>"><img src="img/migi.png"  class="migi-hidari" width= 50 height= 40></a>
-	   	</div>
-	    <table class="caltable">
-	      <tr>
-	        <th>日</th>
-	        <th>月</th>
-	        <th>火</th>
-	        <th>水</th>
-	        <th>木</th>
-	        <th>金</th>
-	        <th>土</th>
-	      </tr>
-	      <!-- マイカレンダーの日付をrow配列に格納 -->
-	      <%for(String[] row: mc.getData()){ %>
-	 		<tr>
-	      		<%for(String col:row) {%>
-	      			<%if (col.startsWith("*")){ %>
-	      				<%if(col.endsWith("@")){ %>
-	      					<td class="today hanamaru"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=<%=col.substring(1,col.length()-1)%>"><%=col.substring(1,col.length()-1)%></a></td>
-	      				<%}else{ %>
-		      				<td class="today"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=<%=col.substring(1)%>"><%=col.substring(1)%></a></td>
-		      			<%} %>
-		      		<%}else if (col.startsWith("#")){ %>
-		      			<td class="dayafter"><%=col.substring(1)%></td>
-		      		<%}else if (col.startsWith("$")){ %>
-		      			<td class="after"><%=col.substring(1)%></td>
-		      		<%}else { %>
-		 				<%if(col.endsWith("@")){ %>
-		      				<td class="before hanamaru"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=<%=col.substring(0,col.length()-1)%>"><%=col.substring(0,col.length()-1)%></a></td>
-		      			<%}else{ %>
-		      				<td class="before"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=<%=col %>"><%=col %></a></td>
-		      			<%} %>
-
-		      		<%} %>
-	      	<%} %>
-	     	 </tr>
-	       <%} %>
-	      </table>
+	<!--ヘッダー-->
+		<div id="container">
+			<div id="move-button">
+				<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()-1%>"><img src="img/hidari.png" class="migi-hidari" width= 50 height= 40></a>
+				<h1 id="month"><%=mc.getYear() %>年<%=mc.getMonth() %>月</h1>
+				<a href="?year=<%=mc.getYear()%>&month=<%=mc.getMonth()+1%>"><img src="img/migi.png"  class="migi-hidari" width= 50 height= 40></a>
+			</div>
+		<table class="caltable">
+			<tr>
+				<th>日</th>
+				<th>月</th>
+				<th>火</th>
+				<th>水</th>
+				<th>木</th>
+				<th>金</th>
+				<th>土</th>
+			</tr>
+	 <!-- マイカレンダーの日付をrow配列に格納 -->
+		<%for(String[] row: mc.getData()){ %>
+			<tr>
+				<%for(String col:row) {%>
+					<%if (col.startsWith("*")){ %>
+						<%if(col.endsWith("@")){ %>
+							<td class="today hanamaru"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=<%=col.substring(1,col.length()-1)%>"><%=col.substring(1,col.length()-1)%></a></td>
+						<%}else{ %>
+							<td class="today"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=<%=col.substring(1)%>"><%=col.substring(1)%></a></td>
+						<%} %>
+					<%}else if (col.startsWith("#")){ %>
+						<td class="dayafter"><%=col.substring(1)%></td>
+					<%}else if (col.startsWith("$")){ %>
+						<td class="after"><%=col.substring(1)%></td>
+					<%}else { %>
+						<%if(col.endsWith("@")){ %>
+							<td class="before hanamaru"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=<%=col.substring(0,col.length()-1)%>"><%=col.substring(0,col.length()-1)%></a></td>
+					<%}else{ %>
+							<td class="before"><a href = "./ResultServlet?y=${mc.getYear()}&m=${mc.getMonth()}&d=<%=col %>"><%=col %></a></td>
+					<%} %>
+					<%} %>
+				<%} %>
+			</tr>
+		<%} %>
+		</table>
+			</div>
 		</div>
-
-
-	        </div>
-		</div>
+	</div>
 </body>
 </html>
